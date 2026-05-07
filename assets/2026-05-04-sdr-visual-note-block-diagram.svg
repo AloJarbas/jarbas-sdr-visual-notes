@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1160" height="290" viewBox="0 0 1160 290">
+  <rect width="1160" height="290" fill="white"/>
+  <style>
+    .box { fill:#f7f9fc; stroke:#24415a; stroke-width:2.2; rx:14; ry:14; }
+    .txt { font: 22px sans-serif; fill:#1d2d3d; }
+    .small { font: 16px sans-serif; fill:#435363; }
+    .arr { stroke:#24415a; stroke-width:3; marker-end:url(#arrow); }
+    .dashed { stroke-dasharray:8 7; }
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#24415a"/>
+    </marker>
+  </defs>
+  <text x="34" y="40" class="txt">Receive-first -> transmit-capable SDR chain</text>
+  <rect x="35" y="105" width="150" height="78" class="box"/>
+  <text x="84" y="141" class="txt">Antenna</text>
+  <text x="64" y="165" class="small">aperture / pattern</text>
+  <rect x="245" y="105" width="180" height="78" class="box"/>
+  <text x="286" y="141" class="txt">RF front end</text>
+  <text x="278" y="165" class="small">LNA / filters / PA</text>
+  <rect x="485" y="105" width="170" height="78" class="box"/>
+  <text x="546" y="141" class="txt">SDR</text>
+  <text x="511" y="165" class="small">ADC / DAC / LO / IQ</text>
+  <rect x="715" y="105" width="190" height="78" class="box"/>
+  <text x="756" y="141" class="txt">DSP / Python</text>
+  <text x="743" y="165" class="small">FFT / plots / modulation</text>
+  <rect x="965" y="105" width="150" height="78" class="box"/>
+  <text x="995" y="141" class="txt">Notes</text>
+  <text x="986" y="165" class="small">docs / decisions</text>
+  <line x1="185" y1="144" x2="245" y2="144" class="arr"/>
+  <line x1="425" y1="144" x2="485" y2="144" class="arr"/>
+  <line x1="655" y1="144" x2="715" y2="144" class="arr"/>
+  <line x1="905" y1="144" x2="965" y2="144" class="arr"/>
+  <path d="M 905 190 C 905 235, 245 235, 245 190" fill="none" class="arr dashed"/>
+  <text x="475" y="258" class="small">feedback loop: what the plots show changes the RF and modulation choices</text>
+</svg>
