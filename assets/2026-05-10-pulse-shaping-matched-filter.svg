@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#081018"/>
+      <stop offset="100%" stop-color="#101d2a"/>
+    </linearGradient>
+    <style>
+      .title { font: 700 34px Helvetica, Arial, sans-serif; fill: #e6edf3; }
+      .subtitle { font: 500 18px Helvetica, Arial, sans-serif; fill: #9fb3c8; }
+      .label { font: 600 18px Helvetica, Arial, sans-serif; fill: #dce7f3; }
+      .small { font: 500 15px Helvetica, Arial, sans-serif; fill: #9fb3c8; }
+      .box { fill: #122131; stroke: #5e7fa3; stroke-width: 2; rx: 18; }
+      .axis { stroke: #39516a; stroke-width: 2; }
+      .grid { stroke: #223445; stroke-width: 1; opacity: 0.7; }
+      .pulseA { fill: none; stroke: #f97316; stroke-width: 4; }
+      .pulseB { fill: none; stroke: #22c55e; stroke-width: 4; }
+      .pulseC { fill: none; stroke: #60a5fa; stroke-width: 4; }
+      .marker { stroke: #f8fafc; stroke-width: 2; stroke-dasharray: 6 6; opacity: 0.6; }
+      .arrow { stroke: #93c5fd; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#93c5fd"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="760" fill="url(#bg)"/>
+  <text x="60" y="58" class="title">Pulse shaping and matched filtering</text>
+  <text x="60" y="88" class="subtitle">Smooth the spectrum at Tx, recover the symbols at Rx, and sample where the ISI cancels.</text>
+
+  <rect x="60" y="130" width="230" height="88" class="box"/>
+  <text x="175" y="166" text-anchor="middle" class="label">symbol stream</text>
+  <text x="175" y="194" text-anchor="middle" class="small">ideal impulses / decisions</text>
+
+  <rect x="360" y="130" width="230" height="88" class="box"/>
+  <text x="475" y="166" text-anchor="middle" class="label">Tx pulse shaping</text>
+  <text x="475" y="194" text-anchor="middle" class="small">SRRC / raised-cosine family</text>
+
+  <rect x="660" y="130" width="180" height="88" class="box"/>
+  <text x="750" y="166" text-anchor="middle" class="label">channel</text>
+  <text x="750" y="194" text-anchor="middle" class="small">noise + distortion</text>
+
+  <rect x="910" y="130" width="230" height="88" class="box"/>
+  <text x="1025" y="166" text-anchor="middle" class="label">Rx matched filter</text>
+  <text x="1025" y="194" text-anchor="middle" class="small">same pulse family, timed right</text>
+
+  <path d="M 290 174 H 360" class="arrow"/>
+  <path d="M 590 174 H 660" class="arrow"/>
+  <path d="M 840 174 H 910" class="arrow"/>
+
+  <text x="60" y="290" class="label">1. Block-shaped symbols waste bandwidth</text>
+  <line x1="60" y1="470" x2="540" y2="470" class="axis"/>
+  <line x1="60" y1="320" x2="60" y2="470" class="axis"/>
+  <line x1="180" y1="320" x2="180" y2="470" class="grid"/>
+  <line x1="300" y1="320" x2="300" y2="470" class="grid"/>
+  <line x1="420" y1="320" x2="420" y2="470" class="grid"/>
+  <path class="pulseA" d="M 60 440 L 120 440 L 120 360 L 180 360 L 180 440 L 240 440 L 240 350 L 300 350 L 300 440 L 360 440 L 360 385 L 420 385 L 420 440 L 540 440"/>
+  <text x="60" y="500" class="small">Rectangular-ish pulses are easy to imagine, but rough in frequency.</text>
+
+  <text x="660" y="290" class="label">2. Shaped pulses overlap on purpose</text>
+  <line x1="660" y1="470" x2="1140" y2="470" class="axis"/>
+  <line x1="660" y1="320" x2="660" y2="470" class="axis"/>
+  <line x1="780" y1="320" x2="780" y2="470" class="grid"/>
+  <line x1="900" y1="320" x2="900" y2="470" class="grid"/>
+  <line x1="1020" y1="320" x2="1020" y2="470" class="grid"/>
+  <path class="pulseB" d="M 660 440 C 700 440, 710 360, 780 360 C 850 360, 860 440, 900 440 C 940 440, 950 350, 1020 350 C 1090 350, 1100 440, 1140 440"/>
+  <path class="pulseC" d="M 660 440 C 720 440, 740 405, 780 385 C 820 365, 860 370, 900 395 C 940 420, 980 405, 1020 380 C 1060 355, 1090 360, 1140 440" opacity="0.65"/>
+  <text x="660" y="500" class="small">Overlap is fine as long as the combined response is zero at the other symbol instants.</text>
+
+  <text x="60" y="578" class="label">3. Sample at the matched-filter peaks</text>
+  <line x1="60" y1="700" x2="1140" y2="700" class="axis"/>
+  <line x1="60" y1="540" x2="60" y2="700" class="axis"/>
+  <line x1="240" y1="540" x2="240" y2="700" class="grid"/>
+  <line x1="420" y1="540" x2="420" y2="700" class="grid"/>
+  <line x1="600" y1="540" x2="600" y2="700" class="grid"/>
+  <line x1="780" y1="540" x2="780" y2="700" class="grid"/>
+  <line x1="960" y1="540" x2="960" y2="700" class="grid"/>
+  <path class="pulseC" d="M 60 690 C 140 690, 180 620, 240 580 C 300 540, 360 600, 420 640 C 480 680, 540 675, 600 600 C 660 525, 720 560, 780 620 C 840 680, 900 675, 960 610 C 1020 545, 1070 600, 1140 690"/>
+  <line x1="240" y1="560" x2="240" y2="700" class="marker"/>
+  <line x1="600" y1="580" x2="600" y2="700" class="marker"/>
+  <line x1="960" y1="590" x2="960" y2="700" class="marker"/>
+  <text x="88" y="732" class="small">Matched filtering is where the receiver gets its best shot at clean symbol decisions.</text>
+</svg>

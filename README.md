@@ -15,6 +15,7 @@ Everything here stays in the study and simulation lane. No live emission instruc
 
 - [Receive-first SDR chain](notes/receive-first-sdr-chain.md)
 - [IQ window, modulation, and bandwidth](notes/iq-window-modulation-bandwidth.md)
+- [Pulse shaping and matched filtering](notes/pulse-shaping-matched-filtering.md)
 
 ## Preview
 
@@ -30,6 +31,14 @@ Everything here stays in the study and simulation lane. No live emission instruc
 
 ![IQ window versus occupied bandwidth](assets/2026-05-07-iq-window-to-modulation-and-bandwidth.png)
 
+### Pulse shaping and matched filtering
+
+![Pulse shaping and matched filtering](assets/2026-05-10-pulse-shaping-matched-filter.svg)
+
+### SRRC rolloff and matched-filter response
+
+![SRRC rolloff and matched-filter response](assets/2026-05-11-srrc-rolloff-and-matched-filter.svg)
+
 ## Source basis
 
 These notes were distilled from public study sources, mainly:
@@ -38,7 +47,16 @@ These notes were distilled from public study sources, mainly:
 - everything RF on S-parameters
 - Analog Devices phased-array intuition material
 - MathWorks radar equation overview
+- PySDR pulse shaping chapter
+- GaussianWaves SRRC pulse-shaping note
+- GNU Radio root-raised-cosine filter notes
 
 ## Why this repo exists
 
 The broader research workspace already holds many topic notes. This slice felt complete enough to stand on its own as a focused visual packet.
+
+## Rebuild a generated figure
+
+```bash
+python3 scripts/generate_pulse_shaping_figures.py
+```
