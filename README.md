@@ -17,6 +17,7 @@ Everything here stays in the study and simulation lane. No live emission instruc
 - [IQ window, modulation, and bandwidth](notes/iq-window-modulation-bandwidth.md)
 - [Pulse shaping and matched filtering](notes/pulse-shaping-matched-filtering.md)
 - [Symbol timing and eye opening](notes/symbol-timing-and-eye-opening.md)
+- [Gardner vs Mueller and Muller](notes/gardner-vs-mueller-and-muller.md)
 
 ## Preview
 
@@ -44,6 +45,10 @@ Everything here stays in the study and simulation lane. No live emission instruc
 
 ![Symbol timing and eye opening](assets/2026-05-11-symbol-timing-and-eye-opening.svg)
 
+### Gardner vs Mueller and Muller
+
+![Gardner vs Mueller and Muller](assets/2026-05-11-gardner-vs-mueller-muller.svg)
+
 ## Source basis
 
 These notes were distilled from public study sources, mainly:
@@ -65,4 +70,5 @@ The broader research workspace already holds many topic notes. This slice felt c
 ```bash
 python3 scripts/generate_pulse_shaping_figures.py
 python3 scripts/generate_timing_recovery_figure.py
+python3 scripts/generate_ted_comparison_figure.py
 ```
