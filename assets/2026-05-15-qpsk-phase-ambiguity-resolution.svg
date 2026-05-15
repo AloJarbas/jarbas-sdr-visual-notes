@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1580" height="760" viewBox="0 0 1580 760">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#071018"/>
+    <stop offset="100%" stop-color="#0f1d2b"/>
+  </linearGradient>
+  <style>
+    .title { font: 700 32px Helvetica, Arial, sans-serif; fill: #e6edf3; }
+    .subtitle { font: 500 18px Helvetica, Arial, sans-serif; fill: #9fb3c8; }
+    .label { font: 700 18px Helvetica, Arial, sans-serif; fill: #dce7f3; }
+    .small { font: 500 15px Helvetica, Arial, sans-serif; fill: #9fb3c8; }
+    .tiny { font: 500 14px Helvetica, Arial, sans-serif; fill: #9fb3c8; }
+    .micro { font: 600 12px Helvetica, Arial, sans-serif; fill: #dce7f3; }
+    .mono { font: 600 18px Menlo, Consolas, monospace; fill: #e6edf3; }
+    .badge { font: 700 12px Helvetica, Arial, sans-serif; fill: #eff6ff; }
+    .axislabel { font: 600 13px Helvetica, Arial, sans-serif; fill: #dce7f3; }
+    .panel { fill: #122131; stroke: #5e7fa3; stroke-width: 2; rx: 18; }
+  </style>
+</defs>
+<rect width="1580" height="760" fill="url(#bg)"/>
+<text x="50.0" y="52.0" class="title" text-anchor="start">QPSK phase ambiguity resolution</text>
+<text x="50.0" y="82.0" class="subtitle" text-anchor="start"><tspan x="50.0" dy="0">Carrier lock can stop rotation without fixing the QPSK labels.</tspan><tspan x="50.0" dy="24.0">Known symbols or differential encoding finish the job.</tspan></text>
+<rect x="40.0" y="170.0" width="440.0" height="510.0" class="panel"/>
+<text x="62.0" y="204.0" class="label" text-anchor="start"><tspan x="62.0" dy="0">1. Carrier lock can still leave four</tspan><tspan x="62.0" dy="22.0">labelings</tspan></text>
+<text x="62.0" y="256.0" class="small" text-anchor="start"><tspan x="62.0" dy="0">A decision-directed QPSK loop removes rotation,</tspan><tspan x="62.0" dy="20.0">but the final lock is only known modulo 90°.</tspan></text>
+<rect x="520.0" y="170.0" width="440.0" height="510.0" class="panel"/>
+<text x="542.0" y="204.0" class="label" text-anchor="start"><tspan x="542.0" dy="0">2. Known symbols choose the right</tspan><tspan x="542.0" dy="22.0">rotation</tspan></text>
+<text x="542.0" y="256.0" class="small" text-anchor="start"><tspan x="542.0" dy="0">Test the four candidate rotations against a</tspan><tspan x="542.0" dy="20.0">known pattern and keep the one that matches.</tspan></text>
+<rect x="1000.0" y="170.0" width="440.0" height="510.0" class="panel"/>
+<text x="1022.0" y="204.0" class="label" text-anchor="start"><tspan x="1022.0" dy="0">3. Differential encoding makes constant</tspan><tspan x="1022.0" dy="22.0">rotation harmless</tspan></text>
+<text x="1022.0" y="256.0" class="small" text-anchor="start"><tspan x="1022.0" dy="0">Absolute phase may shift, but symbol-to-symbol</tspan><tspan x="1022.0" dy="20.0">phase changes survive a fixed quadrant offset.</tspan></text>
+<circle cx="162.0" cy="362.0" r="54.0" fill="none" opacity="1.0" stroke="#284055" stroke-width="2.0"/>
+<line x1="92.0" y1="362.0" x2="232.0" y2="362.0" stroke="#35506a" stroke-width="2.0" opacity="1.0" stroke-linecap="round"/>
+<line x1="162.0" y1="292.0" x2="162.0" y2="432.0" stroke="#35506a" stroke-width="2.0" opacity="1.0" stroke-linecap="round"/>
+<circle cx="200.2" cy="323.8" r="7.0" fill="#f8fafc" opacity="0.95"/>
+<text x="220.0" y="309.0" class="micro" text-anchor="middle">00</text>
+<circle cx="123.8" cy="323.8" r="7.0" fill="#f8fafc" opacity="0.95"/>
+<text x="104.0" y="309.0" class="micro" text-anchor="middle">01</text>
+<circle cx="123.8" cy="400.2" r="7.0" fill="#f8fafc" opacity="0.95"/>
+<text x="104.0" y="425.0" class="micro" text-anchor="middle">11</text>
+<circle cx="200.2" cy="400.2" r="7.0" fill="#f8fafc" opacity="0.95"/>
+<text x="220.0" y="425.0" class="micro" text-anchor="middle">10</text>
+<text x="162.0" y="290.0" class="tiny" text-anchor="middle">0°</text>
+<circle cx="362.0" cy="362.0" r="54.0" fill="none" opacity="1.0" stroke="#284055" stroke-width="2.0"/>
+<line x1="292.0" y1="362.0" x2="432.0" y2="362.0" stroke="#35506a" stroke-width="2.0" opacity="1.0" stroke-linecap="round"/>
+<line x1="362.0" y1="292.0" x2="362.0" y2="432.0" stroke="#35506a" stroke-width="2.0" opacity="1.0" stroke-linecap="round"/>
+<circle cx="400.2" cy="323.8" r="7.0" fill="#f8fafc" opacity="0.95"/>
+<text x="420.0" y="309.0" class="micro" text-anchor="middle">10</text>
+<circle cx="323.8" cy="323.8" r="7.0" fill="#f8fafc" opacity="0.95"/>
+<text x="304.0" y="309.0" class="micro" text-anchor="middle">00</text>
+<circle cx="323.8" cy="400.2" r="7.0" fill="#f8fafc" opacity="0.95"/>
+<text x="304.0" y="425.0" class="micro" text-anchor="middle">01</text>
+<circle cx="400.2" cy="400.2" r="7.0" fill="#f8fafc" opacity="0.95"/>
+<text x="420.0" y="425.0" class="micro" text-anchor="middle">11</text>
+<text x="362.0" y="290.0" class="tiny" text-anchor="middle">+90°</text>
+<circle cx="162.0" cy="544.0" r="54.0" fill="none" opacity="1.0" stroke="#284055" stroke-width="2.0"/>
+<line x1="92.0" y1="544.0" x2="232.0" y2="544.0" stroke="#35506a" stroke-width="2.0" opacity="1.0" stroke-linecap="round"/>
+<line x1="162.0" y1="474.0" x2="162.0" y2="614.0" stroke="#35506a" stroke-width="2.0" opacity="1.0" stroke-linecap="round"/>
+<circle cx="200.2" cy="505.8" r="7.0" fill="#f8fafc" opacity="0.95"/>
+<text x="220.0" y="491.0" class="micro" text-anchor="middle">11</text>
+<circle cx="123.8" cy="505.8" r="7.0" fill="#f8fafc" opacity="0.95"/>
+<text x="104.0" y="491.0" class="micro" text-anchor="middle">10</text>
+<circle cx="123.8" cy="582.2" r="7.0" fill="#f8fafc" opacity="0.95"/>
+<text x="104.0" y="607.0" class="micro" text-anchor="middle">00</text>
+<circle cx="200.2" cy="582.2" r="7.0" fill="#f8fafc" opacity="0.95"/>
+<text x="220.0" y="607.0" class="micro" text-anchor="middle">01</text>
+<text x="162.0" y="472.0" class="tiny" text-anchor="middle">+180°</text>
+<circle cx="362.0" cy="544.0" r="54.0" fill="none" opacity="1.0" stroke="#284055" stroke-width="2.0"/>
+<line x1="292.0" y1="544.0" x2="432.0" y2="544.0" stroke="#35506a" stroke-width="2.0" opacity="1.0" stroke-linecap="round"/>
+<line x1="362.0" y1="474.0" x2="362.0" y2="614.0" stroke="#35506a" stroke-width="2.0" opacity="1.0" stroke-linecap="round"/>
+<circle cx="400.2" cy="505.8" r="7.0" fill="#f8fafc" opacity="0.95"/>
+<text x="420.0" y="491.0" class="micro" text-anchor="middle">01</text>
+<circle cx="323.8" cy="505.8" r="7.0" fill="#f8fafc" opacity="0.95"/>
+<text x="304.0" y="491.0" class="micro" text-anchor="middle">11</text>
+<circle cx="323.8" cy="582.2" r="7.0" fill="#f8fafc" opacity="0.95"/>
+<text x="304.0" y="607.0" class="micro" text-anchor="middle">10</text>
+<circle cx="400.2" cy="582.2" r="7.0" fill="#f8fafc" opacity="0.95"/>
+<text x="420.0" y="607.0" class="micro" text-anchor="middle">00</text>
+<text x="362.0" y="472.0" class="tiny" text-anchor="middle">+270°</text>
+<text x="62.0" y="640.0" class="tiny" text-anchor="start"><tspan x="62.0" dy="0">Once the loop stops the fast spin, the cloud is</tspan><tspan x="62.0" dy="20.0">stable. But QPSK still has four equally valid</tspan><tspan x="62.0" dy="20.0">labelings, separated by 90°.</tspan></text>
+<text x="542.0" y="310.0" class="tiny" text-anchor="start">expected unique word:</text>
+<text x="766.0" y="310.0" class="mono" text-anchor="middle">00  01  11  10</text>
+<line x1="542.0" y1="322.0" x2="938.0" y2="322.0" stroke="#35506a" stroke-width="2.0" opacity="1.0" stroke-linecap="round"/>
+<rect x="542.0" y="362.0" width="396.0" height="40.0" rx="12.0" fill="#16324a" stroke="#35506a" stroke-width="2"/>
+<text x="558.0" y="388.0" class="tiny" text-anchor="start">try 0°</text>
+<text x="754.0" y="388.0" class="mono" text-anchor="middle">11  10  00  01</text>
+<rect x="542.0" y="418.0" width="396.0" height="40.0" rx="12.0" fill="#16324a" stroke="#35506a" stroke-width="2"/>
+<text x="558.0" y="444.0" class="tiny" text-anchor="start">try -90°</text>
+<text x="754.0" y="444.0" class="mono" text-anchor="middle">10  00  01  11</text>
+<rect x="542.0" y="474.0" width="396.0" height="40.0" rx="12.0" fill="#14532d" stroke="#22c55e" stroke-width="2"/>
+<text x="558.0" y="500.0" class="tiny" text-anchor="start">try -180°</text>
+<text x="754.0" y="500.0" class="mono" text-anchor="middle">00  01  11  10</text>
+<text x="910.0" y="500.0" class="tiny" text-anchor="end">match</text>
+<rect x="542.0" y="530.0" width="396.0" height="40.0" rx="12.0" fill="#16324a" stroke="#35506a" stroke-width="2"/>
+<text x="558.0" y="556.0" class="tiny" text-anchor="start">try -270°</text>
+<text x="754.0" y="556.0" class="mono" text-anchor="middle">01  11  10  00</text>
+<line x1="830.0" y1="552.0" x2="830.0" y2="600.0" stroke="#22c55e" stroke-width="3.0" opacity="0.9" stroke-linecap="round"/>
+<line x1="830.0" y1="600.0" x2="824.9" y2="589.1" stroke="#22c55e" stroke-width="3.0" opacity="0.9" stroke-linecap="round"/>
+<line x1="830.0" y1="600.0" x2="835.1" y2="589.1" stroke="#22c55e" stroke-width="3.0" opacity="0.9" stroke-linecap="round"/>
+<text x="542.0" y="638.0" class="tiny" text-anchor="start"><tspan x="542.0" dy="0">Known symbols or a unique word let the receiver</tspan><tspan x="542.0" dy="20.0">test the four rotations and keep the one that</tspan><tspan x="542.0" dy="20.0">matches the expected pattern.</tspan></text>
+<text x="1220.0" y="282.0" class="tiny" text-anchor="middle">Tx absolute phase</text>
+<circle cx="1220.0" cy="390.0" r="78.0" fill="none" opacity="1.0" stroke="#284055" stroke-width="2.0"/>
+<line x1="1220.0" y1="390.0" x2="1298.0" y2="390.0" stroke="#223445" stroke-width="1.4" opacity="0.55" stroke-linecap="round" stroke-dasharray="5 7"/>
+<line x1="1220.0" y1="390.0" x2="1220.0" y2="312.0" stroke="#223445" stroke-width="1.4" opacity="0.55" stroke-linecap="round" stroke-dasharray="5 7"/>
+<line x1="1220.0" y1="390.0" x2="1142.0" y2="390.0" stroke="#223445" stroke-width="1.4" opacity="0.55" stroke-linecap="round" stroke-dasharray="5 7"/>
+<line x1="1220.0" y1="390.0" x2="1220.0" y2="468.0" stroke="#223445" stroke-width="1.4" opacity="0.55" stroke-linecap="round" stroke-dasharray="5 7"/>
+<circle cx="1275.2" cy="334.8" r="7.0" fill="#60a5fa" opacity="0.95"/>
+<text x="1275.2" y="322.8" class="micro" text-anchor="middle">s0</text>
+<circle cx="1164.8" cy="334.8" r="7.0" fill="#22c55e" opacity="0.95"/>
+<text x="1164.8" y="322.8" class="micro" text-anchor="middle">s1</text>
+<circle cx="1164.8" cy="445.2" r="7.0" fill="#f59e0b" opacity="0.95"/>
+<text x="1164.8" y="433.2" class="micro" text-anchor="middle">s2</text>
+<circle cx="1164.8" cy="334.8" r="7.0" fill="#f97316" opacity="0.95"/>
+<text x="1164.8" y="322.8" class="micro" text-anchor="middle">s3</text>
+<line x1="1275.2" y1="334.8" x2="1164.8" y2="334.8" stroke="#22c55e" stroke-width="2.8" opacity="0.88" stroke-linecap="round"/>
+<line x1="1164.8" y1="334.8" x2="1175.7" y2="329.7" stroke="#22c55e" stroke-width="2.8" opacity="0.88" stroke-linecap="round"/>
+<line x1="1164.8" y1="334.8" x2="1175.7" y2="340.0" stroke="#22c55e" stroke-width="2.8" opacity="0.88" stroke-linecap="round"/>
+<line x1="1164.8" y1="334.8" x2="1164.8" y2="445.2" stroke="#f59e0b" stroke-width="2.8" opacity="0.88" stroke-linecap="round"/>
+<line x1="1164.8" y1="445.2" x2="1159.7" y2="434.3" stroke="#f59e0b" stroke-width="2.8" opacity="0.88" stroke-linecap="round"/>
+<line x1="1164.8" y1="445.2" x2="1170.0" y2="434.3" stroke="#f59e0b" stroke-width="2.8" opacity="0.88" stroke-linecap="round"/>
+<line x1="1164.8" y1="445.2" x2="1164.8" y2="334.8" stroke="#f97316" stroke-width="2.8" opacity="0.88" stroke-linecap="round"/>
+<line x1="1164.8" y1="334.8" x2="1170.0" y2="345.7" stroke="#f97316" stroke-width="2.8" opacity="0.88" stroke-linecap="round"/>
+<line x1="1164.8" y1="334.8" x2="1159.7" y2="345.7" stroke="#f97316" stroke-width="2.8" opacity="0.88" stroke-linecap="round"/>
+<text x="1220.0" y="452.0" class="tiny" text-anchor="middle">Rx after a constant +90° lock offset</text>
+<circle cx="1220.0" cy="560.0" r="78.0" fill="none" opacity="1.0" stroke="#284055" stroke-width="2.0"/>
+<line x1="1220.0" y1="560.0" x2="1298.0" y2="560.0" stroke="#223445" stroke-width="1.4" opacity="0.55" stroke-linecap="round" stroke-dasharray="5 7"/>
+<line x1="1220.0" y1="560.0" x2="1220.0" y2="482.0" stroke="#223445" stroke-width="1.4" opacity="0.55" stroke-linecap="round" stroke-dasharray="5 7"/>
+<line x1="1220.0" y1="560.0" x2="1142.0" y2="560.0" stroke="#223445" stroke-width="1.4" opacity="0.55" stroke-linecap="round" stroke-dasharray="5 7"/>
+<line x1="1220.0" y1="560.0" x2="1220.0" y2="638.0" stroke="#223445" stroke-width="1.4" opacity="0.55" stroke-linecap="round" stroke-dasharray="5 7"/>
+<circle cx="1164.8" cy="504.8" r="7.0" fill="#60a5fa" opacity="0.95"/>
+<text x="1164.8" y="492.8" class="micro" text-anchor="middle">s0</text>
+<circle cx="1164.8" cy="615.2" r="7.0" fill="#22c55e" opacity="0.95"/>
+<text x="1164.8" y="603.2" class="micro" text-anchor="middle">s1</text>
+<circle cx="1275.2" cy="615.2" r="7.0" fill="#f59e0b" opacity="0.95"/>
+<text x="1275.2" y="603.2" class="micro" text-anchor="middle">s2</text>
+<circle cx="1164.8" cy="615.2" r="7.0" fill="#f97316" opacity="0.95"/>
+<text x="1164.8" y="603.2" class="micro" text-anchor="middle">s3</text>
+<line x1="1164.8" y1="504.8" x2="1164.8" y2="615.2" stroke="#22c55e" stroke-width="2.8" opacity="0.88" stroke-linecap="round"/>
+<line x1="1164.8" y1="615.2" x2="1159.7" y2="604.3" stroke="#22c55e" stroke-width="2.8" opacity="0.88" stroke-linecap="round"/>
+<line x1="1164.8" y1="615.2" x2="1170.0" y2="604.3" stroke="#22c55e" stroke-width="2.8" opacity="0.88" stroke-linecap="round"/>
+<line x1="1164.8" y1="615.2" x2="1275.2" y2="615.2" stroke="#f59e0b" stroke-width="2.8" opacity="0.88" stroke-linecap="round"/>
+<line x1="1275.2" y1="615.2" x2="1264.3" y2="620.3" stroke="#f59e0b" stroke-width="2.8" opacity="0.88" stroke-linecap="round"/>
+<line x1="1275.2" y1="615.2" x2="1264.3" y2="610.0" stroke="#f59e0b" stroke-width="2.8" opacity="0.88" stroke-linecap="round"/>
+<line x1="1275.2" y1="615.2" x2="1164.8" y2="615.2" stroke="#f97316" stroke-width="2.8" opacity="0.88" stroke-linecap="round"/>
+<line x1="1164.8" y1="615.2" x2="1175.7" y2="610.0" stroke="#f97316" stroke-width="2.8" opacity="0.88" stroke-linecap="round"/>
+<line x1="1164.8" y1="615.2" x2="1175.7" y2="620.3" stroke="#f97316" stroke-width="2.8" opacity="0.88" stroke-linecap="round"/>
+<text x="1220.0" y="662.0" class="mono" text-anchor="middle">phase steps on both rows: +90°, +90°, -90°</text>
+<text x="1022.0" y="698.0" class="tiny" text-anchor="start"><tspan x="1022.0" dy="0">Differential encoding keeps information in</tspan><tspan x="1022.0" dy="20.0">symbol-to-symbol phase changes, so a constant</tspan><tspan x="1022.0" dy="20.0">quadrant offset cancels during differential</tspan><tspan x="1022.0" dy="20.0">decoding. This is still coherent carrier recovery,</tspan><tspan x="1022.0" dy="20.0">not noncoherent differential detection.</tspan></text>
+<text x="50.0" y="722.0" class="small" text-anchor="start"><tspan x="50.0" dy="0">Known symbols fix the labeling after lock. Differential encoding avoids caring about the absolute quadrant.</tspan></text>
+</svg>

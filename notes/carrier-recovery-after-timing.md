@@ -95,13 +95,21 @@ That is the missing bridge between the timing notes and later demodulation.
 ## 6. Strongest caveat
 
 The 4th-power stage leaves a 90° ambiguity for QPSK.
-A practical receiver still needs some later way to resolve symbol labeling, such as known symbols, a unique word, or differential encoding.
+A practical receiver still needs some later way to resolve symbol labeling.
 
-But that is a later note.
-For this pass, the important distinction is simpler:
+The two most common fixes are:
+
+- **known symbols or a unique word:** once the loop has stopped the fast rotation, compare a known pattern against the possible quadrant rotations and choose the one that matches,
+- **differential encoding and decoding:** encode information in symbol-to-symbol phase changes so a constant 90° lock offset does not ruin the whole payload.
+
+That does **not** mean carrier recovery was unnecessary.
+It means carrier recovery got the constellation into a stable frame, while ambiguity resolution handles the remaining label choice.
+
+For this pass, the important distinction is still simpler:
 
 - **acquisition range** and **tracking range** are not the same,
-- and timing recovery does not solve carrier rotation for you.
+- timing recovery does not solve carrier rotation for you,
+- and carrier lock still does not automatically tell you which QPSK quadrant is the true one.
 
 ## Scope boundary
 

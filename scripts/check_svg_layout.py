@@ -12,6 +12,7 @@ DEFAULT_FILES = [
     'assets/2026-05-11-symbol-timing-and-eye-opening.svg',
     'assets/2026-05-11-gardner-vs-mueller-muller.svg',
     'assets/2026-05-14-carrier-recovery-after-timing.svg',
+    'assets/2026-05-15-qpsk-phase-ambiguity-resolution.svg',
 ]
 SVG_NS = {'svg': 'http://www.w3.org/2000/svg'}
 FONT_RE = re.compile(r'\.(\w+)\s*\{[^}]*font:\s*\d+\s+(\d+)px')

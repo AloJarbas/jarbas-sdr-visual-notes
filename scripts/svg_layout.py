@@ -1,6 +1,10 @@
 from __future__ import annotations
 
+import shutil
+import subprocess
+import tempfile
 from html import escape
+from pathlib import Path
 from textwrap import wrap
 from typing import Iterable, Sequence
 
@@ -61,3 +65,34 @@ def add_wrapped_text(
     lines = wrap_text(value, max_width=max_width, font_size=font_size)
     svg.append(text_block(x, y, lines, klass, line_height, anchor))
     return lines
+
+
+def export_png_from_svg(svg_path: str | Path, png_path: str | Path, *, size: int = 1600, dpi: int = 300) -> bool:
+    svg_file = Path(svg_path).resolve()
+    png_file = Path(png_path).resolve()
+    qlmanage = shutil.which('qlmanage')
+    if qlmanage is None:
+        return False
+
+    with tempfile.TemporaryDirectory() as tmpdir:
+        subprocess.run(
+            [qlmanage, '-t', '-s', str(size), '-o', tmpdir, str(svg_file)],
+            check=True,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
+        generated = Path(tmpdir) / f'{svg_file.name}.png'
+        if not generated.exists():
+            raise FileNotFoundError(f'Quick Look did not generate {generated}')
+        png_file.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(generated, png_file)
+
+    sips = shutil.which('sips')
+    if sips is not None:
+        subprocess.run(
+            [sips, '--setProperty', 'dpiWidth', str(dpi), '--setProperty', 'dpiHeight', str(dpi), str(png_file)],
+            check=True,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
+    return True

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="700" viewBox="0 0 1440 700">
+<svg xmlns="http://www.w3.org/2000/svg" width="1540" height="700" viewBox="0 0 1540 700">
 <defs>
   <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
     <stop offset="0%" stop-color="#071018"/>
@@ -15,9 +15,9 @@
     .panel { fill: #122131; stroke: #5e7fa3; stroke-width: 2; rx: 18; }
   </style>
 </defs>
-<rect width="1440" height="700" fill="url(#bg)"/>
+<rect width="1540" height="700" fill="url(#bg)"/>
 <text x="50.0" y="52.0" class="title" text-anchor="start">Carrier recovery after timing</text>
-<text x="50.0" y="82.0" class="subtitle" text-anchor="start"><tspan x="50.0" dy="0">Timing recovery fixes when to sample. Carrier recovery removes the remaining common rotation.</tspan></text>
+<text x="50.0" y="82.0" class="subtitle" text-anchor="start"><tspan x="50.0" dy="0">Timing recovery fixes when to sample.</tspan><tspan x="50.0" dy="24.0">Carrier recovery removes the remaining common rotation.</tspan></text>
 <rect x="40.0" y="170.0" width="420.0" height="470.0" class="panel"/>
 <text x="62.0" y="204.0" class="label" text-anchor="start"><tspan x="62.0" dy="0">1. Timing locked, constellation still</tspan><tspan x="62.0" dy="22.0">rotating</tspan></text>
 <text x="62.0" y="256.0" class="small" text-anchor="start"><tspan x="62.0" dy="0">Same QPSK symbols at several times after</tspan><tspan x="62.0" dy="20.0">timing is already fixed.</tspan></text>
@@ -150,5 +150,5 @@
 <circle cx="1262.1" cy="470.1" r="7.0" fill="#a78bfa" opacity="0.95"/>
 <polyline points="1264.0,346.0 1290.0,328.0 1294.0,358.0" fill="none" stroke="#c4b5fd" stroke-width="3.0" opacity="0.95" stroke-linecap="round" stroke-linejoin="round"/>
 <text x="1002.0" y="542.0" class="tiny" text-anchor="start"><tspan x="1002.0" dy="0">After coarse alignment, feedback only corrects</tspan><tspan x="1002.0" dy="20.0">residual error. That is the Costas /</tspan><tspan x="1002.0" dy="20.0">decision-directed sweet spot. Tracking range is</tspan><tspan x="1002.0" dy="20.0">smaller than acquisition range.</tspan></text>
-<text x="50.0" y="668.0" class="small" text-anchor="start"><tspan x="50.0" dy="0">Acquisition versus tracking is the key split: symmetry-based coarse alignment first, feedback fine tracking second.</tspan></text>
+<text x="50.0" y="666.0" class="small" text-anchor="start"><tspan x="50.0" dy="0">Acquisition versus tracking is the key split: symmetry-based coarse alignment first, feedback fine tracking second.</tspan></text>
 </svg>

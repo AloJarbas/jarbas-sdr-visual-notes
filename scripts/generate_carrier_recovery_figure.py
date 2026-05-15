@@ -4,10 +4,11 @@ from __future__ import annotations
 import math
 from pathlib import Path
 
-from svg_layout import add_wrapped_text, svg_root, text, text_block, wrap_text
+from svg_layout import add_wrapped_text, export_png_from_svg, svg_root, text, text_block, wrap_text
 
 REPO = Path(__file__).resolve().parents[1]
 OUT = REPO / 'assets/2026-05-14-carrier-recovery-after-timing.svg'
+PNG_OUT = REPO / 'assets/2026-05-14-carrier-recovery-after-timing.png'
 
 PANEL_W = 420.0
 PANEL_H = 470.0
@@ -166,7 +167,7 @@ def panel_three(svg: list[str], left: float) -> None:
 
 
 def main() -> None:
-    width, height = 1440, 700
+    width, height = 1540, 700
     svg: list[str] = [
         svg_root(width, height),
         '<defs>',
@@ -188,15 +189,17 @@ def main() -> None:
         f'<rect width="{width}" height="{height}" fill="url(#bg)"/>',
         text(50.0, 52.0, 'Carrier recovery after timing', 'title'),
     ]
-    add_wrapped_text(
-        svg,
-        50.0,
-        82.0,
-        'Timing recovery fixes when to sample. Carrier recovery removes the remaining common rotation.',
-        'subtitle',
-        max_width=1320,
-        font_size=18,
-        line_height=24,
+    svg.append(
+        text_block(
+            50.0,
+            82.0,
+            [
+                'Timing recovery fixes when to sample.',
+                'Carrier recovery removes the remaining common rotation.',
+            ],
+            'subtitle',
+            24.0,
+        )
     )
 
     panel(svg, PANEL_LEFTS[0], '1. Timing locked, constellation still rotating', 'Same QPSK symbols at several times after timing is already fixed.')
@@ -207,12 +210,23 @@ def main() -> None:
     panel_two(svg, PANEL_LEFTS[1])
     panel_three(svg, PANEL_LEFTS[2])
 
-    svg.append(text_block(50.0, 668.0, ['Acquisition versus tracking is the key split: symmetry-based coarse alignment first, feedback fine tracking second.'], 'small', 21.0))
+    add_wrapped_text(
+        svg,
+        50.0,
+        666.0,
+        'Acquisition versus tracking is the key split: symmetry-based coarse alignment first, feedback fine tracking second.',
+        'small',
+        max_width=1380,
+        font_size=15,
+        line_height=21,
+    )
     svg.append('</svg>')
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text('\n'.join(svg) + '\n')
+    export_png_from_svg(OUT, PNG_OUT, size=1600, dpi=300)
     print(f'WROTE {OUT}')
+    print(f'WROTE {PNG_OUT}')
 
 
 if __name__ == '__main__':

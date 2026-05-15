@@ -19,6 +19,7 @@ Everything here stays in the study and simulation lane. No live emission instruc
 - [Symbol timing and eye opening](notes/symbol-timing-and-eye-opening.md)
 - [Gardner vs Mueller and Muller](notes/gardner-vs-mueller-and-muller.md)
 - [Carrier recovery after timing](notes/carrier-recovery-after-timing.md)
+- [QPSK phase ambiguity resolution](notes/qpsk-phase-ambiguity-resolution.md)
 
 ## Preview
 
@@ -54,6 +55,10 @@ Everything here stays in the study and simulation lane. No live emission instruc
 
 ![Carrier recovery after timing](assets/2026-05-14-carrier-recovery-after-timing.svg)
 
+### QPSK phase ambiguity resolution
+
+![QPSK phase ambiguity resolution](assets/2026-05-15-qpsk-phase-ambiguity-resolution.png)
+
 ## Source basis
 
 These notes were distilled from public study sources, mainly:
@@ -66,6 +71,7 @@ These notes were distilled from public study sources, mainly:
 - GaussianWaves SRRC pulse-shaping note
 - GNU Radio root-raised-cosine filter notes
 - Wireless Pi synchronization notes
+- Wireless Pi note on unique words and differential encoding for phase ambiguity resolution
 
 ## Why this repo exists
 
@@ -78,5 +84,6 @@ python3 scripts/generate_pulse_shaping_figures.py
 python3 scripts/generate_timing_recovery_figure.py
 python3 scripts/generate_ted_comparison_figure.py
 python3 scripts/generate_carrier_recovery_figure.py
+python3 scripts/generate_qpsk_phase_ambiguity_figure.py
 python3 scripts/check_svg_layout.py
 ```
