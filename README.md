@@ -78,4 +78,5 @@ python3 scripts/generate_pulse_shaping_figures.py
 python3 scripts/generate_timing_recovery_figure.py
 python3 scripts/generate_ted_comparison_figure.py
 python3 scripts/generate_carrier_recovery_figure.py
+python3 scripts/check_svg_layout.py
 ```
