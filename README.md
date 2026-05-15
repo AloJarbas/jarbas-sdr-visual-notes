@@ -18,6 +18,7 @@ Everything here stays in the study and simulation lane. No live emission instruc
 - [Pulse shaping and matched filtering](notes/pulse-shaping-matched-filtering.md)
 - [Symbol timing and eye opening](notes/symbol-timing-and-eye-opening.md)
 - [Gardner vs Mueller and Muller](notes/gardner-vs-mueller-and-muller.md)
+- [Carrier recovery after timing](notes/carrier-recovery-after-timing.md)
 
 ## Preview
 
@@ -49,6 +50,10 @@ Everything here stays in the study and simulation lane. No live emission instruc
 
 ![Gardner vs Mueller and Muller](assets/2026-05-11-gardner-vs-mueller-muller.svg)
 
+### Carrier recovery after timing
+
+![Carrier recovery after timing](assets/2026-05-14-carrier-recovery-after-timing.svg)
+
 ## Source basis
 
 These notes were distilled from public study sources, mainly:
@@ -60,6 +65,7 @@ These notes were distilled from public study sources, mainly:
 - PySDR pulse shaping chapter
 - GaussianWaves SRRC pulse-shaping note
 - GNU Radio root-raised-cosine filter notes
+- Wireless Pi synchronization notes
 
 ## Why this repo exists
 
@@ -71,4 +77,5 @@ The broader research workspace already holds many topic notes. This slice felt c
 python3 scripts/generate_pulse_shaping_figures.py
 python3 scripts/generate_timing_recovery_figure.py
 python3 scripts/generate_ted_comparison_figure.py
+python3 scripts/generate_carrier_recovery_figure.py
 ```

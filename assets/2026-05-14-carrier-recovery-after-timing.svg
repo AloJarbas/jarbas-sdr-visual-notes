@@ -1,0 +1,159 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 590">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#071018"/>
+    <stop offset="100%" stop-color="#0f1d2b"/>
+  </linearGradient>
+  <style>
+    .title { font: 700 32px Helvetica, Arial, sans-serif; fill: #e6edf3; }
+    .subtitle { font: 500 18px Helvetica, Arial, sans-serif; fill: #9fb3c8; }
+    .label { font: 700 19px Helvetica, Arial, sans-serif; fill: #dce7f3; }
+    .small { font: 500 15px Helvetica, Arial, sans-serif; fill: #9fb3c8; }
+    .tiny { font: 500 14px Helvetica, Arial, sans-serif; fill: #9fb3c8; }
+    .micro { font: 500 12px Helvetica, Arial, sans-serif; fill: #8aa3bc; }
+    .axislabel { font: 600 14px Helvetica, Arial, sans-serif; fill: #dce7f3; }
+    .panel { fill: #122131; stroke: #5e7fa3; stroke-width: 2; rx: 18; }
+  </style>
+</defs>
+<rect width="1400" height="590" fill="url(#bg)"/>
+<text x="50.0" y="52.0" class="title" text-anchor="start">Carrier recovery after timing</text>
+<text x="50.0" y="82.0" class="subtitle" text-anchor="start">Timing recovery fixes when to sample. Carrier recovery removes the remaining common rotation.</text>
+<rect x="50.0" y="150.0" width="390.0" height="400.0" class="panel"/>
+<text x="72.0" y="184.0" class="label" text-anchor="start">1. Timing locked, constellation still rotating</text>
+<text x="72.0" y="208.0" class="small" text-anchor="start">Same QPSK symbols at several times after timing is already fixed.</text>
+<rect x="505.0" y="150.0" width="390.0" height="400.0" class="panel"/>
+<text x="527.0" y="184.0" class="label" text-anchor="start">2. 4th power reveals common phase</text>
+<text x="527.0" y="208.0" class="small" text-anchor="start">Each time snapshot collapses to one shared phase point.</text>
+<rect x="960.0" y="150.0" width="390.0" height="400.0" class="panel"/>
+<text x="982.0" y="184.0" class="label" text-anchor="start">3. Fine tracking holds the lock</text>
+<text x="982.0" y="208.0" class="small" text-anchor="start">After coarse correction, feedback only cleans up residual error.</text>
+<line x1="100.0" y1="340.0" x2="390.0" y2="340.0" stroke="#35506a" stroke-width="2.0" opacity="1.0"/>
+<line x1="245.0" y1="195.0" x2="245.0" y2="485.0" stroke="#35506a" stroke-width="2.0" opacity="1.0"/>
+<circle cx="245.0" cy="340.0" r="115.0" fill="none" opacity="1.0" stroke="#284055" stroke-width="2.0"/>
+<text x="379.0" y="330.0" class="axislabel" text-anchor="start">I</text>
+<text x="255.0" y="212.0" class="axislabel" text-anchor="start">Q</text>
+<text x="72.0" y="238.0" class="tiny" text-anchor="start">time snapshots</text>
+<circle cx="175.0" cy="233.0" r="6.0" fill="#60a5fa" opacity="1.0"/>
+<text x="175.0" y="254.0" class="micro" text-anchor="middle">t0</text>
+<circle cx="203.0" cy="233.0" r="6.0" fill="#22c55e" opacity="1.0"/>
+<text x="203.0" y="254.0" class="micro" text-anchor="middle">t1</text>
+<circle cx="231.0" cy="233.0" r="6.0" fill="#f59e0b" opacity="1.0"/>
+<text x="231.0" y="254.0" class="micro" text-anchor="middle">t2</text>
+<circle cx="259.0" cy="233.0" r="6.0" fill="#f97316" opacity="1.0"/>
+<text x="259.0" y="254.0" class="micro" text-anchor="middle">t3</text>
+<polyline points="317.8,251.0 300.7,239.4 281.8,231.0 261.7,226.2" fill="none" stroke="#7dd3fc" stroke-width="2.0" opacity="0.28" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="156.0,267.2 144.4,284.3 136.0,303.2 131.2,323.3" fill="none" stroke="#7dd3fc" stroke-width="2.0" opacity="0.28" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="172.2,429.0 189.3,440.6 208.2,449.0 228.3,453.8" fill="none" stroke="#7dd3fc" stroke-width="2.0" opacity="0.28" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="334.0,412.8 345.6,395.7 354.0,376.8 358.8,356.7" fill="none" stroke="#7dd3fc" stroke-width="2.0" opacity="0.28" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="317.8" cy="251.0" r="7.0" fill="#60a5fa" opacity="0.95"/>
+<circle cx="156.0" cy="267.2" r="7.0" fill="#60a5fa" opacity="0.95"/>
+<circle cx="172.2" cy="429.0" r="7.0" fill="#60a5fa" opacity="0.95"/>
+<circle cx="334.0" cy="412.8" r="7.0" fill="#60a5fa" opacity="0.95"/>
+<circle cx="300.7" cy="239.4" r="7.0" fill="#22c55e" opacity="0.95"/>
+<circle cx="144.4" cy="284.3" r="7.0" fill="#22c55e" opacity="0.95"/>
+<circle cx="189.3" cy="440.6" r="7.0" fill="#22c55e" opacity="0.95"/>
+<circle cx="345.6" cy="395.7" r="7.0" fill="#22c55e" opacity="0.95"/>
+<circle cx="281.8" cy="231.0" r="7.0" fill="#f59e0b" opacity="0.95"/>
+<circle cx="136.0" cy="303.2" r="7.0" fill="#f59e0b" opacity="0.95"/>
+<circle cx="208.2" cy="449.0" r="7.0" fill="#f59e0b" opacity="0.95"/>
+<circle cx="354.0" cy="376.8" r="7.0" fill="#f59e0b" opacity="0.95"/>
+<circle cx="261.7" cy="226.2" r="7.0" fill="#f97316" opacity="0.95"/>
+<circle cx="131.2" cy="323.3" r="7.0" fill="#f97316" opacity="0.95"/>
+<circle cx="228.3" cy="453.8" r="7.0" fill="#f97316" opacity="0.95"/>
+<circle cx="358.8" cy="356.7" r="7.0" fill="#f97316" opacity="0.95"/>
+<polyline points="333.0,260.0 350.0,285.0 321.0,288.0" fill="none" stroke="#f8fafc" stroke-width="2.0" opacity="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="72.0" y="504.0" class="tiny" text-anchor="start">Timing is right, but the whole constellation still rotates.</text>
+<text x="72.0" y="526.0" class="tiny" text-anchor="start">That remaining motion is carrier phase/frequency error.</text>
+<line x1="555.0" y1="340.0" x2="845.0" y2="340.0" stroke="#35506a" stroke-width="2.0" opacity="1.0"/>
+<line x1="700.0" y1="195.0" x2="700.0" y2="485.0" stroke="#35506a" stroke-width="2.0" opacity="1.0"/>
+<circle cx="700.0" cy="340.0" r="115.0" fill="none" opacity="1.0" stroke="#284055" stroke-width="2.0"/>
+<text x="834.0" y="330.0" class="axislabel" text-anchor="start">I</text>
+<text x="710.0" y="212.0" class="axislabel" text-anchor="start">Q</text>
+<text x="527.0" y="238.0" class="tiny" text-anchor="start">time snapshots</text>
+<circle cx="630.0" cy="233.0" r="6.0" fill="#60a5fa" opacity="1.0"/>
+<text x="630.0" y="254.0" class="micro" text-anchor="middle">t0</text>
+<circle cx="658.0" cy="233.0" r="6.0" fill="#22c55e" opacity="1.0"/>
+<text x="658.0" y="254.0" class="micro" text-anchor="middle">t1</text>
+<circle cx="686.0" cy="233.0" r="6.0" fill="#f59e0b" opacity="1.0"/>
+<text x="686.0" y="254.0" class="micro" text-anchor="middle">t2</text>
+<circle cx="714.0" cy="233.0" r="6.0" fill="#f97316" opacity="1.0"/>
+<text x="714.0" y="254.0" class="micro" text-anchor="middle">t3</text>
+<circle cx="594.1" cy="384.8" r="18.0" fill="#60a5fa" opacity="0.08"/>
+<circle cx="594.1" cy="384.8" r="12.0" fill="#60a5fa" opacity="0.08"/>
+<circle cx="594.1" cy="384.8" r="7.0" fill="#60a5fa" opacity="0.08"/>
+<circle cx="594.1" cy="384.8" r="3.5" fill="#60a5fa" opacity="0.08"/>
+<circle cx="594.1" cy="384.8" r="8.0" fill="#60a5fa" opacity="0.96"/>
+<circle cx="649.9" cy="443.5" r="18.0" fill="#22c55e" opacity="0.08"/>
+<circle cx="649.9" cy="443.5" r="12.0" fill="#22c55e" opacity="0.08"/>
+<circle cx="649.9" cy="443.5" r="7.0" fill="#22c55e" opacity="0.08"/>
+<circle cx="649.9" cy="443.5" r="3.5" fill="#22c55e" opacity="0.08"/>
+<circle cx="649.9" cy="443.5" r="8.0" fill="#22c55e" opacity="0.96"/>
+<circle cx="730.6" cy="450.9" r="18.0" fill="#f59e0b" opacity="0.08"/>
+<circle cx="730.6" cy="450.9" r="12.0" fill="#f59e0b" opacity="0.08"/>
+<circle cx="730.6" cy="450.9" r="7.0" fill="#f59e0b" opacity="0.08"/>
+<circle cx="730.6" cy="450.9" r="3.5" fill="#f59e0b" opacity="0.08"/>
+<circle cx="730.6" cy="450.9" r="8.0" fill="#f59e0b" opacity="0.96"/>
+<circle cx="796.1" cy="403.2" r="18.0" fill="#f97316" opacity="0.08"/>
+<circle cx="796.1" cy="403.2" r="12.0" fill="#f97316" opacity="0.08"/>
+<circle cx="796.1" cy="403.2" r="7.0" fill="#f97316" opacity="0.08"/>
+<circle cx="796.1" cy="403.2" r="3.5" fill="#f97316" opacity="0.08"/>
+<circle cx="796.1" cy="403.2" r="8.0" fill="#f97316" opacity="0.96"/>
+<polyline points="594.1,384.8 649.9,443.5 730.6,450.9 796.1,403.2" fill="none" stroke="#f8fafc" stroke-width="3.0" opacity="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="527.0" y="488.0" class="tiny" text-anchor="start">4th power removes the QPSK data phase.</text>
+<text x="527.0" y="510.0" class="tiny" text-anchor="start">The common carrier trend remains, scaled by 4.</text>
+<text x="527.0" y="532.0" class="tiny" text-anchor="start">Good for coarse acquisition; 90° ambiguity remains.</text>
+<line x1="1010.0" y1="340.0" x2="1300.0" y2="340.0" stroke="#35506a" stroke-width="2.0" opacity="1.0"/>
+<line x1="1155.0" y1="195.0" x2="1155.0" y2="485.0" stroke="#35506a" stroke-width="2.0" opacity="1.0"/>
+<circle cx="1155.0" cy="340.0" r="115.0" fill="none" opacity="1.0" stroke="#284055" stroke-width="2.0"/>
+<text x="1289.0" y="330.0" class="axislabel" text-anchor="start">I</text>
+<text x="1165.0" y="212.0" class="axislabel" text-anchor="start">Q</text>
+<circle cx="1222.3" cy="246.8" r="12.0" fill="#6b7280" opacity="0.15"/>
+<circle cx="1061.8" cy="272.7" r="12.0" fill="#6b7280" opacity="0.15"/>
+<circle cx="1087.7" cy="433.2" r="12.0" fill="#6b7280" opacity="0.15"/>
+<circle cx="1248.2" cy="407.3" r="12.0" fill="#6b7280" opacity="0.15"/>
+<circle cx="1236.3" cy="258.7" r="18.0" fill="none" opacity="1.0" stroke="#35506a" stroke-width="2.0"/>
+<circle cx="1227.0" cy="264.9" r="5.0" fill="#f8fafc" opacity="0.9"/>
+<circle cx="1227.5" cy="263.0" r="5.0" fill="#f8fafc" opacity="0.9"/>
+<circle cx="1229.5" cy="262.4" r="5.0" fill="#f8fafc" opacity="0.9"/>
+<circle cx="1228.7" cy="266.5" r="5.0" fill="#f8fafc" opacity="0.9"/>
+<circle cx="1231.5" cy="266.9" r="5.0" fill="#f8fafc" opacity="0.9"/>
+<circle cx="1233.3" cy="266.3" r="5.0" fill="#f8fafc" opacity="0.9"/>
+<circle cx="1230.0" cy="267.8" r="5.0" fill="#f8fafc" opacity="0.9"/>
+<circle cx="1229.6" cy="265.0" r="5.0" fill="#f8fafc" opacity="0.9"/>
+<circle cx="1236.3" cy="258.7" r="7.0" fill="#a78bfa" opacity="0.95"/>
+<circle cx="1073.7" cy="258.7" r="18.0" fill="none" opacity="1.0" stroke="#35506a" stroke-width="2.0"/>
+<circle cx="1079.9" cy="268.0" r="5.0" fill="#f8fafc" opacity="0.9"/>
+<circle cx="1080.2" cy="265.2" r="5.0" fill="#f8fafc" opacity="0.9"/>
+<circle cx="1080.6" cy="262.3" r="5.0" fill="#f8fafc" opacity="0.9"/>
+<circle cx="1083.6" cy="264.2" r="5.0" fill="#f8fafc" opacity="0.9"/>
+<circle cx="1081.7" cy="263.7" r="5.0" fill="#f8fafc" opacity="0.9"/>
+<circle cx="1078.8" cy="264.1" r="5.0" fill="#f8fafc" opacity="0.9"/>
+<circle cx="1079.7" cy="268.1" r="5.0" fill="#f8fafc" opacity="0.9"/>
+<circle cx="1078.0" cy="267.5" r="5.0" fill="#f8fafc" opacity="0.9"/>
+<circle cx="1073.7" cy="258.7" r="7.0" fill="#a78bfa" opacity="0.95"/>
+<circle cx="1073.7" cy="421.3" r="18.0" fill="none" opacity="1.0" stroke="#35506a" stroke-width="2.0"/>
+<circle cx="1079.9" cy="412.0" r="5.0" fill="#f8fafc" opacity="0.9"/>
+<circle cx="1078.0" cy="412.5" r="5.0" fill="#f8fafc" opacity="0.9"/>
+<circle cx="1077.4" cy="414.5" r="5.0" fill="#f8fafc" opacity="0.9"/>
+<circle cx="1081.5" cy="413.7" r="5.0" fill="#f8fafc" opacity="0.9"/>
+<circle cx="1081.9" cy="416.5" r="5.0" fill="#f8fafc" opacity="0.9"/>
+<circle cx="1081.3" cy="418.3" r="5.0" fill="#f8fafc" opacity="0.9"/>
+<circle cx="1082.8" cy="415.0" r="5.0" fill="#f8fafc" opacity="0.9"/>
+<circle cx="1080.0" cy="414.6" r="5.0" fill="#f8fafc" opacity="0.9"/>
+<circle cx="1073.7" cy="421.3" r="7.0" fill="#a78bfa" opacity="0.95"/>
+<circle cx="1236.3" cy="421.3" r="18.0" fill="none" opacity="1.0" stroke="#35506a" stroke-width="2.0"/>
+<circle cx="1227.0" cy="415.1" r="5.0" fill="#f8fafc" opacity="0.9"/>
+<circle cx="1229.8" cy="414.8" r="5.0" fill="#f8fafc" opacity="0.9"/>
+<circle cx="1232.7" cy="414.4" r="5.0" fill="#f8fafc" opacity="0.9"/>
+<circle cx="1230.8" cy="411.4" r="5.0" fill="#f8fafc" opacity="0.9"/>
+<circle cx="1231.3" cy="413.3" r="5.0" fill="#f8fafc" opacity="0.9"/>
+<circle cx="1230.9" cy="416.2" r="5.0" fill="#f8fafc" opacity="0.9"/>
+<circle cx="1226.9" cy="415.3" r="5.0" fill="#f8fafc" opacity="0.9"/>
+<circle cx="1227.5" cy="417.0" r="5.0" fill="#f8fafc" opacity="0.9"/>
+<circle cx="1236.3" cy="421.3" r="7.0" fill="#a78bfa" opacity="0.95"/>
+<polyline points="1226.0,314.0 1252.0,296.0 1256.0,326.0" fill="none" stroke="#c4b5fd" stroke-width="3.0" opacity="0.95" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="982.0" y="488.0" class="tiny" text-anchor="start">After coarse alignment, feedback only corrects small residual error.</text>
+<text x="982.0" y="510.0" class="tiny" text-anchor="start">That is the Costas / decision-directed sweet spot.</text>
+<text x="982.0" y="532.0" class="tiny" text-anchor="start">Tracking range is smaller than acquisition range.</text>
+<text x="50.0" y="575.0" class="small" text-anchor="start">Acquisition versus tracking is the key split: symmetry-based coarse alignment first, feedback fine tracking second.</text>
+</svg>
