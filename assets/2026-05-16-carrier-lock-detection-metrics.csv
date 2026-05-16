@@ -1,0 +1,5 @@
+regime,iq_balance,rho4,delta4_deg,costas_residual,read
+spinning unlock,0.010518,0.006065,63.906038,0.525364,still rotating; acquisition not done
+stable but 35° off,0.005206,0.992939,0.542534,0.811881,"stable modulo 90°, but still too far for clean DD tracking"
+near lock,0.001897,0.992638,0.358853,0.147880,stable and close enough for fine tracking
+quadrant-stable +90°,0.000035,0.992283,1.388947,0.034969,"carrier-locked modulo 90°, labeling still ambiguous"
