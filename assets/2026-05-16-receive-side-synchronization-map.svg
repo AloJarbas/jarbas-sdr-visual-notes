@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="980" viewBox="0 0 1920 980">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#06101a"/>
+    <stop offset="100%" stop-color="#0f1d2c"/>
+  </linearGradient>
+  <style>
+    .title { font: 700 34px Helvetica, Arial, sans-serif; fill: #e8eef5; }
+    .subtitle { font: 500 18px Helvetica, Arial, sans-serif; fill: #a9bacb; }
+    .chip { font: 700 14px Helvetica, Arial, sans-serif; fill: #dce7f3; }
+    .stage_num { font: 800 16px Helvetica, Arial, sans-serif; fill: #071018; }
+    .stage_title { font: 700 20px Helvetica, Arial, sans-serif; fill: #ebf2f9; }
+    .section { font: 700 15px Helvetica, Arial, sans-serif; fill: #eef3f7; }
+    .body { font: 500 15px Helvetica, Arial, sans-serif; fill: #c4d2df; }
+    .small { font: 500 14px Helvetica, Arial, sans-serif; fill: #b8c7d5; }
+    .micro { font: 600 13px Helvetica, Arial, sans-serif; fill: #d7e2ed; }
+    .arrowlabel { font: 700 13px Helvetica, Arial, sans-serif; fill: #c8d4e0; }
+    .state_label { font: 700 14px Helvetica, Arial, sans-serif; fill: #d7e2ed; }
+    .footer { font: 500 16px Helvetica, Arial, sans-serif; fill: #b7c5d3; }
+  </style>
+</defs>
+<rect x="0.0" y="0.0" width="1920.0" height="980.0" rx="0.0" fill="url(#bg)" opacity="1.0"/>
+<text x="50.0" y="56.0" class="title" text-anchor="start">Receive-side synchronization map</text>
+<text x="50.0" y="90.0" class="subtitle" text-anchor="start"><tspan x="50.0" dy="0">The clean SDR receive story is not one giant sync block.</tspan><tspan x="50.0" dy="24.0">Each stage removes one uncertainty and hands a smaller problem to the next stage.</tspan></text>
+<rect x="50.0" y="132.0" width="174.4" height="36.0" rx="18.0" fill="#102033" opacity="1.0" stroke="#35506a" stroke-width="1.5"/>
+<text x="137.2" y="156.0" class="chip" text-anchor="middle">QPSK-first public view</text>
+<rect x="238.4" y="132.0" width="232.0" height="36.0" rx="18.0" fill="#13263b" opacity="1.0" stroke="#4f8cc9" stroke-width="1.5"/>
+<text x="354.4" y="156.0" class="chip" text-anchor="middle">symbol-rate story after timing</text>
+<rect x="484.4" y="132.0" width="260.8" height="36.0" rx="18.0" fill="#2e2413" opacity="1.0" stroke="#f59e0b" stroke-width="1.5"/>
+<text x="614.8" y="156.0" class="chip" text-anchor="middle">equalization / packet sync omitted</text>
+<line x1="90.0" y1="790.0" x2="1830.0" y2="790.0" stroke="#31465c" stroke-width="2.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="10 10"/>
+<text x="50.0" y="842.0" class="footer" text-anchor="start"><tspan x="50.0" dy="0">Read this left to right: make the waveform sample-worthy, choose the sampling instant, remove the big rotation, decide when fine tracking is trustworthy, then resolve</tspan><tspan x="50.0" dy="22.0">the last QPSK label ambiguity.</tspan></text>
+<text x="50.0" y="902.0" class="footer" text-anchor="start"><tspan x="50.0" dy="0">Scope boundary: AGC details, equalization, frame sync, and large-CFO front-end recovery stay outside this first symbol-rate map.</tspan></text>
+<rect x="50.0" y="214.0" width="320.0" height="300.0" rx="22.0" fill="#11263a" opacity="1.0" stroke="#5aa9e6" stroke-width="2.2"/>
+<circle cx="78.0" cy="242.0" r="18.0" fill="#7dd3fc" stroke="#5aa9e6" stroke-width="1.6"/>
+<text x="78.0" y="248.0" class="stage_num" text-anchor="middle">1</text>
+<text x="108.0" y="248.0" class="stage_title" text-anchor="start"><tspan x="108.0" dy="0">Pulse shaping +</tspan><tspan x="108.0" dy="22.0">matched filter</tspan></text>
+<text x="74.0" y="296.0" class="section" text-anchor="start">Main question</text>
+<text x="74.0" y="320.0" class="body" text-anchor="start"><tspan x="74.0" dy="0">Is the waveform concentrated</tspan><tspan x="74.0" dy="18.0">enough that symbol structure</tspan><tspan x="74.0" dy="18.0">becomes readable?</tspan></text>
+<text x="74.0" y="382.0" class="section" text-anchor="start">This stage fixes</text>
+<text x="74.0" y="406.0" class="small" text-anchor="start"><tspan x="74.0" dy="0">• limits bandwidth and</tspan><tspan x="74.0" dy="17.0">  concentrates symbol energy</tspan><tspan x="74.0" dy="17.0">• improves SNR at the matched</tspan><tspan x="74.0" dy="17.0">  filter output</tspan><tspan x="74.0" dy="17.0">• makes later eye and</tspan><tspan x="74.0" dy="17.0">  constellation views meaningful</tspan></text>
+<rect x="68.0" y="456.0" width="284.0" height="40.0" rx="14.0" fill="#0b1520" opacity="0.95" stroke="#7dd3fc" stroke-width="1.2"/>
+<text x="82.0" y="482.0" class="micro" text-anchor="start"><tspan x="82.0" dy="0">Output: oversampled</tspan><tspan x="82.0" dy="15.0">matched-filter waveform</tspan></text>
+<rect x="50.0" y="548.0" width="320.0" height="128.0" rx="20.0" fill="#0b1520" opacity="1.0" stroke="#5aa9e6" stroke-width="1.8"/>
+<text x="74.0" y="580.0" class="section" text-anchor="start">Still unresolved</text>
+<text x="74.0" y="606.0" class="small" text-anchor="start"><tspan x="74.0" dy="0">• does not choose the sample</tspan><tspan x="74.0" dy="17.0">  instant</tspan><tspan x="74.0" dy="17.0">• does not remove common carrier</tspan><tspan x="74.0" dy="17.0">  rotation</tspan></text>
+<rect x="66.0" y="688.0" width="288.0" height="38.0" rx="14.0" fill="#09111a" opacity="0.9" stroke="#5aa9e6" stroke-width="1.2"/>
+<text x="78.0" y="713.0" class="micro" text-anchor="start"><tspan x="78.0" dy="0">Deeper note:</tspan><tspan x="78.0" dy="14.0">pulse-shaping-matched-filtering.md</tspan></text>
+<line x1="378.0" y1="360.0" x2="387.0" y2="360.0" stroke="#7c93aa" stroke-width="3.0" opacity="0.95" stroke-linecap="round"/>
+<line x1="387.0" y1="360.0" x2="373.0" y2="352.0" stroke="#7c93aa" stroke-width="3.0" opacity="0.95" stroke-linecap="round"/>
+<line x1="387.0" y1="360.0" x2="373.0" y2="368.0" stroke="#7c93aa" stroke-width="3.0" opacity="0.95" stroke-linecap="round"/>
+<text x="210.0" y="770.0" class="state_label" text-anchor="middle">oversampled waveform</text>
+<rect x="395.0" y="214.0" width="320.0" height="300.0" rx="22.0" fill="#142b22" opacity="1.0" stroke="#4ade80" stroke-width="2.2"/>
+<circle cx="423.0" cy="242.0" r="18.0" fill="#86efac" stroke="#4ade80" stroke-width="1.6"/>
+<text x="423.0" y="248.0" class="stage_num" text-anchor="middle">2</text>
+<text x="453.0" y="248.0" class="stage_title" text-anchor="start"><tspan x="453.0" dy="0">Timing recovery</tspan></text>
+<text x="419.0" y="296.0" class="section" text-anchor="start">Main question</text>
+<text x="419.0" y="320.0" class="body" text-anchor="start"><tspan x="419.0" dy="0">When should the receiver take</tspan><tspan x="419.0" dy="18.0">one useful sample for each</tspan><tspan x="419.0" dy="18.0">symbol?</tspan></text>
+<text x="419.0" y="382.0" class="section" text-anchor="start">This stage fixes</text>
+<text x="419.0" y="406.0" class="small" text-anchor="start"><tspan x="419.0" dy="0">• finds the eye opening / symbol</tspan><tspan x="419.0" dy="17.0">  center</tspan><tspan x="419.0" dy="17.0">• reduces the stream toward one</tspan><tspan x="419.0" dy="17.0">  sample per symbol</tspan><tspan x="419.0" dy="17.0">• shrinks timing error into a</tspan><tspan x="419.0" dy="17.0">  smaller residual correction job</tspan></text>
+<rect x="413.0" y="456.0" width="284.0" height="40.0" rx="14.0" fill="#0b1520" opacity="0.95" stroke="#86efac" stroke-width="1.2"/>
+<text x="427.0" y="482.0" class="micro" text-anchor="start"><tspan x="427.0" dy="0">Output: symbol-rate samples</tspan></text>
+<rect x="395.0" y="548.0" width="320.0" height="128.0" rx="20.0" fill="#0b1520" opacity="1.0" stroke="#4ade80" stroke-width="1.8"/>
+<text x="419.0" y="580.0" class="section" text-anchor="start">Still unresolved</text>
+<text x="419.0" y="606.0" class="small" text-anchor="start"><tspan x="419.0" dy="0">• the sampled constellation can</tspan><tspan x="419.0" dy="17.0">  still spin</tspan><tspan x="419.0" dy="17.0">• carrier phase and frequency</tspan><tspan x="419.0" dy="17.0">  error remain</tspan></text>
+<rect x="411.0" y="688.0" width="288.0" height="38.0" rx="14.0" fill="#09111a" opacity="0.9" stroke="#4ade80" stroke-width="1.2"/>
+<text x="423.0" y="713.0" class="micro" text-anchor="start"><tspan x="423.0" dy="0">Deeper note:</tspan><tspan x="423.0" dy="14.0">symbol-timing-and-eye-opening.md</tspan></text>
+<line x1="723.0" y1="360.0" x2="732.0" y2="360.0" stroke="#7c93aa" stroke-width="3.0" opacity="0.95" stroke-linecap="round"/>
+<line x1="732.0" y1="360.0" x2="718.0" y2="352.0" stroke="#7c93aa" stroke-width="3.0" opacity="0.95" stroke-linecap="round"/>
+<line x1="732.0" y1="360.0" x2="718.0" y2="368.0" stroke="#7c93aa" stroke-width="3.0" opacity="0.95" stroke-linecap="round"/>
+<text x="555.0" y="770.0" class="state_label" text-anchor="middle">one useful sample / symbol</text>
+<rect x="740.0" y="214.0" width="320.0" height="300.0" rx="22.0" fill="#2e2413" opacity="1.0" stroke="#f59e0b" stroke-width="2.2"/>
+<circle cx="768.0" cy="242.0" r="18.0" fill="#fbbf24" stroke="#f59e0b" stroke-width="1.6"/>
+<text x="768.0" y="248.0" class="stage_num" text-anchor="middle">3</text>
+<text x="798.0" y="248.0" class="stage_title" text-anchor="start"><tspan x="798.0" dy="0">Carrier acquisition</tspan></text>
+<text x="764.0" y="296.0" class="section" text-anchor="start">Main question</text>
+<text x="764.0" y="320.0" class="body" text-anchor="start"><tspan x="764.0" dy="0">How do we remove the big</tspan><tspan x="764.0" dy="18.0">common rotation before</tspan><tspan x="764.0" dy="18.0">slicing is trustworthy?</tspan></text>
+<text x="764.0" y="382.0" class="section" text-anchor="start">This stage fixes</text>
+<text x="764.0" y="406.0" class="small" text-anchor="start"><tspan x="764.0" dy="0">• uses coarse or symmetry-based</tspan><tspan x="764.0" dy="17.0">  logic first</tspan><tspan x="764.0" dy="17.0">• gets the QPSK cloud near a</tspan><tspan x="764.0" dy="17.0">  usable orientation</tspan><tspan x="764.0" dy="17.0">• shrinks the problem before fine</tspan><tspan x="764.0" dy="17.0">  tracking starts</tspan></text>
+<rect x="758.0" y="456.0" width="284.0" height="40.0" rx="14.0" fill="#0b1520" opacity="0.95" stroke="#fbbf24" stroke-width="1.2"/>
+<text x="772.0" y="482.0" class="micro" text-anchor="start"><tspan x="772.0" dy="0">Output: coarse derotation, stable</tspan><tspan x="772.0" dy="15.0">modulo 90°</tspan></text>
+<rect x="740.0" y="548.0" width="320.0" height="128.0" rx="20.0" fill="#0b1520" opacity="1.0" stroke="#f59e0b" stroke-width="1.8"/>
+<text x="764.0" y="580.0" class="section" text-anchor="start">Still unresolved</text>
+<text x="764.0" y="606.0" class="small" text-anchor="start"><tspan x="764.0" dy="0">• residual phase can still be too</tspan><tspan x="764.0" dy="17.0">  large</tspan><tspan x="764.0" dy="17.0">• QPSK quadrant labeling is still</tspan><tspan x="764.0" dy="17.0">  ambiguous</tspan></text>
+<rect x="756.0" y="688.0" width="288.0" height="38.0" rx="14.0" fill="#09111a" opacity="0.9" stroke="#f59e0b" stroke-width="1.2"/>
+<text x="768.0" y="713.0" class="micro" text-anchor="start"><tspan x="768.0" dy="0">Deeper note:</tspan><tspan x="768.0" dy="14.0">carrier-recovery-after-timing.md</tspan></text>
+<line x1="1068.0" y1="360.0" x2="1077.0" y2="360.0" stroke="#7c93aa" stroke-width="3.0" opacity="0.95" stroke-linecap="round"/>
+<line x1="1077.0" y1="360.0" x2="1063.0" y2="352.0" stroke="#7c93aa" stroke-width="3.0" opacity="0.95" stroke-linecap="round"/>
+<line x1="1077.0" y1="360.0" x2="1063.0" y2="368.0" stroke="#7c93aa" stroke-width="3.0" opacity="0.95" stroke-linecap="round"/>
+<text x="900.0" y="770.0" class="state_label" text-anchor="middle">coarse derotation</text>
+<rect x="1085.0" y="214.0" width="320.0" height="300.0" rx="22.0" fill="#31182a" opacity="1.0" stroke="#f472b6" stroke-width="2.2"/>
+<circle cx="1113.0" cy="242.0" r="18.0" fill="#f9a8d4" stroke="#f472b6" stroke-width="1.6"/>
+<text x="1113.0" y="248.0" class="stage_num" text-anchor="middle">4</text>
+<text x="1143.0" y="248.0" class="stage_title" text-anchor="start"><tspan x="1143.0" dy="0">Lock detection +</tspan><tspan x="1143.0" dy="22.0">handoff</tspan></text>
+<text x="1109.0" y="296.0" class="section" text-anchor="start">Main question</text>
+<text x="1109.0" y="320.0" class="body" text-anchor="start"><tspan x="1109.0" dy="0">Has acquisition settled</tspan><tspan x="1109.0" dy="18.0">enough to trust fine</tspan><tspan x="1109.0" dy="18.0">tracking?</tspan></text>
+<text x="1109.0" y="382.0" class="section" text-anchor="start">This stage fixes</text>
+<text x="1109.0" y="406.0" class="small" text-anchor="start"><tspan x="1109.0" dy="0">• checks stability and residual</tspan><tspan x="1109.0" dy="17.0">  error separately</tspan><tspan x="1109.0" dy="17.0">• switches from coarse search to</tspan><tspan x="1109.0" dy="17.0">  near-lock tracking</tspan><tspan x="1109.0" dy="17.0">• tells the receiver when</tspan><tspan x="1109.0" dy="17.0">  decisions are credible</tspan></text>
+<rect x="1103.0" y="456.0" width="284.0" height="40.0" rx="14.0" fill="#0b1520" opacity="0.95" stroke="#f9a8d4" stroke-width="1.2"/>
+<text x="1117.0" y="482.0" class="micro" text-anchor="start"><tspan x="1117.0" dy="0">Output: near-lock tracked</tspan><tspan x="1117.0" dy="15.0">constellation</tspan></text>
+<rect x="1085.0" y="548.0" width="320.0" height="128.0" rx="20.0" fill="#0b1520" opacity="1.0" stroke="#f472b6" stroke-width="1.8"/>
+<text x="1109.0" y="580.0" class="section" text-anchor="start">Still unresolved</text>
+<text x="1109.0" y="606.0" class="small" text-anchor="start"><tspan x="1109.0" dy="0">• carrier can look locked while</tspan><tspan x="1109.0" dy="17.0">  labels are wrong</tspan><tspan x="1109.0" dy="17.0">• this is handoff logic, not label</tspan><tspan x="1109.0" dy="17.0">  resolution</tspan></text>
+<rect x="1101.0" y="688.0" width="288.0" height="38.0" rx="14.0" fill="#09111a" opacity="0.9" stroke="#f472b6" stroke-width="1.2"/>
+<text x="1113.0" y="713.0" class="micro" text-anchor="start"><tspan x="1113.0" dy="0">Deeper note:</tspan><tspan x="1113.0" dy="14.0">carrier-lock-detection-and-handoff.md</tspan></text>
+<line x1="1413.0" y1="360.0" x2="1422.0" y2="360.0" stroke="#7c93aa" stroke-width="3.0" opacity="0.95" stroke-linecap="round"/>
+<line x1="1422.0" y1="360.0" x2="1408.0" y2="352.0" stroke="#7c93aa" stroke-width="3.0" opacity="0.95" stroke-linecap="round"/>
+<line x1="1422.0" y1="360.0" x2="1408.0" y2="368.0" stroke="#7c93aa" stroke-width="3.0" opacity="0.95" stroke-linecap="round"/>
+<text x="1245.0" y="770.0" class="state_label" text-anchor="middle">track-ready view</text>
+<rect x="1430.0" y="214.0" width="320.0" height="300.0" rx="22.0" fill="#19263a" opacity="1.0" stroke="#c084fc" stroke-width="2.2"/>
+<circle cx="1458.0" cy="242.0" r="18.0" fill="#d8b4fe" stroke="#c084fc" stroke-width="1.6"/>
+<text x="1458.0" y="248.0" class="stage_num" text-anchor="middle">5</text>
+<text x="1488.0" y="248.0" class="stage_title" text-anchor="start"><tspan x="1488.0" dy="0">Ambiguity resolution</tspan></text>
+<text x="1454.0" y="296.0" class="section" text-anchor="start">Main question</text>
+<text x="1454.0" y="320.0" class="body" text-anchor="start"><tspan x="1454.0" dy="0">Which QPSK labeling is</tspan><tspan x="1454.0" dy="18.0">correct, or how do we stop</tspan><tspan x="1454.0" dy="18.0">caring?</tspan></text>
+<text x="1454.0" y="382.0" class="section" text-anchor="start">This stage fixes</text>
+<text x="1454.0" y="406.0" class="small" text-anchor="start"><tspan x="1454.0" dy="0">• uses unique words or</tspan><tspan x="1454.0" dy="17.0">  differential encoding</tspan><tspan x="1454.0" dy="17.0">• resolves or sidesteps the final</tspan><tspan x="1454.0" dy="17.0">  90° label ambiguity</tspan><tspan x="1454.0" dy="17.0">• makes the symbol labels</tspan><tspan x="1454.0" dy="17.0">  payload-usable</tspan></text>
+<rect x="1448.0" y="456.0" width="284.0" height="40.0" rx="14.0" fill="#0b1520" opacity="0.95" stroke="#d8b4fe" stroke-width="1.2"/>
+<text x="1462.0" y="482.0" class="micro" text-anchor="start"><tspan x="1462.0" dy="0">Output: stable labeled symbols</tspan></text>
+<rect x="1430.0" y="548.0" width="320.0" height="128.0" rx="20.0" fill="#0b1520" opacity="1.0" stroke="#c084fc" stroke-width="1.8"/>
+<text x="1454.0" y="580.0" class="section" text-anchor="start">Still unresolved</text>
+<text x="1454.0" y="606.0" class="small" text-anchor="start"><tspan x="1454.0" dy="0">• does not replace carrier</tspan><tspan x="1454.0" dy="17.0">  recovery itself</tspan><tspan x="1454.0" dy="17.0">• other receive jobs still exist</tspan><tspan x="1454.0" dy="17.0">  beyond this map</tspan></text>
+<rect x="1446.0" y="688.0" width="288.0" height="38.0" rx="14.0" fill="#09111a" opacity="0.9" stroke="#c084fc" stroke-width="1.2"/>
+<text x="1458.0" y="713.0" class="micro" text-anchor="start"><tspan x="1458.0" dy="0">Deeper note:</tspan><tspan x="1458.0" dy="14.0">qpsk-phase-ambiguity-resolution.md</tspan></text>
+<text x="1590.0" y="770.0" class="state_label" text-anchor="middle">stable labeled symbols</text>
+</svg>

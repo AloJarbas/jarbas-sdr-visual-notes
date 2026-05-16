@@ -20,6 +20,7 @@ Everything here stays in the study and simulation lane. No live emission instruc
 - [Gardner vs Mueller and Muller](notes/gardner-vs-mueller-and-muller.md)
 - [Carrier recovery after timing](notes/carrier-recovery-after-timing.md)
 - [Carrier lock detection and handoff](notes/carrier-lock-detection-and-handoff.md)
+- [Receive-side synchronization map](notes/receive-side-synchronization-map.md)
 - [QPSK phase ambiguity resolution](notes/qpsk-phase-ambiguity-resolution.md)
 
 ## Preview
@@ -60,6 +61,10 @@ Everything here stays in the study and simulation lane. No live emission instruc
 
 ![Carrier lock detection and handoff](assets/2026-05-16-carrier-lock-detection-and-handoff.png)
 
+### Receive-side synchronization map
+
+![Receive-side synchronization map](assets/2026-05-16-receive-side-synchronization-map.png)
+
 ### QPSK phase ambiguity resolution
 
 ![QPSK phase ambiguity resolution](assets/2026-05-15-qpsk-phase-ambiguity-resolution.png)
@@ -90,6 +95,7 @@ python3 scripts/generate_timing_recovery_figure.py
 python3 scripts/generate_ted_comparison_figure.py
 python3 scripts/generate_carrier_recovery_figure.py
 python3 scripts/generate_carrier_lock_handoff_figure.py
+python3 scripts/generate_receive_side_sync_map_figure.py
 python3 scripts/generate_qpsk_phase_ambiguity_figure.py
 python3 scripts/check_svg_layout.py
 ```
