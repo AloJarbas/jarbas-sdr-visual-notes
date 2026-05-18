@@ -13,6 +13,7 @@ DEFAULT_FILES = [
     'assets/2026-05-11-gardner-vs-mueller-muller.svg',
     'assets/2026-05-14-carrier-recovery-after-timing.svg',
     'assets/2026-05-16-carrier-lock-detection-and-handoff.svg',
+    'assets/2026-05-17-carrier-offset-pull-in-alias.svg',
     'assets/2026-05-15-qpsk-phase-ambiguity-resolution.svg',
 ]
 SVG_NS = {'svg': 'http://www.w3.org/2000/svg'}

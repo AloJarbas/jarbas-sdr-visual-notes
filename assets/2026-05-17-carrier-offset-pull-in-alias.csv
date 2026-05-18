@@ -1,0 +1,7 @@
+freq_offset_rad_per_sample,phase_only_tracked_rms,coarse_plus_tracking_rms,coarse_freq_estimate,best_constant_rotation_symbol_accuracy,read
+0.2,0.057,0.057,0.2002,1.0,loop alone is already fine
+0.35,0.278,0.057,0.3493,1.0,coarse help clearly matters
+0.7,0.426,0.057,0.6995,1.0,still inside the 4th-power window
+0.785,0.425,0.057,0.785,1.0,right at the edge; still honest here
+0.79,0.427,0.057,-0.7808,0.25,alias just kicked in
+0.85,0.427,0.057,-0.7215,0.25,farther past the cliff
