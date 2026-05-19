@@ -1,0 +1,259 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1900" height="1880" viewBox="0 0 1900 1880">
+<defs><style>.title { fill: #e6eef8; font: 700 38px Arial, sans-serif; }.subtitle { fill: #c8d8ea; font: 400 20px Arial, sans-serif; }.label { fill: #eef4fb; font: 700 24px Arial, sans-serif; }.small { fill: #d4e1ef; font: 400 17px Arial, sans-serif; }.micro { fill: #9ac7ff; font: 700 15px Arial, sans-serif; }.tiny { fill: #d8e4f0; font: 400 14px Arial, sans-serif; }</style></defs>
+<rect width="100%" height="100%" fill="#08111c"/>
+<text x="60.0" y="72.0" class="title" text-anchor="start">Oversampled 4th-power versus band-edge FLL</text>
+<text x="60.0" y="108.0" class="subtitle" text-anchor="start">Same pulse-shaped QPSK waveform, same CFO sweep, two different coarse-carrier clues before late-stage tracking.</text>
+<rect x="60.0" y="160.0" width="1780.0" height="340.0" rx="18.0" fill="#102031" opacity="1.0" stroke="#5d7fa3" stroke-width="2.0"/>
+<text x="86.0" y="200.0" class="label" text-anchor="start">Two coarse front ends, two different contracts</text>
+<text x="86.0" y="232.0" class="small" text-anchor="start"><tspan x="86.0" dy="0">Both of these belong before late-stage Costas tracking. Oversampled 4th-power recovery still uses PSK symmetry. Band-edge logic uses excess-bandwidth asymmetry in the pulse-shaped waveform</tspan><tspan x="86.0" dy="21.0">instead.</tspan></text>
+<rect x="88.0" y="280.0" width="548.0" height="184.0" rx="16.0" fill="#3a1018" opacity="1.0" stroke="#fda4af" stroke-width="1.8"/>
+<text x="106.0" y="310.0" class="label" text-anchor="start">Oversampled 4th-power</text>
+<text x="106.0" y="338.0" class="micro" text-anchor="start">needs</text>
+<text x="106.0" y="366.0" class="tiny" text-anchor="start"><tspan x="106.0" dy="0">PSK rotational symmetry and enough sample rate before decimation</tspan></text>
+<text x="106.0" y="412.0" class="tiny" text-anchor="start"><tspan x="106.0" dy="0">The roll-off sweep barely moves the estimate while the CFO stays</tspan><tspan x="106.0" dy="18.0">inside the 4 sps alias limit.</tspan></text>
+<rect x="676.0" y="280.0" width="548.0" height="184.0" rx="16.0" fill="#11263d" opacity="1.0" stroke="#93c5fd" stroke-width="1.8"/>
+<text x="694.0" y="310.0" class="label" text-anchor="start">Band-edge discriminator</text>
+<text x="694.0" y="338.0" class="micro" text-anchor="start">needs</text>
+<text x="694.0" y="366.0" class="tiny" text-anchor="start"><tspan x="694.0" dy="0">excess bandwidth, oversampling, and a pulse shape with visible</tspan><tspan x="694.0" dy="18.0">band edges</tspan></text>
+<text x="694.0" y="412.0" class="tiny" text-anchor="start"><tspan x="694.0" dy="0">The same CFO produces a much stronger clue as roll-off grows,</tspan><tspan x="694.0" dy="18.0">because the edge energy itself grows.</tspan></text>
+<rect x="1264.0" y="280.0" width="548.0" height="184.0" rx="16.0" fill="#142f23" opacity="1.0" stroke="#4ade80" stroke-width="1.8"/>
+<text x="1282.0" y="310.0" class="label" text-anchor="start">Known-structure branch</text>
+<text x="1282.0" y="338.0" class="micro" text-anchor="start">keep named</text>
+<text x="1282.0" y="366.0" class="tiny" text-anchor="start"><tspan x="1282.0" dy="0">preamble, pilots, or correlation targets</tspan></text>
+<text x="1282.0" y="412.0" class="tiny" text-anchor="start"><tspan x="1282.0" dy="0">Real and often stronger in packet systems, but outside this</tspan><tspan x="1282.0" dy="18.0">bounded blind-front-end comparison.</tspan></text>
+<rect x="60.0" y="548.0" width="870.0" height="640.0" rx="18.0" fill="#102031" opacity="1.0" stroke="#5d7fa3" stroke-width="2.0"/>
+<text x="84.0" y="584.0" class="label" text-anchor="start">1. Oversampled 4th-power stays mostly indifferent to roll-off</text>
+<text x="84.0" y="616.0" class="small" text-anchor="start"><tspan x="84.0" dy="0">All four SRRC waveforms use 4 samples per symbol. Inside the ±0.50 R_s alias window, the</tspan><tspan x="84.0" dy="20.0">4th-power estimate stays close to the identity line across the whole roll-off sweep.</tspan></text>
+<line x1="156.0" y1="1064.0" x2="850.0" y2="1064.0" stroke="#5d7fa3" stroke-width="2.2" opacity="1.0" stroke-linecap="round"/>
+<line x1="156.0" y1="666.0" x2="156.0" y2="1064.0" stroke="#5d7fa3" stroke-width="2.2" opacity="1.0" stroke-linecap="round"/>
+<line x1="187.5" y1="1058.0" x2="187.5" y2="1070.0" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="187.5" y="1090.0" class="tiny" text-anchor="middle">-0.5</text>
+<line x1="150.0" y1="1045.9" x2="162.0" y2="1045.9" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="138.0" y="1049.9" class="tiny" text-anchor="end">-0.5</text>
+<line x1="250.6" y1="1058.0" x2="250.6" y2="1070.0" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="250.6" y="1090.0" class="tiny" text-anchor="middle">-0.4</text>
+<line x1="150.0" y1="1009.7" x2="162.0" y2="1009.7" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="138.0" y="1013.7" class="tiny" text-anchor="end">-0.4</text>
+<line x1="250.6" y1="666.0" x2="250.6" y2="1064.0" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="156.0" y1="1009.7" x2="850.0" y2="1009.7" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="313.7" y1="1058.0" x2="313.7" y2="1070.0" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="313.7" y="1090.0" class="tiny" text-anchor="middle">-0.3</text>
+<line x1="150.0" y1="973.5" x2="162.0" y2="973.5" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="138.0" y="977.5" class="tiny" text-anchor="end">-0.3</text>
+<line x1="313.7" y1="666.0" x2="313.7" y2="1064.0" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="156.0" y1="973.5" x2="850.0" y2="973.5" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="376.8" y1="1058.0" x2="376.8" y2="1070.0" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="376.8" y="1090.0" class="tiny" text-anchor="middle">-0.2</text>
+<line x1="150.0" y1="937.4" x2="162.0" y2="937.4" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="138.0" y="941.4" class="tiny" text-anchor="end">-0.2</text>
+<line x1="376.8" y1="666.0" x2="376.8" y2="1064.0" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="156.0" y1="937.4" x2="850.0" y2="937.4" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="439.9" y1="1058.0" x2="439.9" y2="1070.0" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="439.9" y="1090.0" class="tiny" text-anchor="middle">-0.1</text>
+<line x1="150.0" y1="901.2" x2="162.0" y2="901.2" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="138.0" y="905.2" class="tiny" text-anchor="end">-0.1</text>
+<line x1="439.9" y1="666.0" x2="439.9" y2="1064.0" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="156.0" y1="901.2" x2="850.0" y2="901.2" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="503.0" y1="1058.0" x2="503.0" y2="1070.0" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="503.0" y="1090.0" class="tiny" text-anchor="middle">+0.0</text>
+<line x1="150.0" y1="865.0" x2="162.0" y2="865.0" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="138.0" y="869.0" class="tiny" text-anchor="end">+0.0</text>
+<line x1="503.0" y1="666.0" x2="503.0" y2="1064.0" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="156.0" y1="865.0" x2="850.0" y2="865.0" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="566.1" y1="1058.0" x2="566.1" y2="1070.0" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="566.1" y="1090.0" class="tiny" text-anchor="middle">+0.1</text>
+<line x1="150.0" y1="828.8" x2="162.0" y2="828.8" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="138.0" y="832.8" class="tiny" text-anchor="end">+0.1</text>
+<line x1="566.1" y1="666.0" x2="566.1" y2="1064.0" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="156.0" y1="828.8" x2="850.0" y2="828.8" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="629.2" y1="1058.0" x2="629.2" y2="1070.0" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="629.2" y="1090.0" class="tiny" text-anchor="middle">+0.2</text>
+<line x1="150.0" y1="792.6" x2="162.0" y2="792.6" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="138.0" y="796.6" class="tiny" text-anchor="end">+0.2</text>
+<line x1="629.2" y1="666.0" x2="629.2" y2="1064.0" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="156.0" y1="792.6" x2="850.0" y2="792.6" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="692.3" y1="1058.0" x2="692.3" y2="1070.0" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="692.3" y="1090.0" class="tiny" text-anchor="middle">+0.3</text>
+<line x1="150.0" y1="756.5" x2="162.0" y2="756.5" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="138.0" y="760.5" class="tiny" text-anchor="end">+0.3</text>
+<line x1="692.3" y1="666.0" x2="692.3" y2="1064.0" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="156.0" y1="756.5" x2="850.0" y2="756.5" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="755.4" y1="1058.0" x2="755.4" y2="1070.0" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="755.4" y="1090.0" class="tiny" text-anchor="middle">+0.4</text>
+<line x1="150.0" y1="720.3" x2="162.0" y2="720.3" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="138.0" y="724.3" class="tiny" text-anchor="end">+0.4</text>
+<line x1="755.4" y1="666.0" x2="755.4" y2="1064.0" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="156.0" y1="720.3" x2="850.0" y2="720.3" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="818.5" y1="1058.0" x2="818.5" y2="1070.0" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="818.5" y="1090.0" class="tiny" text-anchor="middle">+0.5</text>
+<line x1="150.0" y1="684.1" x2="162.0" y2="684.1" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="138.0" y="688.1" class="tiny" text-anchor="end">+0.5</text>
+<polyline points="156.0,1064.0 313.7,973.5 439.9,901.2 566.1,828.8 692.3,756.5 850.0,666.0" fill="none" stroke="#dce7f3" stroke-width="2.2" opacity="0.95" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="840.0" y="684.0" class="tiny" text-anchor="end">identity</text>
+<line x1="187.5" y1="666.0" x2="187.5" y2="1064.0" stroke="#f59e0b" stroke-width="2.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="7 7"/>
+<line x1="818.5" y1="666.0" x2="818.5" y2="1064.0" stroke="#f59e0b" stroke-width="2.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="7 7"/>
+<text x="187.5" y="684.0" class="tiny" text-anchor="middle">-0.50</text>
+<text x="818.5" y="684.0" class="tiny" text-anchor="middle">+0.50</text>
+<polyline points="156.0,701.3 171.8,692.2 187.5,1045.0 203.3,1036.0 219.1,1026.9 234.9,1017.9 250.6,1008.8 266.4,999.8 282.2,990.7 298.0,981.7 313.7,972.7 329.5,963.6 345.3,954.6 361.0,945.5 376.8,936.5 392.6,927.4 408.4,918.4 424.1,909.3 439.9,900.3 455.7,891.2 471.5,882.2 487.2,873.2 503.0,864.1 518.8,855.1 534.5,846.0 550.3,837.0 566.1,827.9 581.9,818.9 597.6,809.8 613.4,800.8 629.2,791.7 645.0,782.7 660.7,773.7 676.5,764.6 692.3,755.6 708.0,746.5 723.8,737.5 739.6,728.4 755.4,719.4 771.1,710.3 786.9,701.3 802.7,692.2 818.5,1045.0 834.2,1036.0 850.0,1026.9" fill="none" stroke="#fda4af" stroke-width="3.0" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="156.0,702.1 171.8,693.0 187.5,1045.8 203.3,1036.7 219.1,1027.7 234.9,1018.7 250.6,1009.6 266.4,1000.6 282.2,991.5 298.0,982.5 313.7,973.4 329.5,964.4 345.3,955.3 361.0,946.3 376.8,937.2 392.6,928.2 408.4,919.2 424.1,910.1 439.9,901.1 455.7,892.0 471.5,883.0 487.2,873.9 503.0,864.9 518.8,855.8 534.5,846.8 550.3,837.7 566.1,828.7 581.9,819.7 597.6,810.6 613.4,801.6 629.2,792.5 645.0,783.5 660.7,774.4 676.5,765.4 692.3,756.3 708.0,747.3 723.8,738.2 739.6,729.2 755.4,720.2 771.1,711.1 786.9,702.1 802.7,693.0 818.5,1045.8 834.2,1036.7 850.0,1027.7" fill="none" stroke="#93c5fd" stroke-width="3.0" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="156.0,702.6 171.8,693.6 187.5,684.5 203.3,1037.3 219.1,1028.3 234.9,1019.2 250.6,1010.2 266.4,1001.1 282.2,992.1 298.0,983.0 313.7,974.0 329.5,964.9 345.3,955.9 361.0,946.9 376.8,937.8 392.6,928.8 408.4,919.7 424.1,910.7 439.9,901.6 455.7,892.6 471.5,883.5 487.2,874.5 503.0,865.4 518.8,856.4 534.5,847.4 550.3,838.3 566.1,829.3 581.9,820.2 597.6,811.2 613.4,802.1 629.2,793.1 645.0,784.0 660.7,775.0 676.5,765.9 692.3,756.9 708.0,747.9 723.8,738.8 739.6,729.8 755.4,720.7 771.1,711.7 786.9,702.6 802.7,693.6 818.5,684.5 834.2,1037.3 850.0,1028.3" fill="none" stroke="#facc15" stroke-width="3.0" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="156.0,706.5 171.8,697.5 187.5,688.4 203.3,1041.2 219.1,1032.2 234.9,1023.1 250.6,1014.1 266.4,1005.0 282.2,996.0 298.0,986.9 313.7,977.9 329.5,968.8 345.3,959.8 361.0,950.8 376.8,941.7 392.6,932.7 408.4,923.6 424.1,914.6 439.9,905.5 455.7,896.5 471.5,887.4 487.2,878.4 503.0,869.3 518.8,860.3 534.5,851.3 550.3,842.2 566.1,833.2 581.9,824.1 597.6,815.1 613.4,806.0 629.2,797.0 645.0,787.9 660.7,778.9 676.5,769.8 692.3,760.8 708.0,751.8 723.8,742.7 739.6,733.7 755.4,724.6 771.1,715.6 786.9,706.5 802.7,697.5 818.5,688.4 834.2,1041.2 850.0,1032.2" fill="none" stroke="#4ade80" stroke-width="3.0" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="642.0" y="1088.0" width="248.0" height="72.0" rx="12.0" fill="#13263b" opacity="1.0" stroke="#4f8cc9" stroke-width="1.4"/>
+<circle cx="660.0" cy="1108.0" r="5.0" fill="#fda4af" opacity="1.0"/>
+<text x="674.0" y="1112.0" class="tiny" text-anchor="start">SRRC α = 0.05</text>
+<circle cx="660.0" cy="1122.0" r="5.0" fill="#93c5fd" opacity="1.0"/>
+<text x="674.0" y="1126.0" class="tiny" text-anchor="start">SRRC α = 0.20</text>
+<circle cx="660.0" cy="1136.0" r="5.0" fill="#facc15" opacity="1.0"/>
+<text x="674.0" y="1140.0" class="tiny" text-anchor="start">SRRC α = 0.35</text>
+<circle cx="660.0" cy="1150.0" r="5.0" fill="#4ade80" opacity="1.0"/>
+<text x="674.0" y="1154.0" class="tiny" text-anchor="start">SRRC α = 0.50</text>
+<text x="503.0" y="1124.0" class="tiny" text-anchor="middle">true normalized CFO  Δf / R_s</text>
+<text x="94.0" y="865.0" class="tiny" text-anchor="middle">4th-power estimate</text>
+<rect x="82.0" y="1088.0" width="520.0" height="72.0" rx="12.0" fill="#13263b" opacity="1.0" stroke="#4f8cc9" stroke-width="1.4"/>
+<text x="102.0" y="1118.0" class="tiny" text-anchor="start"><tspan x="102.0" dy="0">Worst absolute 4th-power error inside the 4 sps alias window</tspan><tspan x="102.0" dy="17.0">is only 1.000 R_s in this sweep. The curves nearly sit on top</tspan><tspan x="102.0" dy="17.0">of one another.</tspan></text>
+<rect x="970.0" y="548.0" width="870.0" height="640.0" rx="18.0" fill="#102031" opacity="1.0" stroke="#5d7fa3" stroke-width="2.0"/>
+<text x="994.0" y="584.0" class="label" text-anchor="start">2. Band-edge clue needs roll-off</text>
+<text x="994.0" y="616.0" class="small" text-anchor="start"><tspan x="994.0" dy="0">This panel keeps the same 4 sps waveform but reads a bounded band-edge imbalance instead of a</tspan><tspan x="994.0" dy="20.0">symmetry-based CFO estimate. Higher roll-off gives the discriminator more edge energy to work</tspan><tspan x="994.0" dy="20.0">with.</tspan></text>
+<line x1="1066.0" y1="1064.0" x2="1760.0" y2="1064.0" stroke="#5d7fa3" stroke-width="2.2" opacity="1.0" stroke-linecap="round"/>
+<line x1="1066.0" y1="666.0" x2="1066.0" y2="1064.0" stroke="#5d7fa3" stroke-width="2.2" opacity="1.0" stroke-linecap="round"/>
+<line x1="1066.0" y1="1058.0" x2="1066.0" y2="1070.0" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="1066.0" y="1090.0" class="tiny" text-anchor="middle">-0.12</text>
+<line x1="1123.8" y1="1058.0" x2="1123.8" y2="1070.0" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="1123.8" y="1090.0" class="tiny" text-anchor="middle">-0.10</text>
+<line x1="1123.8" y1="666.0" x2="1123.8" y2="1064.0" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="1181.7" y1="1058.0" x2="1181.7" y2="1070.0" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="1181.7" y="1090.0" class="tiny" text-anchor="middle">-0.08</text>
+<line x1="1181.7" y1="666.0" x2="1181.7" y2="1064.0" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="1239.5" y1="1058.0" x2="1239.5" y2="1070.0" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="1239.5" y="1090.0" class="tiny" text-anchor="middle">-0.06</text>
+<line x1="1239.5" y1="666.0" x2="1239.5" y2="1064.0" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="1297.3" y1="1058.0" x2="1297.3" y2="1070.0" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="1297.3" y="1090.0" class="tiny" text-anchor="middle">-0.04</text>
+<line x1="1297.3" y1="666.0" x2="1297.3" y2="1064.0" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="1355.2" y1="1058.0" x2="1355.2" y2="1070.0" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="1355.2" y="1090.0" class="tiny" text-anchor="middle">-0.02</text>
+<line x1="1355.2" y1="666.0" x2="1355.2" y2="1064.0" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="1413.0" y1="1058.0" x2="1413.0" y2="1070.0" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="1413.0" y="1090.0" class="tiny" text-anchor="middle">+0.00</text>
+<line x1="1413.0" y1="666.0" x2="1413.0" y2="1064.0" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="1470.8" y1="1058.0" x2="1470.8" y2="1070.0" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="1470.8" y="1090.0" class="tiny" text-anchor="middle">+0.02</text>
+<line x1="1470.8" y1="666.0" x2="1470.8" y2="1064.0" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="1528.7" y1="1058.0" x2="1528.7" y2="1070.0" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="1528.7" y="1090.0" class="tiny" text-anchor="middle">+0.04</text>
+<line x1="1528.7" y1="666.0" x2="1528.7" y2="1064.0" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="1586.5" y1="1058.0" x2="1586.5" y2="1070.0" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="1586.5" y="1090.0" class="tiny" text-anchor="middle">+0.06</text>
+<line x1="1586.5" y1="666.0" x2="1586.5" y2="1064.0" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="1644.3" y1="1058.0" x2="1644.3" y2="1070.0" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="1644.3" y="1090.0" class="tiny" text-anchor="middle">+0.08</text>
+<line x1="1644.3" y1="666.0" x2="1644.3" y2="1064.0" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="1702.2" y1="1058.0" x2="1702.2" y2="1070.0" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="1702.2" y="1090.0" class="tiny" text-anchor="middle">+0.10</text>
+<line x1="1702.2" y1="666.0" x2="1702.2" y2="1064.0" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="1760.0" y1="1058.0" x2="1760.0" y2="1070.0" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="1760.0" y="1090.0" class="tiny" text-anchor="middle">+0.12</text>
+<line x1="1060.0" y1="1052.3" x2="1072.0" y2="1052.3" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="1048.0" y="1056.3" class="tiny" text-anchor="end">-0.08</text>
+<line x1="1060.0" y1="1028.9" x2="1072.0" y2="1028.9" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="1048.0" y="1032.9" class="tiny" text-anchor="end">-0.07</text>
+<line x1="1066.0" y1="1028.9" x2="1760.0" y2="1028.9" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="1060.0" y1="1005.5" x2="1072.0" y2="1005.5" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="1048.0" y="1009.5" class="tiny" text-anchor="end">-0.06</text>
+<line x1="1066.0" y1="1005.5" x2="1760.0" y2="1005.5" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="1060.0" y1="982.1" x2="1072.0" y2="982.1" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="1048.0" y="986.1" class="tiny" text-anchor="end">-0.05</text>
+<line x1="1066.0" y1="982.1" x2="1760.0" y2="982.1" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="1060.0" y1="958.6" x2="1072.0" y2="958.6" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="1048.0" y="962.6" class="tiny" text-anchor="end">-0.04</text>
+<line x1="1066.0" y1="958.6" x2="1760.0" y2="958.6" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="1060.0" y1="935.2" x2="1072.0" y2="935.2" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="1048.0" y="939.2" class="tiny" text-anchor="end">-0.03</text>
+<line x1="1066.0" y1="935.2" x2="1760.0" y2="935.2" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="1060.0" y1="911.8" x2="1072.0" y2="911.8" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="1048.0" y="915.8" class="tiny" text-anchor="end">-0.02</text>
+<line x1="1066.0" y1="911.8" x2="1760.0" y2="911.8" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="1060.0" y1="888.4" x2="1072.0" y2="888.4" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="1048.0" y="892.4" class="tiny" text-anchor="end">-0.01</text>
+<line x1="1066.0" y1="888.4" x2="1760.0" y2="888.4" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="1060.0" y1="865.0" x2="1072.0" y2="865.0" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="1048.0" y="869.0" class="tiny" text-anchor="end">+0.00</text>
+<line x1="1066.0" y1="865.0" x2="1760.0" y2="865.0" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="1060.0" y1="841.6" x2="1072.0" y2="841.6" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="1048.0" y="845.6" class="tiny" text-anchor="end">+0.01</text>
+<line x1="1066.0" y1="841.6" x2="1760.0" y2="841.6" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="1060.0" y1="818.2" x2="1072.0" y2="818.2" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="1048.0" y="822.2" class="tiny" text-anchor="end">+0.02</text>
+<line x1="1066.0" y1="818.2" x2="1760.0" y2="818.2" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="1060.0" y1="794.8" x2="1072.0" y2="794.8" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="1048.0" y="798.8" class="tiny" text-anchor="end">+0.03</text>
+<line x1="1066.0" y1="794.8" x2="1760.0" y2="794.8" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="1060.0" y1="771.4" x2="1072.0" y2="771.4" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="1048.0" y="775.4" class="tiny" text-anchor="end">+0.04</text>
+<line x1="1066.0" y1="771.4" x2="1760.0" y2="771.4" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="1060.0" y1="747.9" x2="1072.0" y2="747.9" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="1048.0" y="751.9" class="tiny" text-anchor="end">+0.05</text>
+<line x1="1066.0" y1="747.9" x2="1760.0" y2="747.9" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="1060.0" y1="724.5" x2="1072.0" y2="724.5" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="1048.0" y="728.5" class="tiny" text-anchor="end">+0.06</text>
+<line x1="1066.0" y1="724.5" x2="1760.0" y2="724.5" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="1060.0" y1="701.1" x2="1072.0" y2="701.1" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="1048.0" y="705.1" class="tiny" text-anchor="end">+0.07</text>
+<line x1="1066.0" y1="701.1" x2="1760.0" y2="701.1" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="1060.0" y1="677.7" x2="1072.0" y2="677.7" stroke="#5d7fa3" stroke-width="1.5" opacity="1.0" stroke-linecap="round"/>
+<text x="1048.0" y="681.7" class="tiny" text-anchor="end">+0.08</text>
+<line x1="1066.0" y1="865.0" x2="1760.0" y2="865.0" stroke="#dce7f3" stroke-width="1.8" opacity="0.9" stroke-linecap="round" stroke-dasharray="8 8"/>
+<text x="1750.0" y="855.0" class="tiny" text-anchor="end">zero imbalance</text>
+<polyline points="1123.8,881.3 1196.1,880.1 1268.4,877.1 1340.7,871.6 1413.0,864.2 1485.3,856.8 1557.6,851.8 1629.9,849.6 1702.2,849.0" fill="none" stroke="#fda4af" stroke-width="3.0" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="1123.8,959.1 1196.1,954.0 1268.4,935.1 1340.7,902.4 1413.0,863.2 1485.3,826.1 1557.6,796.8 1629.9,775.9 1702.2,761.4" fill="none" stroke="#93c5fd" stroke-width="3.0" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="1123.8,1040.8 1196.1,1000.5 1268.4,958.1 1340.7,913.9 1413.0,867.6 1485.3,819.7 1557.6,771.4 1629.9,725.0 1702.2,684.1" fill="none" stroke="#facc15" stroke-width="3.0" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="1123.8,1047.9 1196.1,1002.0 1268.4,955.6 1340.7,906.9 1413.0,855.7 1485.3,804.1 1557.6,755.1 1629.9,711.3 1702.2,673.9" fill="none" stroke="#4ade80" stroke-width="3.0" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1413.0" y="1124.0" class="tiny" text-anchor="middle">true normalized CFO  Δf / R_s</text>
+<text x="992.0" y="865.0" class="tiny" text-anchor="middle">band-edge imbalance</text>
+<rect x="1564.0" y="1088.0" width="236.0" height="72.0" rx="12.0" fill="#13263b" opacity="1.0" stroke="#4f8cc9" stroke-width="1.4"/>
+<circle cx="1582.0" cy="1108.0" r="5.0" fill="#fda4af" opacity="1.0"/>
+<text x="1596.0" y="1112.0" class="tiny" text-anchor="start">SRRC α = 0.05</text>
+<circle cx="1582.0" cy="1122.0" r="5.0" fill="#93c5fd" opacity="1.0"/>
+<text x="1596.0" y="1126.0" class="tiny" text-anchor="start">SRRC α = 0.20</text>
+<circle cx="1582.0" cy="1136.0" r="5.0" fill="#facc15" opacity="1.0"/>
+<text x="1596.0" y="1140.0" class="tiny" text-anchor="start">SRRC α = 0.35</text>
+<circle cx="1582.0" cy="1150.0" r="5.0" fill="#4ade80" opacity="1.0"/>
+<text x="1596.0" y="1154.0" class="tiny" text-anchor="start">SRRC α = 0.50</text>
+<rect x="992.0" y="1088.0" width="530.0" height="72.0" rx="12.0" fill="#13263b" opacity="1.0" stroke="#4f8cc9" stroke-width="1.4"/>
+<text x="1012.0" y="1118.0" class="tiny" text-anchor="start"><tspan x="1012.0" dy="0">At Δf / R_s = 0.10, the imbalance grows from 0.007 at α = 0.05</tspan><tspan x="1012.0" dy="17.0">to 0.082 at α = 0.50. That extra slope is exactly what excess</tspan><tspan x="1012.0" dy="17.0">bandwidth buys.</tspan></text>
+<rect x="60.0" y="1232.0" width="1780.0" height="564.0" rx="18.0" fill="#102031" opacity="1.0" stroke="#5d7fa3" stroke-width="2.0"/>
+<text x="84.0" y="1268.0" class="label" text-anchor="start">3. The comparison is about assumptions, not algorithm prestige</text>
+<text x="84.0" y="1300.0" class="small" text-anchor="start"><tspan x="84.0" dy="0">A clean receiver note should say which clue the front end is exploiting. This pass stays small on purpose: same 4 sps waveform, same CFO sweep, then one symmetry-based view and one</tspan><tspan x="84.0" dy="20.0">band-edge view.</tspan></text>
+<rect x="88.0" y="1352.0" width="548.0" height="296.0" rx="16.0" fill="#14263a" opacity="1.0" stroke="#93c5fd" stroke-width="1.8"/>
+<text x="106.0" y="1382.0" class="label" text-anchor="start">When oversampled 4th-power is cleaner</text>
+<circle cx="108.0" cy="1416.0" r="4.5" fill="#93c5fd" opacity="1.0"/>
+<text x="124.0" y="1420.0" class="tiny" text-anchor="start"><tspan x="124.0" dy="0">pilot-free PSK is still the point</tspan></text>
+<circle cx="108.0" cy="1470.0" r="4.5" fill="#93c5fd" opacity="1.0"/>
+<text x="124.0" y="1474.0" class="tiny" text-anchor="start"><tspan x="124.0" dy="0">you want continuity with the existing alias-cliff notes</tspan></text>
+<circle cx="108.0" cy="1524.0" r="4.5" fill="#93c5fd" opacity="1.0"/>
+<text x="124.0" y="1528.0" class="tiny" text-anchor="start"><tspan x="124.0" dy="0">the receiver can estimate before decimation</tspan></text>
+<circle cx="108.0" cy="1578.0" r="4.5" fill="#93c5fd" opacity="1.0"/>
+<text x="124.0" y="1582.0" class="tiny" text-anchor="start"><tspan x="124.0" dy="0">excess bandwidth is not the main teaching object</tspan></text>
+<rect x="676.0" y="1352.0" width="548.0" height="296.0" rx="16.0" fill="#173126" opacity="1.0" stroke="#4ade80" stroke-width="1.8"/>
+<text x="694.0" y="1382.0" class="label" text-anchor="start">When band-edge logic is cleaner</text>
+<circle cx="696.0" cy="1416.0" r="4.5" fill="#4ade80" opacity="1.0"/>
+<text x="712.0" y="1420.0" class="tiny" text-anchor="start"><tspan x="712.0" dy="0">the waveform is oversampled and pulse-shaped</tspan></text>
+<circle cx="696.0" cy="1470.0" r="4.5" fill="#4ade80" opacity="1.0"/>
+<text x="712.0" y="1474.0" class="tiny" text-anchor="start"><tspan x="712.0" dy="0">roll-off is real and worth exploiting</tspan></text>
+<circle cx="696.0" cy="1524.0" r="4.5" fill="#4ade80" opacity="1.0"/>
+<text x="712.0" y="1528.0" class="tiny" text-anchor="start"><tspan x="712.0" dy="0">symbol decisions are still too early to trust</tspan></text>
+<circle cx="696.0" cy="1578.0" r="4.5" fill="#4ade80" opacity="1.0"/>
+<text x="712.0" y="1582.0" class="tiny" text-anchor="start"><tspan x="712.0" dy="0">you want a waveform-domain coarse clue, not a symbol-rate one</tspan></text>
+<rect x="1264.0" y="1352.0" width="548.0" height="296.0" rx="16.0" fill="#341c12" opacity="1.0" stroke="#facc15" stroke-width="1.8"/>
+<text x="1282.0" y="1382.0" class="label" text-anchor="start">What this sidecar does not try to claim</text>
+<circle cx="1284.0" cy="1416.0" r="4.5" fill="#facc15" opacity="1.0"/>
+<text x="1300.0" y="1420.0" class="tiny" text-anchor="start"><tspan x="1300.0" dy="0">it does not rank every coarse-carrier front end</tspan></text>
+<circle cx="1284.0" cy="1470.0" r="4.5" fill="#facc15" opacity="1.0"/>
+<text x="1300.0" y="1474.0" class="tiny" text-anchor="start"><tspan x="1300.0" dy="0">it does not replace pilot or preamble methods</tspan></text>
+<circle cx="1284.0" cy="1524.0" r="4.5" fill="#facc15" opacity="1.0"/>
+<text x="1300.0" y="1528.0" class="tiny" text-anchor="start"><tspan x="1300.0" dy="0">it does not model adjacent-channel leakage or a full loop</tspan></text>
+<circle cx="1284.0" cy="1578.0" r="4.5" fill="#facc15" opacity="1.0"/>
+<text x="1300.0" y="1582.0" class="tiny" text-anchor="start"><tspan x="1300.0" dy="0">it only shows why the two blind branches depend on different</tspan><tspan x="1300.0" dy="18.0">information</tspan></text>
+<rect x="84.0" y="1684.0" width="1732.0" height="82.0" rx="14.0" fill="#13263b" opacity="1.0" stroke="#4f8cc9" stroke-width="1.6"/>
+<text x="106.0" y="1716.0" class="small" text-anchor="start"><tspan x="106.0" dy="0">Bottom line: oversampled 4th-power and band-edge FLL are not interchangeable coarse loops. One exploits constellation symmetry. The other exploits excess-bandwidth asymmetry. The better</tspan><tspan x="106.0" dy="19.0">front end depends on which clue the receiver can trust.</tspan></text>
+</svg>
