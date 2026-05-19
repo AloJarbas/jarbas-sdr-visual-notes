@@ -21,6 +21,7 @@ Everything here stays in the study and simulation lane. No live emission instruc
 - [Carrier recovery after timing](notes/carrier-recovery-after-timing.md)
 - [Carrier lock detection and handoff](notes/carrier-lock-detection-and-handoff.md)
 - [Carrier offset, pull-in, and the `\pi/4` alias cliff](notes/carrier-offset-pull-in-and-alias.md)
+- [When the symbol-rate carrier-recovery story stops being enough](notes/when-symbol-rate-carrier-recovery-stops-being-enough.md)
 - [Receive-side synchronization map](notes/receive-side-synchronization-map.md)
 - [QPSK phase ambiguity resolution](notes/qpsk-phase-ambiguity-resolution.md)
 
@@ -66,6 +67,10 @@ Everything here stays in the study and simulation lane. No live emission instruc
 
 ![Carrier offset, pull-in, and the `\pi/4` alias cliff](assets/2026-05-17-carrier-offset-pull-in-alias.png)
 
+### When the symbol-rate carrier-recovery story stops being enough
+
+![When the symbol-rate carrier-recovery story stops being enough](assets/2026-05-19-large-cfo-front-end-boundary.png)
+
 ### Receive-side synchronization map
 
 ![Receive-side synchronization map](assets/2026-05-16-receive-side-synchronization-map.png)
@@ -101,6 +106,7 @@ python3 scripts/generate_ted_comparison_figure.py
 python3 scripts/generate_carrier_recovery_figure.py
 python3 scripts/generate_carrier_lock_handoff_figure.py
 python3 scripts/generate_carrier_offset_alias_figure.py
+python3 scripts/generate_large_cfo_front_end_figure.py
 python3 scripts/generate_receive_side_sync_map_figure.py
 python3 scripts/generate_qpsk_phase_ambiguity_figure.py
 python3 scripts/check_svg_layout.py
