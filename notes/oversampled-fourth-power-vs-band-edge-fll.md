@@ -64,11 +64,12 @@ The experiment stays intentionally small:
 - CFO sweep on the same waveform,
 - two readouts:
   - oversampled 4th-power coarse CFO estimate,
-  - a bounded band-edge imbalance metric.
+  - a bounded **raw** band-edge imbalance metric.
 
 This is not a full band-edge loop implementation.
 That is deliberate.
 The useful first question is whether the discriminator clue is visibly there, and how strongly it depends on roll-off.
+A follow-up note, [Band-edge discriminant gain: raw imbalance versus near-lock slope](band-edge-discriminant-gain-and-slope.md), keeps the calibration claim honest by separating this intuition panel from the normalized near-lock slope.
 
 ## 3. What the sweep says
 
@@ -81,9 +82,9 @@ That is the key continuity lesson.
 The oversampled 4th-power branch is still the same symmetry-based object.
 It does **not** need excess bandwidth in the same way the band-edge branch does.
 
-### B. The band-edge clue gets stronger only when roll-off leaves usable edge energy
+### B. The raw band-edge clue gets stronger only when roll-off leaves usable edge energy
 
-At one modest offset, `Δf / R_s = 0.10`, the band-edge imbalance grows from about
+At one modest offset, `Δf / R_s = 0.10`, the raw band-edge imbalance grows from about
 
 - `0.007` at `α = 0.05`
 - to `0.082` at `α = 0.50`.
@@ -91,6 +92,9 @@ At one modest offset, `Δf / R_s = 0.10`, the band-edge imbalance grows from abo
 That is the second key lesson.
 Band-edge logic is not just another generic coarse loop.
 It becomes informative because the roll-off leaves real edge energy for the discriminator to push against.
+
+What this panel does **not** do by itself is calibrate normalized loop gain near lock.
+That narrower question lives in the follow-up slope note.
 
 ### C. The comparison is really about assumptions
 

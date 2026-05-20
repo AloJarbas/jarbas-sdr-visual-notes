@@ -11,10 +11,11 @@ if str(SCRIPTS) not in sys.path:
 
 from waveform_carrier_front_ends import (
     alias_limit_normalized,
+    apply_carrier_offset,
     band_edge_imbalance,
+    band_edge_slope_row,
     coarse_fourth_power_normalized_cfo,
     pulse_shaped_qpsk,
-    apply_carrier_offset,
     sweep_front_ends,
 )
 
@@ -49,6 +50,22 @@ class WaveformCarrierFrontEndTests(unittest.TestCase):
         waveform = pulse_shaped_qpsk(0.35, 4, symbol_count=256, span_symbols=8, seed=19)
         estimate = coarse_fourth_power_normalized_cfo(apply_carrier_offset(waveform, 0.60, 4), 4)
         self.assertAlmostEqual(estimate, -0.40, delta=0.03)
+
+    def test_band_edge_slope_nears_unity_with_long_filters(self) -> None:
+        row = band_edge_slope_row(0.50, tap_count=255)
+        self.assertAlmostEqual(row.central_slope_wrt_deltaf_over_Rs, 1.0, delta=0.08)
+
+    def test_band_edge_slope_stays_soft_at_tiny_rolloff(self) -> None:
+        low = band_edge_slope_row(0.05, tap_count=255)
+        high = band_edge_slope_row(0.35, tap_count=255)
+        self.assertLess(low.central_slope_wrt_deltaf_over_Rs, 0.65)
+        self.assertGreater(high.central_slope_wrt_deltaf_over_Rs, 0.90)
+
+    def test_short_filters_underestimate_band_edge_slope(self) -> None:
+        short = band_edge_slope_row(0.20, tap_count=63)
+        long = band_edge_slope_row(0.20, tap_count=255)
+        self.assertLess(short.central_slope_wrt_deltaf_over_Rs, long.central_slope_wrt_deltaf_over_Rs)
+        self.assertGreater(long.central_slope_wrt_deltaf_over_Rs, 0.90)
 
 
 if __name__ == '__main__':

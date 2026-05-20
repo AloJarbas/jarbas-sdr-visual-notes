@@ -20,6 +20,21 @@ class FrontEndSweepRow:
     band_edge_imbalance: float
 
 
+@dataclass(frozen=True)
+class BandEdgeSlopeRow:
+    samples_per_symbol: int
+    symbol_count: int
+    seed: int
+    trim: int
+    tap_count: int
+    rolloff: float
+    normalized_cfo_step: float
+    imbalance_at_pos_step: float
+    imbalance_at_neg_step: float
+    central_slope_wrt_deltaf_over_Rs: float
+    imbalance_at_0p10: float
+
+
 def qpsk_symbols(count: int, seed: int = 0) -> list[complex]:
     rng = random.Random(seed)
     constellation = [cmath.exp(1j * angle) for angle in QPSK_ANGLES]
@@ -135,6 +150,139 @@ def band_edge_imbalance(samples: Iterable[complex], samples_per_symbol: int, rol
     return (upper_energy - lower_energy) / total_energy
 
 
+def normalize_average_power(samples: Iterable[complex]) -> list[complex]:
+    sample_list = list(samples)
+    if not sample_list:
+        return []
+    mean_power = sum(abs(sample) ** 2 for sample in sample_list) / len(sample_list)
+    if mean_power <= 0.0:
+        return sample_list
+    scale = 1.0 / math.sqrt(mean_power)
+    return [sample * scale for sample in sample_list]
+
+
+def band_edge_slope_row(
+    rolloff: float,
+    *,
+    samples_per_symbol: int = 4,
+    symbol_count: int = 1024,
+    span_symbols: int = 8,
+    seed: int = 19,
+    trim: int = 160,
+    tap_count: int = 127,
+    normalized_cfo_step: float = 0.01,
+    reference_cfo: float = 0.10,
+) -> BandEdgeSlopeRow:
+    base_waveform = normalize_average_power(
+        pulse_shaped_qpsk(
+            rolloff,
+            samples_per_symbol,
+            symbol_count=symbol_count,
+            span_symbols=span_symbols,
+            seed=seed,
+        )
+    )
+    positive = band_edge_imbalance(
+        apply_carrier_offset(base_waveform, normalized_cfo_step, samples_per_symbol),
+        samples_per_symbol,
+        rolloff,
+        tap_count=tap_count,
+        trim=trim,
+    )
+    negative = band_edge_imbalance(
+        apply_carrier_offset(base_waveform, -normalized_cfo_step, samples_per_symbol),
+        samples_per_symbol,
+        rolloff,
+        tap_count=tap_count,
+        trim=trim,
+    )
+    finite_difference = (positive - negative) / (2.0 * normalized_cfo_step)
+    reference_imbalance = band_edge_imbalance(
+        apply_carrier_offset(base_waveform, reference_cfo, samples_per_symbol),
+        samples_per_symbol,
+        rolloff,
+        tap_count=tap_count,
+        trim=trim,
+    )
+    return BandEdgeSlopeRow(
+        samples_per_symbol=samples_per_symbol,
+        symbol_count=symbol_count,
+        seed=seed,
+        trim=trim,
+        tap_count=tap_count,
+        rolloff=rolloff,
+        normalized_cfo_step=normalized_cfo_step,
+        imbalance_at_pos_step=positive,
+        imbalance_at_neg_step=negative,
+        central_slope_wrt_deltaf_over_Rs=finite_difference,
+        imbalance_at_0p10=reference_imbalance,
+    )
+
+
+def sweep_band_edge_slopes(
+    rolloffs: Iterable[float],
+    tap_counts: Iterable[int],
+    *,
+    samples_per_symbol: int = 4,
+    symbol_count: int = 1024,
+    span_symbols: int = 8,
+    seed: int = 19,
+    trim: int = 160,
+    normalized_cfo_step: float = 0.01,
+    reference_cfo: float = 0.10,
+) -> list[BandEdgeSlopeRow]:
+    rows: list[BandEdgeSlopeRow] = []
+    normalized_rolloffs = list(rolloffs)
+    normalized_taps = list(tap_counts)
+    for rolloff in normalized_rolloffs:
+        base_waveform = normalize_average_power(
+            pulse_shaped_qpsk(
+                rolloff,
+                samples_per_symbol,
+                symbol_count=symbol_count,
+                span_symbols=span_symbols,
+                seed=seed,
+            )
+        )
+        for tap_count in normalized_taps:
+            positive = band_edge_imbalance(
+                apply_carrier_offset(base_waveform, normalized_cfo_step, samples_per_symbol),
+                samples_per_symbol,
+                rolloff,
+                tap_count=tap_count,
+                trim=trim,
+            )
+            negative = band_edge_imbalance(
+                apply_carrier_offset(base_waveform, -normalized_cfo_step, samples_per_symbol),
+                samples_per_symbol,
+                rolloff,
+                tap_count=tap_count,
+                trim=trim,
+            )
+            rows.append(
+                BandEdgeSlopeRow(
+                    samples_per_symbol=samples_per_symbol,
+                    symbol_count=symbol_count,
+                    seed=seed,
+                    trim=trim,
+                    tap_count=tap_count,
+                    rolloff=rolloff,
+                    normalized_cfo_step=normalized_cfo_step,
+                    imbalance_at_pos_step=positive,
+                    imbalance_at_neg_step=negative,
+                    central_slope_wrt_deltaf_over_Rs=(positive - negative) / (2.0 * normalized_cfo_step),
+                    imbalance_at_0p10=band_edge_imbalance(
+                        apply_carrier_offset(base_waveform, reference_cfo, samples_per_symbol),
+                        samples_per_symbol,
+                        rolloff,
+                        tap_count=tap_count,
+                        trim=trim,
+                    ),
+                )
+            )
+    return rows
+
+
 def sweep_front_ends(
     rolloffs: Iterable[float],
     normalized_cfo_values: Iterable[float],
@@ -181,6 +329,31 @@ def write_csv(rows: Iterable[FrontEndSweepRow], path: str | Path) -> None:
                 'fourth_power_estimate',
                 'fourth_power_absolute_error',
                 'band_edge_imbalance',
+            ],
+        )
+        writer.writeheader()
+        for row in rows:
+            writer.writerow(asdict(row))
+
+
+def write_band_edge_slope_csv(rows: Iterable[BandEdgeSlopeRow], path: str | Path) -> None:
+    output = Path(path)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    with output.open('w', newline='') as handle:
+        writer = csv.DictWriter(
+            handle,
+            fieldnames=[
+                'samples_per_symbol',
+                'symbol_count',
+                'seed',
+                'trim',
+                'tap_count',
+                'rolloff',
+                'normalized_cfo_step',
+                'imbalance_at_pos_step',
+                'imbalance_at_neg_step',
+                'central_slope_wrt_deltaf_over_Rs',
+                'imbalance_at_0p10',
             ],
         )
         writer.writeheader()
