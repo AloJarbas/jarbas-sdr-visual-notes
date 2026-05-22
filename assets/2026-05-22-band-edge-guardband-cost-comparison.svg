@@ -1,0 +1,195 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2140" height="1660" viewBox="0 0 2140 1660">
+<style>
+text { font-family: "Inter", "Helvetica Neue", Arial, sans-serif; }
+.title { font: 700 34px "Inter", "Helvetica Neue", Arial, sans-serif; fill: #e2e8f0; }
+.subtitle { font: 500 18px "Inter", "Helvetica Neue", Arial, sans-serif; fill: #cbd5e1; }
+.label { font: 700 22px "Inter", "Helvetica Neue", Arial, sans-serif; fill: #dbeafe; }
+.small { font: 500 16px "Inter", "Helvetica Neue", Arial, sans-serif; fill: #cbd5e1; }
+.tiny { font: 500 13px "Inter", "Helvetica Neue", Arial, sans-serif; fill: #cbd5e1; }
+</style>
+<rect x="0.0" y="0.0" width="2140.0" height="1660.0" rx="18.0" fill="#08111b" opacity="1.0"/>
+<rect x="24.0" y="24.0" width="2092.0" height="1612.0" rx="24.0" fill="#0d1826" opacity="1.0" stroke="#1e293b" stroke-width="2.0"/>
+<text x="60.0" y="64.0" class="title" text-anchor="start">Band-edge filter shape: slope honesty versus guardband cost</text>
+<text x="60.0" y="96.0" class="subtitle" text-anchor="start">Same bounded waveform setup as the slope note, but now asking what the wider half-sine design pays in adjacent pickup.</text>
+<rect x="60.0" y="146.0" width="2020.0" height="314.0" rx="18.0" fill="#102031" opacity="1.0" stroke="#5d7fa3" stroke-width="2.0"/>
+<text x="86.0" y="188.0" class="label" text-anchor="start">The next band-edge question was the cost of the wider half-sine design</text>
+<text x="86.0" y="224.0" class="small" text-anchor="start"><tspan x="86.0" dy="0">The previous note closed the slope loophole: the GNU Radio / fred harris half-sine construction gets much closer to the normalized near-lock target than the old proxy. This pass checks the price of that fix by</tspan><tspan x="86.0" dy="21.0">measuring how much adjacent-channel energy the band-edge filters keep capturing and how much center spacing is needed before that pickup falls below 5%.</tspan></text>
+<rect x="88.0" y="302.0" width="640.0" height="126.0" rx="16.0" fill="#3a1018" opacity="1.0" stroke="#fda4af" stroke-width="1.8"/>
+<text x="106.0" y="332.0" class="label" text-anchor="start">α = 0.20, 63 taps: sharper slope is much less selective</text>
+<text x="106.0" y="360.0" class="tiny" text-anchor="start"><tspan x="106.0" dy="0">Proxy slope 0.480 needs 0.75 R_s for ≤5% pickup. Half-sine slope 0.943</tspan><tspan x="106.0" dy="18.0">needs 1.20 R_s.</tspan></text>
+<rect x="750.0" y="302.0" width="640.0" height="126.0" rx="16.0" fill="#11263d" opacity="1.0" stroke="#93c5fd" stroke-width="1.8"/>
+<text x="768.0" y="332.0" class="label" text-anchor="start">α = 0.35, 63 taps: the tradeoff stays real</text>
+<text x="768.0" y="360.0" class="tiny" text-anchor="start"><tspan x="768.0" dy="0">At 1.0 R_s spacing, proxy pickup is 10.7%. Half-sine pickup is 31.5%. The</tspan><tspan x="768.0" dy="18.0">slope fix is real, and so is the spill cost.</tspan></text>
+<rect x="1412.0" y="302.0" width="640.0" height="126.0" rx="16.0" fill="#142f23" opacity="1.0" stroke="#4ade80" stroke-width="1.8"/>
+<text x="1430.0" y="332.0" class="label" text-anchor="start">Tap count mostly moves slope, not spacing threshold</text>
+<text x="1430.0" y="360.0" class="tiny" text-anchor="start"><tspan x="1430.0" dy="0">At α = 0.35 the proxy rises from slope 0.670 to 0.983, but the ≤5% spacing</tspan><tspan x="1430.0" dy="18.0">stays 1.15 → 1.15 R_s. Half-sine stays 1.35 → 1.35 R_s too.</tspan></text>
+<rect x="60.0" y="504.0" width="980.0" height="760.0" rx="18.0" fill="#102031" opacity="1.0" stroke="#5d7fa3" stroke-width="2.0"/>
+<text x="84.0" y="540.0" class="label" text-anchor="start">Adjacent pickup at 1.0 R_s spacing</text>
+<text x="84.0" y="574.0" class="small" text-anchor="start"><tspan x="84.0" dy="0">Each series shows how much energy the lower + upper band-edge filters capture from one adjacent QPSK</tspan><tspan x="84.0" dy="20.0">channel whose center is 1.0 symbol rates away. Higher means worse selectivity.</tspan></text>
+<line x1="162.0" y1="982.0" x2="976.0" y2="982.0" stroke="#5d7fa3" stroke-width="2.2" opacity="1.0" stroke-linecap="round"/>
+<line x1="162.0" y1="630.0" x2="162.0" y2="982.0" stroke="#5d7fa3" stroke-width="2.2" opacity="1.0" stroke-linecap="round"/>
+<line x1="162.0" y1="976.0" x2="162.0" y2="988.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="162.0" y="1008.0" class="tiny" text-anchor="middle">0.05</text>
+<line x1="433.3" y1="976.0" x2="433.3" y2="988.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="433.3" y="1008.0" class="tiny" text-anchor="middle">0.20</text>
+<line x1="433.3" y1="630.0" x2="433.3" y2="982.0" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="704.7" y1="976.0" x2="704.7" y2="988.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="704.7" y="1008.0" class="tiny" text-anchor="middle">0.35</text>
+<line x1="704.7" y1="630.0" x2="704.7" y2="982.0" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="976.0" y1="976.0" x2="976.0" y2="988.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="976.0" y="1008.0" class="tiny" text-anchor="middle">0.50</text>
+<line x1="156.0" y1="982.0" x2="168.0" y2="982.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="144.0" y="986.0" class="tiny" text-anchor="end">0.00</text>
+<line x1="156.0" y1="918.0" x2="168.0" y2="918.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="144.0" y="922.0" class="tiny" text-anchor="end">0.10</text>
+<line x1="162.0" y1="918.0" x2="976.0" y2="918.0" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="156.0" y1="854.0" x2="168.0" y2="854.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="144.0" y="858.0" class="tiny" text-anchor="end">0.20</text>
+<line x1="162.0" y1="854.0" x2="976.0" y2="854.0" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="156.0" y1="790.0" x2="168.0" y2="790.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="144.0" y="794.0" class="tiny" text-anchor="end">0.30</text>
+<line x1="162.0" y1="790.0" x2="976.0" y2="790.0" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="156.0" y1="726.0" x2="168.0" y2="726.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="144.0" y="730.0" class="tiny" text-anchor="end">0.40</text>
+<line x1="162.0" y1="726.0" x2="976.0" y2="726.0" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="156.0" y1="662.0" x2="168.0" y2="662.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="144.0" y="666.0" class="tiny" text-anchor="end">0.50</text>
+<text x="569.0" y="1040.0" class="tiny" text-anchor="middle">SRRC roll-off  α</text>
+<text x="166.0" y="618.0" class="tiny" text-anchor="start">captured adjacent energy / input energy</text>
+<polyline points="162.0,979.9 433.3,955.3 704.7,913.3 976.0,871.5" fill="none" stroke="#fda4af" stroke-width="3.0" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="162.0" cy="979.9" r="5.0" fill="#fda4af" opacity="1.0"/>
+<circle cx="433.3" cy="955.3" r="5.0" fill="#fda4af" opacity="1.0"/>
+<circle cx="704.7" cy="913.3" r="5.0" fill="#fda4af" opacity="1.0"/>
+<circle cx="976.0" cy="871.5" r="5.0" fill="#fda4af" opacity="1.0"/>
+<polyline points="162.0,977.9 433.3,942.4 704.7,898.1 976.0,857.1" fill="none" stroke="#93c5fd" stroke-width="3.0" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="162.0" cy="977.9" r="5.0" fill="#93c5fd" opacity="1.0"/>
+<circle cx="433.3" cy="942.4" r="5.0" fill="#93c5fd" opacity="1.0"/>
+<circle cx="704.7" cy="898.1" r="5.0" fill="#93c5fd" opacity="1.0"/>
+<circle cx="976.0" cy="857.1" r="5.0" fill="#93c5fd" opacity="1.0"/>
+<polyline points="162.0,975.1 433.3,935.1 704.7,890.9 976.0,847.8" fill="none" stroke="#4ade80" stroke-width="3.0" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="162.0" cy="975.1" r="5.0" fill="#4ade80" opacity="1.0"/>
+<circle cx="433.3" cy="935.1" r="5.0" fill="#4ade80" opacity="1.0"/>
+<circle cx="704.7" cy="890.9" r="5.0" fill="#4ade80" opacity="1.0"/>
+<circle cx="976.0" cy="847.8" r="5.0" fill="#4ade80" opacity="1.0"/>
+<polyline points="162.0,956.7 433.3,864.7 704.7,780.7 976.0,693.7" fill="none" stroke="#fda4af" stroke-width="3.0" opacity="1.0" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 8"/>
+<rect x="157.5" y="952.2" width="9.0" height="9.0" fill="#fda4af" opacity="1.0" rx="1.5"/>
+<rect x="428.8" y="860.2" width="9.0" height="9.0" fill="#fda4af" opacity="1.0" rx="1.5"/>
+<rect x="700.2" y="776.2" width="9.0" height="9.0" fill="#fda4af" opacity="1.0" rx="1.5"/>
+<rect x="971.5" y="689.2" width="9.0" height="9.0" fill="#fda4af" opacity="1.0" rx="1.5"/>
+<polyline points="162.0,958.1 433.3,863.5 704.7,778.4 976.0,689.0" fill="none" stroke="#93c5fd" stroke-width="3.0" opacity="1.0" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 8"/>
+<rect x="157.5" y="953.6" width="9.0" height="9.0" fill="#93c5fd" opacity="1.0" rx="1.5"/>
+<rect x="428.8" y="859.0" width="9.0" height="9.0" fill="#93c5fd" opacity="1.0" rx="1.5"/>
+<rect x="700.2" y="773.9" width="9.0" height="9.0" fill="#93c5fd" opacity="1.0" rx="1.5"/>
+<rect x="971.5" y="684.5" width="9.0" height="9.0" fill="#93c5fd" opacity="1.0" rx="1.5"/>
+<polyline points="162.0,957.9 433.3,860.7 704.7,772.0 976.0,680.2" fill="none" stroke="#4ade80" stroke-width="3.0" opacity="1.0" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 8"/>
+<rect x="157.5" y="953.4" width="9.0" height="9.0" fill="#4ade80" opacity="1.0" rx="1.5"/>
+<rect x="428.8" y="856.2" width="9.0" height="9.0" fill="#4ade80" opacity="1.0" rx="1.5"/>
+<rect x="700.2" y="767.5" width="9.0" height="9.0" fill="#4ade80" opacity="1.0" rx="1.5"/>
+<rect x="971.5" y="675.7" width="9.0" height="9.0" fill="#4ade80" opacity="1.0" rx="1.5"/>
+<rect x="84.0" y="1020.0" width="356.0" height="110.0" rx="12.0" fill="#13263b" opacity="1.0" stroke="#4f8cc9" stroke-width="1.4"/>
+<circle cx="102.0" cy="1042.0" r="5.0" fill="#fda4af" opacity="1.0"/>
+<text x="116.0" y="1046.0" class="tiny" text-anchor="start">63-tap filters</text>
+<circle cx="102.0" cy="1060.0" r="5.0" fill="#93c5fd" opacity="1.0"/>
+<text x="116.0" y="1064.0" class="tiny" text-anchor="start">127-tap filters</text>
+<circle cx="102.0" cy="1078.0" r="5.0" fill="#4ade80" opacity="1.0"/>
+<text x="116.0" y="1082.0" class="tiny" text-anchor="start">255-tap filters</text>
+<line x1="274.0" y1="1100.0" x2="322.0" y2="1100.0" stroke="#dbeafe" stroke-width="2.6" opacity="1.0" stroke-linecap="round"/>
+<circle cx="298.0" cy="1100.0" r="4.5" fill="#dbeafe" opacity="1.0"/>
+<text x="332.0" y="1104.0" class="tiny" text-anchor="start">Current proxy bandpass</text>
+<line x1="274.0" y1="1120.0" x2="322.0" y2="1120.0" stroke="#dbeafe" stroke-width="2.6" opacity="1.0" stroke-linecap="round" stroke-dasharray="10 8"/>
+<rect x="294.0" y="1116.0" width="8.0" height="8.0" fill="#dbeafe" opacity="1.0" rx="1.5"/>
+<text x="332.0" y="1124.0" class="tiny" text-anchor="start">GNU Radio / half-sine style</text>
+<text x="1022.0" y="1048.0" class="tiny" text-anchor="end">α = 0.35, 63 taps half-sine: 31.5% pickup at 1.0 R_s</text>
+<rect x="1100.0" y="504.0" width="980.0" height="760.0" rx="18.0" fill="#102031" opacity="1.0" stroke="#5d7fa3" stroke-width="2.0"/>
+<text x="1124.0" y="540.0" class="label" text-anchor="start">Spacing needed for ≤5% pickup</text>
+<text x="1124.0" y="574.0" class="small" text-anchor="start"><tspan x="1124.0" dy="0">This is the smallest tested center spacing where the same adjacent channel drops under 5% captured</tspan><tspan x="1124.0" dy="20.0">energy. Lower is cheaper on guardband. In this bounded study the design family moves this threshold</tspan><tspan x="1124.0" dy="20.0">more than tap count does.</tspan></text>
+<line x1="1202.0" y1="982.0" x2="2016.0" y2="982.0" stroke="#5d7fa3" stroke-width="2.2" opacity="1.0" stroke-linecap="round"/>
+<line x1="1202.0" y1="630.0" x2="1202.0" y2="982.0" stroke="#5d7fa3" stroke-width="2.2" opacity="1.0" stroke-linecap="round"/>
+<line x1="1202.0" y1="976.0" x2="1202.0" y2="988.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="1202.0" y="1008.0" class="tiny" text-anchor="middle">0.05</text>
+<line x1="1473.3" y1="976.0" x2="1473.3" y2="988.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="1473.3" y="1008.0" class="tiny" text-anchor="middle">0.20</text>
+<line x1="1473.3" y1="630.0" x2="1473.3" y2="982.0" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="1744.7" y1="976.0" x2="1744.7" y2="988.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="1744.7" y="1008.0" class="tiny" text-anchor="middle">0.35</text>
+<line x1="1744.7" y1="630.0" x2="1744.7" y2="982.0" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="2016.0" y1="976.0" x2="2016.0" y2="988.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="2016.0" y="1008.0" class="tiny" text-anchor="middle">0.50</text>
+<line x1="1196.0" y1="952.7" x2="1208.0" y2="952.7" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="1184.0" y="956.7" class="tiny" text-anchor="end">0.60</text>
+<line x1="1196.0" y1="894.0" x2="1208.0" y2="894.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="1184.0" y="898.0" class="tiny" text-anchor="end">0.80</text>
+<line x1="1202.0" y1="894.0" x2="2016.0" y2="894.0" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="1196.0" y1="835.3" x2="1208.0" y2="835.3" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="1184.0" y="839.3" class="tiny" text-anchor="end">1.00</text>
+<line x1="1202.0" y1="835.3" x2="2016.0" y2="835.3" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="1196.0" y1="776.7" x2="1208.0" y2="776.7" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="1184.0" y="780.7" class="tiny" text-anchor="end">1.20</text>
+<line x1="1202.0" y1="776.7" x2="2016.0" y2="776.7" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="1196.0" y1="718.0" x2="1208.0" y2="718.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="1184.0" y="722.0" class="tiny" text-anchor="end">1.40</text>
+<line x1="1202.0" y1="718.0" x2="2016.0" y2="718.0" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="1196.0" y1="659.3" x2="1208.0" y2="659.3" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="1184.0" y="663.3" class="tiny" text-anchor="end">1.60</text>
+<text x="1609.0" y="1040.0" class="tiny" text-anchor="middle">SRRC roll-off  α</text>
+<text x="1206.0" y="618.0" class="tiny" text-anchor="start">required spacing  Δf / R_s</text>
+<polyline points="1202.0,967.3 1473.3,908.7 1744.7,791.3 2016.0,762.0" fill="none" stroke="#fda4af" stroke-width="3.0" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1202.0" cy="967.3" r="5.0" fill="#fda4af" opacity="1.0"/>
+<circle cx="1473.3" cy="908.7" r="5.0" fill="#fda4af" opacity="1.0"/>
+<circle cx="1744.7" cy="791.3" r="5.0" fill="#fda4af" opacity="1.0"/>
+<circle cx="2016.0" cy="762.0" r="5.0" fill="#fda4af" opacity="1.0"/>
+<polyline points="1202.0,967.3 1473.3,820.7 1744.7,791.3 2016.0,762.0" fill="none" stroke="#93c5fd" stroke-width="3.0" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1202.0" cy="967.3" r="5.0" fill="#93c5fd" opacity="1.0"/>
+<circle cx="1473.3" cy="820.7" r="5.0" fill="#93c5fd" opacity="1.0"/>
+<circle cx="1744.7" cy="791.3" r="5.0" fill="#93c5fd" opacity="1.0"/>
+<circle cx="2016.0" cy="762.0" r="5.0" fill="#93c5fd" opacity="1.0"/>
+<polyline points="1202.0,967.3 1473.3,820.7 1744.7,791.3 2016.0,762.0" fill="none" stroke="#4ade80" stroke-width="3.0" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1202.0" cy="967.3" r="5.0" fill="#4ade80" opacity="1.0"/>
+<circle cx="1473.3" cy="820.7" r="5.0" fill="#4ade80" opacity="1.0"/>
+<circle cx="1744.7" cy="791.3" r="5.0" fill="#4ade80" opacity="1.0"/>
+<circle cx="2016.0" cy="762.0" r="5.0" fill="#4ade80" opacity="1.0"/>
+<polyline points="1202.0,835.3 1473.3,776.7 1744.7,732.7 2016.0,674.0" fill="none" stroke="#fda4af" stroke-width="3.0" opacity="1.0" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 8"/>
+<rect x="1197.5" y="830.8" width="9.0" height="9.0" fill="#fda4af" opacity="1.0" rx="1.5"/>
+<rect x="1468.8" y="772.2" width="9.0" height="9.0" fill="#fda4af" opacity="1.0" rx="1.5"/>
+<rect x="1740.2" y="728.2" width="9.0" height="9.0" fill="#fda4af" opacity="1.0" rx="1.5"/>
+<rect x="2011.5" y="669.5" width="9.0" height="9.0" fill="#fda4af" opacity="1.0" rx="1.5"/>
+<polyline points="1202.0,967.3 1473.3,776.7 1744.7,732.7 2016.0,674.0" fill="none" stroke="#93c5fd" stroke-width="3.0" opacity="1.0" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 8"/>
+<rect x="1197.5" y="962.8" width="9.0" height="9.0" fill="#93c5fd" opacity="1.0" rx="1.5"/>
+<rect x="1468.8" y="772.2" width="9.0" height="9.0" fill="#93c5fd" opacity="1.0" rx="1.5"/>
+<rect x="1740.2" y="728.2" width="9.0" height="9.0" fill="#93c5fd" opacity="1.0" rx="1.5"/>
+<rect x="2011.5" y="669.5" width="9.0" height="9.0" fill="#93c5fd" opacity="1.0" rx="1.5"/>
+<polyline points="1202.0,923.3 1473.3,776.7 1744.7,732.7 2016.0,674.0" fill="none" stroke="#4ade80" stroke-width="3.0" opacity="1.0" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 8"/>
+<rect x="1197.5" y="918.8" width="9.0" height="9.0" fill="#4ade80" opacity="1.0" rx="1.5"/>
+<rect x="1468.8" y="772.2" width="9.0" height="9.0" fill="#4ade80" opacity="1.0" rx="1.5"/>
+<rect x="1740.2" y="728.2" width="9.0" height="9.0" fill="#4ade80" opacity="1.0" rx="1.5"/>
+<rect x="2011.5" y="669.5" width="9.0" height="9.0" fill="#4ade80" opacity="1.0" rx="1.5"/>
+<rect x="1124.0" y="1020.0" width="356.0" height="110.0" rx="12.0" fill="#13263b" opacity="1.0" stroke="#4f8cc9" stroke-width="1.4"/>
+<circle cx="1142.0" cy="1042.0" r="5.0" fill="#fda4af" opacity="1.0"/>
+<text x="1156.0" y="1046.0" class="tiny" text-anchor="start">63-tap filters</text>
+<circle cx="1142.0" cy="1060.0" r="5.0" fill="#93c5fd" opacity="1.0"/>
+<text x="1156.0" y="1064.0" class="tiny" text-anchor="start">127-tap filters</text>
+<circle cx="1142.0" cy="1078.0" r="5.0" fill="#4ade80" opacity="1.0"/>
+<text x="1156.0" y="1082.0" class="tiny" text-anchor="start">255-tap filters</text>
+<line x1="1314.0" y1="1100.0" x2="1362.0" y2="1100.0" stroke="#dbeafe" stroke-width="2.6" opacity="1.0" stroke-linecap="round"/>
+<circle cx="1338.0" cy="1100.0" r="4.5" fill="#dbeafe" opacity="1.0"/>
+<text x="1372.0" y="1104.0" class="tiny" text-anchor="start">Current proxy bandpass</text>
+<line x1="1314.0" y1="1120.0" x2="1362.0" y2="1120.0" stroke="#dbeafe" stroke-width="2.6" opacity="1.0" stroke-linecap="round" stroke-dasharray="10 8"/>
+<rect x="1334.0" y="1116.0" width="8.0" height="8.0" fill="#dbeafe" opacity="1.0" rx="1.5"/>
+<text x="1372.0" y="1124.0" class="tiny" text-anchor="start">GNU Radio / half-sine style</text>
+<text x="2062.0" y="1048.0" class="tiny" text-anchor="end">α = 0.35, 63 taps half-sine: 1.35 R_s for ≤5% pickup</text>
+<rect x="60.0" y="1322.0" width="2020.0" height="270.0" rx="18.0" fill="#102031" opacity="1.0" stroke="#5d7fa3" stroke-width="2.0"/>
+<text x="84.0" y="1358.0" class="label" text-anchor="start">What this changes in the repo</text>
+<text x="84.0" y="1394.0" class="small" text-anchor="start"><tspan x="84.0" dy="0">The repo can now stop treating the half-sine upgrade as a free correction. It is a real implementation fix for moderate-roll-off slope, but it also keeps listening farther into a nearby channel. In this bounded setup at α =</tspan><tspan x="84.0" dy="20.0">0.35 and 63 taps, the half-sine design lifts the slope from 0.670 to 0.986, while the adjacent pickup at 1.0 R_s rises by about 2.9× and the ≤5% spacing widens from 1.15 R_s to 1.35 R_s.</tspan></text>
+<rect x="88.0" y="1448.0" width="640.0" height="112.0" rx="16.0" fill="#14263a" opacity="1.0" stroke="#93c5fd" stroke-width="1.8"/>
+<text x="106.0" y="1476.0" class="label" text-anchor="start">Keep</text>
+<text x="106.0" y="1502.0" class="tiny" text-anchor="start"><tspan x="106.0" dy="0">• The slope note still stands: the old proxy was understating</tspan><tspan x="106.0" dy="18.0">moderate-roll-off near-lock gain.</tspan></text>
+<text x="106.0" y="1526.0" class="tiny" text-anchor="start"><tspan x="106.0" dy="0">• Small roll-off still stays weak even after the design improves.</tspan></text>
+<rect x="750.0" y="1448.0" width="640.0" height="112.0" rx="16.0" fill="#173126" opacity="1.0" stroke="#4ade80" stroke-width="1.8"/>
+<text x="768.0" y="1476.0" class="label" text-anchor="start">New claim</text>
+<text x="768.0" y="1502.0" class="tiny" text-anchor="start"><tspan x="768.0" dy="0">• Half-sine is a slope-versus-selectivity tradeoff, not a free cleanup pass.</tspan></text>
+<text x="768.0" y="1526.0" class="tiny" text-anchor="start"><tspan x="768.0" dy="0">• In this bounded study, guardband cost is set more by design family than by</tspan><tspan x="768.0" dy="18.0">tap count.</tspan></text>
+<rect x="1412.0" y="1448.0" width="640.0" height="112.0" rx="16.0" fill="#341c12" opacity="1.0" stroke="#facc15" stroke-width="1.8"/>
+<text x="1430.0" y="1476.0" class="label" text-anchor="start">Next bounded move</text>
+<text x="1430.0" y="1502.0" class="tiny" text-anchor="start"><tspan x="1430.0" dy="0">• If this branch gets one more turn, measure the same tradeoff in</tspan><tspan x="1430.0" dy="18.0">closed-loop behavior or with an explicit adjacent interferer level.</tspan></text>
+<text x="1430.0" y="1526.0" class="tiny" text-anchor="start"><tspan x="1430.0" dy="0">• Otherwise this is enough to stop pretending the better slope came for</tspan><tspan x="1430.0" dy="18.0">free.</tspan></text>
+</svg>

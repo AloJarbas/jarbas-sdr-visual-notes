@@ -16,6 +16,7 @@ DEFAULT_FILES = [
     'assets/2026-05-17-carrier-offset-pull-in-alias.svg',
     'assets/2026-05-20-band-edge-discriminant-slope-check.svg',
     'assets/2026-05-22-band-edge-filter-design-comparison.svg',
+    'assets/2026-05-22-band-edge-guardband-cost-comparison.svg',
     'assets/2026-05-15-qpsk-phase-ambiguity-resolution.svg',
 ]
 SVG_NS = {'svg': 'http://www.w3.org/2000/svg'}

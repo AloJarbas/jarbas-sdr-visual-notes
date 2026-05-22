@@ -25,6 +25,7 @@ Everything here stays in the study and simulation lane. No live emission instruc
 - [Oversampled 4th-power versus band-edge FLL](notes/oversampled-fourth-power-vs-band-edge-fll.md)
 - [Band-edge discriminant gain: raw imbalance versus near-lock slope](notes/band-edge-discriminant-gain-and-slope.md)
 - [Band-edge filter shape and near-lock slope](notes/band-edge-filter-shape-and-slope.md)
+- [Band-edge filter shape, guardband, and adjacent-channel cost](notes/band-edge-filter-shape-and-guardband.md)
 - [Receive-side synchronization map](notes/receive-side-synchronization-map.md)
 - [QPSK phase ambiguity resolution](notes/qpsk-phase-ambiguity-resolution.md)
 
@@ -86,6 +87,10 @@ Everything here stays in the study and simulation lane. No live emission instruc
 
 ![Band-edge filter shape and near-lock slope](assets/2026-05-22-band-edge-filter-design-comparison.png)
 
+### Band-edge filter shape, guardband, and adjacent-channel cost
+
+![Band-edge filter shape, guardband, and adjacent-channel cost](assets/2026-05-22-band-edge-guardband-cost-comparison.png)
+
 ### Receive-side synchronization map
 
 ![Receive-side synchronization map](assets/2026-05-16-receive-side-synchronization-map.png)
@@ -125,6 +130,7 @@ python3 scripts/generate_large_cfo_front_end_figure.py
 python3 scripts/generate_waveform_carrier_front_end_figure.py
 python3 scripts/generate_band_edge_discriminant_slope_figure.py
 python3 scripts/generate_band_edge_filter_design_comparison_figure.py
+python3 scripts/generate_band_edge_guardband_cost_figure.py
 python3 scripts/generate_receive_side_sync_map_figure.py
 python3 scripts/generate_qpsk_phase_ambiguity_figure.py
 python3 scripts/check_svg_layout.py

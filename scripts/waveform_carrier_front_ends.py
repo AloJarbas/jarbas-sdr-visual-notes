@@ -52,6 +52,23 @@ class BandEdgeDesignComparisonRow:
     imbalance_at_0p10: float
 
 
+@dataclass(frozen=True)
+class BandEdgeGuardbandCostRow:
+    design: str
+    samples_per_symbol: int
+    symbol_count: int
+    seed: int
+    trim: int
+    tap_count: int
+    rolloff: float
+    normalized_cfo_step: float
+    reference_spacing: float
+    capture_threshold: float
+    central_slope_wrt_deltaf_over_Rs: float
+    adjacent_capture_at_reference_spacing: float
+    spacing_for_capture_below_threshold: float
+
+
 def qpsk_symbols(count: int, seed: int = 0) -> list[complex]:
     rng = random.Random(seed)
     constellation = [cmath.exp(1j * angle) for angle in QPSK_ANGLES]
@@ -218,6 +235,30 @@ def band_edge_imbalance_from_filters(
     if total_energy == 0.0:
         return 0.0
     return (lower_energy - upper_energy) / total_energy
+
+
+def band_edge_capture_ratio_from_filters(
+    samples: Iterable[complex],
+    lower_taps: Iterable[complex],
+    upper_taps: Iterable[complex],
+    *,
+    trim: int = 96,
+) -> float:
+    sample_list = list(samples)
+    lower = convolve(sample_list, lower_taps)
+    upper = convolve(sample_list, upper_taps)
+
+    if len(upper) <= 2 * trim or len(lower) <= 2 * trim or len(sample_list) <= 2 * trim:
+        raise ValueError('trim leaves no usable samples')
+
+    total_energy = sum(abs(value) ** 2 for value in sample_list[trim:-trim])
+    if total_energy == 0.0:
+        return 0.0
+    captured_energy = (
+        sum(abs(value) ** 2 for value in upper[trim:-trim])
+        + sum(abs(value) ** 2 for value in lower[trim:-trim])
+    )
+    return captured_energy / total_energy
 
 
 def band_edge_imbalance(samples: Iterable[complex], samples_per_symbol: int, rolloff: float, *, tap_count: int = 63, trim: int = 96) -> float:
@@ -425,6 +466,85 @@ def sweep_band_edge_design_comparison(
     return rows
 
 
+def sweep_band_edge_guardband_cost_comparison(
+    rolloffs: Iterable[float],
+    tap_counts: Iterable[int],
+    *,
+    channel_spacings: Iterable[float],
+    capture_threshold: float = 0.05,
+    reference_spacing: float = 1.0,
+    samples_per_symbol: int = 4,
+    symbol_count: int = 1024,
+    span_symbols: int = 8,
+    seed: int = 19,
+    trim: int = 160,
+    normalized_cfo_step: float = 0.01,
+) -> list[BandEdgeGuardbandCostRow]:
+    rows: list[BandEdgeGuardbandCostRow] = []
+    normalized_rolloffs = list(rolloffs)
+    normalized_taps = list(tap_counts)
+    spacing_values = sorted(set(channel_spacings))
+    if reference_spacing not in spacing_values:
+        spacing_values.append(reference_spacing)
+        spacing_values.sort()
+
+    design_builders: dict[str, callable] = {
+        'proxy_bandpass': proxy_band_edge_taps,
+        'gnuradio_half_sine': gnuradio_half_sine_band_edge_taps,
+    }
+
+    for rolloff in normalized_rolloffs:
+        base_waveform = normalize_average_power(
+            pulse_shaped_qpsk(
+                rolloff,
+                samples_per_symbol,
+                symbol_count=symbol_count,
+                span_symbols=span_symbols,
+                seed=seed,
+            )
+        )
+        positive_waveform = apply_carrier_offset(base_waveform, normalized_cfo_step, samples_per_symbol)
+        negative_waveform = apply_carrier_offset(base_waveform, -normalized_cfo_step, samples_per_symbol)
+        shifted_waveforms = {
+            spacing: apply_carrier_offset(base_waveform, spacing, samples_per_symbol)
+            for spacing in spacing_values
+        }
+        for tap_count in normalized_taps:
+            for design, builder in design_builders.items():
+                lower_taps, upper_taps = builder(samples_per_symbol, rolloff, tap_count=tap_count)
+                positive = band_edge_imbalance_from_filters(positive_waveform, lower_taps, upper_taps, trim=trim)
+                negative = band_edge_imbalance_from_filters(negative_waveform, lower_taps, upper_taps, trim=trim)
+                orientation_sign = 1.0 if positive >= negative else -1.0
+                oriented_positive = orientation_sign * positive
+                oriented_negative = orientation_sign * negative
+                captures = {
+                    spacing: band_edge_capture_ratio_from_filters(shifted_waveforms[spacing], lower_taps, upper_taps, trim=trim)
+                    for spacing in spacing_values
+                }
+                spacing_for_threshold = next(
+                    (spacing for spacing in spacing_values if captures[spacing] <= capture_threshold),
+                    spacing_values[-1],
+                )
+                rows.append(
+                    BandEdgeGuardbandCostRow(
+                        design=design,
+                        samples_per_symbol=samples_per_symbol,
+                        symbol_count=symbol_count,
+                        seed=seed,
+                        trim=trim,
+                        tap_count=tap_count,
+                        rolloff=rolloff,
+                        normalized_cfo_step=normalized_cfo_step,
+                        reference_spacing=reference_spacing,
+                        capture_threshold=capture_threshold,
+                        central_slope_wrt_deltaf_over_Rs=(oriented_positive - oriented_negative) / (2.0 * normalized_cfo_step),
+                        adjacent_capture_at_reference_spacing=captures[reference_spacing],
+                        spacing_for_capture_below_threshold=spacing_for_threshold,
+                    )
+                )
+    return rows
+
+
 def sweep_front_ends(
     rolloffs: Iterable[float],
     normalized_cfo_values: Iterable[float],
@@ -523,6 +643,33 @@ def write_band_edge_design_comparison_csv(rows: Iterable[BandEdgeDesignCompariso
                 'imbalance_at_neg_step',
                 'central_slope_wrt_deltaf_over_Rs',
                 'imbalance_at_0p10',
+            ],
+        )
+        writer.writeheader()
+        for row in rows:
+            writer.writerow(asdict(row))
+
+
+def write_band_edge_guardband_cost_csv(rows: Iterable[BandEdgeGuardbandCostRow], path: str | Path) -> None:
+    output = Path(path)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    with output.open('w', newline='') as handle:
+        writer = csv.DictWriter(
+            handle,
+            fieldnames=[
+                'design',
+                'samples_per_symbol',
+                'symbol_count',
+                'seed',
+                'trim',
+                'tap_count',
+                'rolloff',
+                'normalized_cfo_step',
+                'reference_spacing',
+                'capture_threshold',
+                'central_slope_wrt_deltaf_over_Rs',
+                'adjacent_capture_at_reference_spacing',
+                'spacing_for_capture_below_threshold',
             ],
         )
         writer.writeheader()
