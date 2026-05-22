@@ -3,6 +3,7 @@ from __future__ import annotations
 import shutil
 import subprocess
 import tempfile
+import xml.etree.ElementTree as ET
 from html import escape
 from pathlib import Path
 from textwrap import wrap
@@ -67,6 +68,24 @@ def add_wrapped_text(
     return lines
 
 
+def _square_pad_svg_for_quicklook(svg_file: Path, destination: Path) -> Path:
+    tree = ET.parse(svg_file)
+    root = tree.getroot()
+    width = float(root.attrib.get('width', root.attrib['viewBox'].split()[2]))
+    height = float(root.attrib.get('height', root.attrib['viewBox'].split()[3]))
+    if abs(width - height) < 1.0e-9:
+        tree.write(destination, encoding='utf-8', xml_declaration=False)
+        return destination
+
+    square = int(max(width, height))
+    root.set('width', str(square))
+    root.set('height', str(square))
+    root.set('viewBox', f'0 0 {square} {square}')
+    tree.write(destination, encoding='utf-8', xml_declaration=False)
+    return destination
+
+
+
 def export_png_from_svg(svg_path: str | Path, png_path: str | Path, *, size: int = 1600, dpi: int = 300) -> bool:
     svg_file = Path(svg_path).resolve()
     png_file = Path(png_path).resolve()
@@ -75,13 +94,14 @@ def export_png_from_svg(svg_path: str | Path, png_path: str | Path, *, size: int
         return False
 
     with tempfile.TemporaryDirectory() as tmpdir:
+        padded_svg = _square_pad_svg_for_quicklook(svg_file, Path(tmpdir) / svg_file.name)
         subprocess.run(
-            [qlmanage, '-t', '-s', str(size), '-o', tmpdir, str(svg_file)],
+            [qlmanage, '-t', '-s', str(size), '-o', tmpdir, str(padded_svg)],
             check=True,
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,
         )
-        generated = Path(tmpdir) / f'{svg_file.name}.png'
+        generated = Path(tmpdir) / f'{padded_svg.name}.png'
         if not generated.exists():
             raise FileNotFoundError(f'Quick Look did not generate {generated}')
         png_file.parent.mkdir(parents=True, exist_ok=True)

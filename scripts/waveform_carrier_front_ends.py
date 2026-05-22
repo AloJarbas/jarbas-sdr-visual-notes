@@ -35,6 +35,23 @@ class BandEdgeSlopeRow:
     imbalance_at_0p10: float
 
 
+@dataclass(frozen=True)
+class BandEdgeDesignComparisonRow:
+    design: str
+    samples_per_symbol: int
+    symbol_count: int
+    seed: int
+    trim: int
+    tap_count: int
+    rolloff: float
+    normalized_cfo_step: float
+    orientation_sign: float
+    imbalance_at_pos_step: float
+    imbalance_at_neg_step: float
+    central_slope_wrt_deltaf_over_Rs: float
+    imbalance_at_0p10: float
+
+
 def qpsk_symbols(count: int, seed: int = 0) -> list[complex]:
     rng = random.Random(seed)
     constellation = [cmath.exp(1j * angle) for angle in QPSK_ANGLES]
@@ -59,6 +76,11 @@ def convolve(samples: Iterable[complex], taps: Iterable[complex]) -> list[comple
         for tap_idx, tap in enumerate(tap_list):
             out[sample_idx + tap_idx] += sample * tap
     return out
+
+
+def sinc(value: float) -> float:
+    argument = math.pi * value
+    return 1.0 if abs(value) < 1.0e-12 else math.sin(argument) / argument
 
 
 def srrc_taps(rolloff: float, samples_per_symbol: int, span_symbols: int = 8) -> list[float]:
@@ -132,12 +154,60 @@ def complex_bandpass_taps(center_cycles_per_sample: float, half_bandwidth_cycles
     ]
 
 
-def band_edge_imbalance(samples: Iterable[complex], samples_per_symbol: int, rolloff: float, *, tap_count: int = 63, trim: int = 96) -> float:
-    sample_list = list(samples)
+def gnuradio_half_sine_band_edge_taps(samples_per_symbol: int, rolloff: float, tap_count: int = 63) -> tuple[list[complex], list[complex]]:
+    if samples_per_symbol <= 0:
+        raise ValueError('samples_per_symbol must be positive')
+    if not (0.0 <= rolloff <= 1.0):
+        raise ValueError('rolloff must be in [0, 1]')
+    if tap_count <= 0:
+        raise ValueError('tap_count must be positive')
+
+    M = round(tap_count / samples_per_symbol)
+    power = 0.0
+    baseband_taps: list[float] = []
+    half_sps_inv = 2.0 / samples_per_symbol
+    for tap_idx in range(tap_count):
+        k = -M + tap_idx * half_sps_inv
+        position = rolloff * k
+        tap = sinc(position - 0.5) + sinc(position + 0.5)
+        power += tap * tap
+        baseband_taps.append(tap)
+
+    if power <= 0.0:
+        raise ValueError('filter power must be positive')
+
+    lower = [0j] * tap_count
+    upper = [0j] * tap_count
+    midpoint = (tap_count - 1) / 2.0
+    inv_power = 1.0 / power
+    inv_twice_sps = 0.5 / samples_per_symbol
+    for tap_idx, tap in enumerate(baseband_taps):
+        normalized_tap = tap * inv_power
+        k = (tap_idx - midpoint) * inv_twice_sps
+        index = tap_count - tap_idx - 1
+        lower[index] = normalized_tap * cmath.exp(-1j * 2.0 * math.pi * (1.0 + rolloff) * k)
+        upper[index] = lower[index].conjugate()
+    return lower, upper
+
+
+def proxy_band_edge_taps(samples_per_symbol: int, rolloff: float, tap_count: int = 63) -> tuple[list[complex], list[complex]]:
     edge_center = (2.0 + rolloff) / (4.0 * samples_per_symbol)
     half_bandwidth = max(rolloff / (4.0 * samples_per_symbol), 1.0 / (64.0 * samples_per_symbol))
-    upper = convolve(sample_list, complex_bandpass_taps(edge_center, half_bandwidth, tap_count=tap_count))
-    lower = convolve(sample_list, complex_bandpass_taps(-edge_center, half_bandwidth, tap_count=tap_count))
+    upper = complex_bandpass_taps(edge_center, half_bandwidth, tap_count=tap_count)
+    lower = complex_bandpass_taps(-edge_center, half_bandwidth, tap_count=tap_count)
+    return lower, upper
+
+
+def band_edge_imbalance_from_filters(
+    samples: Iterable[complex],
+    lower_taps: Iterable[complex],
+    upper_taps: Iterable[complex],
+    *,
+    trim: int = 96,
+) -> float:
+    sample_list = list(samples)
+    lower = convolve(sample_list, lower_taps)
+    upper = convolve(sample_list, upper_taps)
 
     if len(upper) <= 2 * trim or len(lower) <= 2 * trim or len(sample_list) <= 2 * trim:
         raise ValueError('trim leaves no usable samples')
@@ -147,7 +217,12 @@ def band_edge_imbalance(samples: Iterable[complex], samples_per_symbol: int, rol
     total_energy = sum(abs(value) ** 2 for value in sample_list[trim:-trim])
     if total_energy == 0.0:
         return 0.0
-    return (upper_energy - lower_energy) / total_energy
+    return (lower_energy - upper_energy) / total_energy
+
+
+def band_edge_imbalance(samples: Iterable[complex], samples_per_symbol: int, rolloff: float, *, tap_count: int = 63, trim: int = 96) -> float:
+    lower_taps, upper_taps = proxy_band_edge_taps(samples_per_symbol, rolloff, tap_count=tap_count)
+    return -band_edge_imbalance_from_filters(samples, lower_taps, upper_taps, trim=trim)
 
 
 def normalize_average_power(samples: Iterable[complex]) -> list[complex]:
@@ -283,6 +358,73 @@ def sweep_band_edge_slopes(
     return rows
 
 
+def sweep_band_edge_design_comparison(
+    rolloffs: Iterable[float],
+    tap_counts: Iterable[int],
+    *,
+    samples_per_symbol: int = 4,
+    symbol_count: int = 1024,
+    span_symbols: int = 8,
+    seed: int = 19,
+    trim: int = 160,
+    normalized_cfo_step: float = 0.01,
+    reference_cfo: float = 0.10,
+) -> list[BandEdgeDesignComparisonRow]:
+    rows: list[BandEdgeDesignComparisonRow] = []
+    normalized_rolloffs = list(rolloffs)
+    normalized_taps = list(tap_counts)
+    design_builders: dict[str, callable] = {
+        'proxy_bandpass': proxy_band_edge_taps,
+        'gnuradio_half_sine': gnuradio_half_sine_band_edge_taps,
+    }
+
+    for rolloff in normalized_rolloffs:
+        base_waveform = normalize_average_power(
+            pulse_shaped_qpsk(
+                rolloff,
+                samples_per_symbol,
+                symbol_count=symbol_count,
+                span_symbols=span_symbols,
+                seed=seed,
+            )
+        )
+        positive_waveform = apply_carrier_offset(base_waveform, normalized_cfo_step, samples_per_symbol)
+        negative_waveform = apply_carrier_offset(base_waveform, -normalized_cfo_step, samples_per_symbol)
+        reference_waveform = apply_carrier_offset(base_waveform, reference_cfo, samples_per_symbol)
+        for tap_count in normalized_taps:
+            for design, builder in design_builders.items():
+                lower_taps, upper_taps = builder(samples_per_symbol, rolloff, tap_count=tap_count)
+                positive = band_edge_imbalance_from_filters(positive_waveform, lower_taps, upper_taps, trim=trim)
+                negative = band_edge_imbalance_from_filters(negative_waveform, lower_taps, upper_taps, trim=trim)
+                orientation_sign = 1.0 if positive >= negative else -1.0
+                oriented_positive = orientation_sign * positive
+                oriented_negative = orientation_sign * negative
+                oriented_reference = orientation_sign * band_edge_imbalance_from_filters(
+                    reference_waveform,
+                    lower_taps,
+                    upper_taps,
+                    trim=trim,
+                )
+                rows.append(
+                    BandEdgeDesignComparisonRow(
+                        design=design,
+                        samples_per_symbol=samples_per_symbol,
+                        symbol_count=symbol_count,
+                        seed=seed,
+                        trim=trim,
+                        tap_count=tap_count,
+                        rolloff=rolloff,
+                        normalized_cfo_step=normalized_cfo_step,
+                        orientation_sign=orientation_sign,
+                        imbalance_at_pos_step=oriented_positive,
+                        imbalance_at_neg_step=oriented_negative,
+                        central_slope_wrt_deltaf_over_Rs=(oriented_positive - oriented_negative) / (2.0 * normalized_cfo_step),
+                        imbalance_at_0p10=oriented_reference,
+                    )
+                )
+    return rows
+
+
 def sweep_front_ends(
     rolloffs: Iterable[float],
     normalized_cfo_values: Iterable[float],
@@ -350,6 +492,33 @@ def write_band_edge_slope_csv(rows: Iterable[BandEdgeSlopeRow], path: str | Path
                 'tap_count',
                 'rolloff',
                 'normalized_cfo_step',
+                'imbalance_at_pos_step',
+                'imbalance_at_neg_step',
+                'central_slope_wrt_deltaf_over_Rs',
+                'imbalance_at_0p10',
+            ],
+        )
+        writer.writeheader()
+        for row in rows:
+            writer.writerow(asdict(row))
+
+
+def write_band_edge_design_comparison_csv(rows: Iterable[BandEdgeDesignComparisonRow], path: str | Path) -> None:
+    output = Path(path)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    with output.open('w', newline='') as handle:
+        writer = csv.DictWriter(
+            handle,
+            fieldnames=[
+                'design',
+                'samples_per_symbol',
+                'symbol_count',
+                'seed',
+                'trim',
+                'tap_count',
+                'rolloff',
+                'normalized_cfo_step',
+                'orientation_sign',
                 'imbalance_at_pos_step',
                 'imbalance_at_neg_step',
                 'central_slope_wrt_deltaf_over_Rs',
