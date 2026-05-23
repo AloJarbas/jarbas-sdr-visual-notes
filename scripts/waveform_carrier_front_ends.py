@@ -69,6 +69,33 @@ class BandEdgeGuardbandCostRow:
     spacing_for_capture_below_threshold: float
 
 
+@dataclass(frozen=True)
+class BandEdgeClosedLoopRow:
+    design: str
+    samples_per_symbol: int
+    symbol_count: int
+    desired_seed: int
+    adjacent_seed: int
+    trim: int
+    tap_count: int
+    rolloff: float
+    desired_normalized_cfo: float
+    channel_spacing: float
+    block_symbols: int
+    loop_gain: float
+    tail_block_count: int
+    settle_threshold: float
+    adjacent_enabled: bool
+    adjacent_relative_power_db: float
+    orientation_sign: float
+    isolated_central_slope_wrt_deltaf_over_Rs: float
+    final_residual_cfo: float
+    tail_mean_abs_residual_cfo: float
+    tail_peak_abs_residual_cfo: float
+    tail_within_threshold_fraction: float
+    tail_mean_abs_detector_output: float
+
+
 def qpsk_symbols(count: int, seed: int = 0) -> list[complex]:
     rng = random.Random(seed)
     constellation = [cmath.exp(1j * angle) for angle in QPSK_ANGLES]
@@ -275,6 +302,76 @@ def normalize_average_power(samples: Iterable[complex]) -> list[complex]:
         return sample_list
     scale = 1.0 / math.sqrt(mean_power)
     return [sample * scale for sample in sample_list]
+
+
+def mix_desired_and_adjacent(
+    desired: Iterable[complex],
+    adjacent: Iterable[complex],
+    *,
+    adjacent_enabled: bool,
+    adjacent_relative_power_db: float,
+) -> list[complex]:
+    desired_list = list(desired)
+    if not adjacent_enabled:
+        return desired_list
+    adjacent_list = list(adjacent)
+    if len(desired_list) != len(adjacent_list):
+        raise ValueError('desired and adjacent waveforms must have the same length')
+    amplitude_scale = 10.0 ** (adjacent_relative_power_db / 20.0)
+    return normalize_average_power(
+        desired_sample + amplitude_scale * adjacent_sample
+        for desired_sample, adjacent_sample in zip(desired_list, adjacent_list)
+    )
+
+
+def band_edge_design_orientation_sign(
+    base_waveform: Iterable[complex],
+    lower_taps: Iterable[complex],
+    upper_taps: Iterable[complex],
+    *,
+    samples_per_symbol: int,
+    trim: int,
+    normalized_cfo_step: float = 0.01,
+) -> tuple[float, float]:
+    base = list(base_waveform)
+    positive = band_edge_imbalance_from_filters(
+        apply_carrier_offset(base, normalized_cfo_step, samples_per_symbol),
+        lower_taps,
+        upper_taps,
+        trim=trim,
+    )
+    negative = band_edge_imbalance_from_filters(
+        apply_carrier_offset(base, -normalized_cfo_step, samples_per_symbol),
+        lower_taps,
+        upper_taps,
+        trim=trim,
+    )
+    orientation_sign = 1.0 if positive >= negative else -1.0
+    central_slope = orientation_sign * (positive - negative) / (2.0 * normalized_cfo_step)
+    return orientation_sign, central_slope
+
+
+def rotate_by_nco(
+    samples: Iterable[complex],
+    *,
+    samples_per_symbol: int,
+    normalized_frequency: float,
+    initial_phase: float,
+) -> list[complex]:
+    sample_list = list(samples)
+    phase_step = 2.0 * math.pi * normalized_frequency / samples_per_symbol
+    return [sample * cmath.exp(-1j * (initial_phase + phase_step * idx)) for idx, sample in enumerate(sample_list)]
+
+
+def update_nco_phase(
+    phase: float,
+    *,
+    normalized_frequency: float,
+    samples_per_symbol: int,
+    sample_count: int,
+) -> float:
+    phase_step = 2.0 * math.pi * normalized_frequency / samples_per_symbol
+    return math.remainder(phase + phase_step * sample_count, 2.0 * math.pi)
 
 
 def band_edge_slope_row(
@@ -545,6 +642,220 @@ def sweep_band_edge_guardband_cost_comparison(
     return rows
 
 
+def band_edge_closed_loop_row(
+    design: str,
+    *,
+    adjacent_enabled: bool,
+    adjacent_relative_power_db: float = 0.0,
+    samples_per_symbol: int = 4,
+    symbol_count: int = 3072,
+    span_symbols: int = 8,
+    desired_seed: int = 19,
+    adjacent_seed: int = 173,
+    trim: int = 96,
+    tap_count: int = 63,
+    rolloff: float = 0.35,
+    desired_normalized_cfo: float = 0.0,
+    channel_spacing: float = 1.0,
+    block_symbols: int = 96,
+    loop_gain: float = 0.02,
+    tail_block_count: int = 8,
+    settle_threshold: float = 0.05,
+) -> BandEdgeClosedLoopRow:
+    if design == 'proxy_bandpass':
+        builder = proxy_band_edge_taps
+    elif design == 'gnuradio_half_sine':
+        builder = gnuradio_half_sine_band_edge_taps
+    else:
+        raise ValueError(f'unknown design: {design}')
+
+    if block_symbols <= 0:
+        raise ValueError('block_symbols must be positive')
+    block_length = block_symbols * samples_per_symbol
+    if block_length <= 2 * trim:
+        raise ValueError('block length must exceed 2 * trim')
+
+    desired = normalize_average_power(
+        apply_carrier_offset(
+            pulse_shaped_qpsk(
+                rolloff,
+                samples_per_symbol,
+                symbol_count=symbol_count,
+                span_symbols=span_symbols,
+                seed=desired_seed,
+            ),
+            desired_normalized_cfo,
+            samples_per_symbol,
+        )
+    )
+    adjacent = normalize_average_power(
+        apply_carrier_offset(
+            pulse_shaped_qpsk(
+                rolloff,
+                samples_per_symbol,
+                symbol_count=symbol_count,
+                span_symbols=span_symbols,
+                seed=adjacent_seed,
+            ),
+            desired_normalized_cfo + channel_spacing,
+            samples_per_symbol,
+        )
+    )
+    mixed = mix_desired_and_adjacent(
+        desired,
+        adjacent,
+        adjacent_enabled=adjacent_enabled,
+        adjacent_relative_power_db=adjacent_relative_power_db,
+    )
+
+    lower_taps, upper_taps = builder(samples_per_symbol, rolloff, tap_count=tap_count)
+    orientation_sign, isolated_central_slope = band_edge_design_orientation_sign(
+        normalize_average_power(
+            pulse_shaped_qpsk(
+                rolloff,
+                samples_per_symbol,
+                symbol_count=symbol_count,
+                span_symbols=span_symbols,
+                seed=desired_seed,
+            )
+        ),
+        lower_taps,
+        upper_taps,
+        samples_per_symbol=samples_per_symbol,
+        trim=trim,
+    )
+
+    residual_history: list[float] = []
+    detector_history: list[float] = []
+    frequency_estimate = 0.0
+    phase_estimate = 0.0
+
+    for start in range(0, len(mixed) - block_length + 1, block_length):
+        block = mixed[start:start + block_length]
+        corrected = rotate_by_nco(
+            block,
+            samples_per_symbol=samples_per_symbol,
+            normalized_frequency=frequency_estimate,
+            initial_phase=phase_estimate,
+        )
+        detector_output = orientation_sign * band_edge_imbalance_from_filters(
+            corrected,
+            lower_taps,
+            upper_taps,
+            trim=trim,
+        )
+        frequency_estimate += loop_gain * detector_output
+        phase_estimate = update_nco_phase(
+            phase_estimate,
+            normalized_frequency=frequency_estimate,
+            samples_per_symbol=samples_per_symbol,
+            sample_count=block_length,
+        )
+        residual_history.append(frequency_estimate - desired_normalized_cfo)
+        detector_history.append(detector_output)
+
+    if len(residual_history) < tail_block_count:
+        raise ValueError('not enough closed-loop blocks for the requested tail summary')
+
+    residual_tail = residual_history[-tail_block_count:]
+    detector_tail = detector_history[-tail_block_count:]
+
+    return BandEdgeClosedLoopRow(
+        design=design,
+        samples_per_symbol=samples_per_symbol,
+        symbol_count=symbol_count,
+        desired_seed=desired_seed,
+        adjacent_seed=adjacent_seed,
+        trim=trim,
+        tap_count=tap_count,
+        rolloff=rolloff,
+        desired_normalized_cfo=desired_normalized_cfo,
+        channel_spacing=channel_spacing,
+        block_symbols=block_symbols,
+        loop_gain=loop_gain,
+        tail_block_count=tail_block_count,
+        settle_threshold=settle_threshold,
+        adjacent_enabled=adjacent_enabled,
+        adjacent_relative_power_db=adjacent_relative_power_db,
+        orientation_sign=orientation_sign,
+        isolated_central_slope_wrt_deltaf_over_Rs=isolated_central_slope,
+        final_residual_cfo=residual_history[-1],
+        tail_mean_abs_residual_cfo=sum(abs(value) for value in residual_tail) / tail_block_count,
+        tail_peak_abs_residual_cfo=max(abs(value) for value in residual_tail),
+        tail_within_threshold_fraction=sum(1 for value in residual_tail if abs(value) <= settle_threshold) / tail_block_count,
+        tail_mean_abs_detector_output=sum(abs(value) for value in detector_tail) / tail_block_count,
+    )
+
+
+def study_band_edge_closed_loop_adjacent_pull(
+    adjacent_relative_power_db_values: Iterable[float],
+    *,
+    include_desired_only: bool = True,
+    samples_per_symbol: int = 4,
+    symbol_count: int = 3072,
+    span_symbols: int = 8,
+    desired_seed: int = 19,
+    adjacent_seed: int = 173,
+    trim: int = 96,
+    tap_count: int = 63,
+    rolloff: float = 0.35,
+    desired_normalized_cfo: float = 0.0,
+    channel_spacing: float = 1.0,
+    block_symbols: int = 96,
+    loop_gain: float = 0.02,
+    tail_block_count: int = 8,
+    settle_threshold: float = 0.05,
+) -> list[BandEdgeClosedLoopRow]:
+    rows: list[BandEdgeClosedLoopRow] = []
+    designs = ['proxy_bandpass', 'gnuradio_half_sine']
+    for design in designs:
+        if include_desired_only:
+            rows.append(
+                band_edge_closed_loop_row(
+                    design,
+                    adjacent_enabled=False,
+                    adjacent_relative_power_db=0.0,
+                    samples_per_symbol=samples_per_symbol,
+                    symbol_count=symbol_count,
+                    span_symbols=span_symbols,
+                    desired_seed=desired_seed,
+                    adjacent_seed=adjacent_seed,
+                    trim=trim,
+                    tap_count=tap_count,
+                    rolloff=rolloff,
+                    desired_normalized_cfo=desired_normalized_cfo,
+                    channel_spacing=channel_spacing,
+                    block_symbols=block_symbols,
+                    loop_gain=loop_gain,
+                    tail_block_count=tail_block_count,
+                    settle_threshold=settle_threshold,
+                )
+            )
+        for adjacent_relative_power_db in adjacent_relative_power_db_values:
+            rows.append(
+                band_edge_closed_loop_row(
+                    design,
+                    adjacent_enabled=True,
+                    adjacent_relative_power_db=adjacent_relative_power_db,
+                    samples_per_symbol=samples_per_symbol,
+                    symbol_count=symbol_count,
+                    span_symbols=span_symbols,
+                    desired_seed=desired_seed,
+                    adjacent_seed=adjacent_seed,
+                    trim=trim,
+                    tap_count=tap_count,
+                    rolloff=rolloff,
+                    desired_normalized_cfo=desired_normalized_cfo,
+                    channel_spacing=channel_spacing,
+                    block_symbols=block_symbols,
+                    loop_gain=loop_gain,
+                    tail_block_count=tail_block_count,
+                    settle_threshold=settle_threshold,
+                )
+            )
+    return rows
+
+
 def sweep_front_ends(
     rolloffs: Iterable[float],
     normalized_cfo_values: Iterable[float],
@@ -670,6 +981,43 @@ def write_band_edge_guardband_cost_csv(rows: Iterable[BandEdgeGuardbandCostRow],
                 'central_slope_wrt_deltaf_over_Rs',
                 'adjacent_capture_at_reference_spacing',
                 'spacing_for_capture_below_threshold',
+            ],
+        )
+        writer.writeheader()
+        for row in rows:
+            writer.writerow(asdict(row))
+
+
+def write_band_edge_closed_loop_csv(rows: Iterable[BandEdgeClosedLoopRow], path: str | Path) -> None:
+    output = Path(path)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    with output.open('w', newline='') as handle:
+        writer = csv.DictWriter(
+            handle,
+            fieldnames=[
+                'design',
+                'samples_per_symbol',
+                'symbol_count',
+                'desired_seed',
+                'adjacent_seed',
+                'trim',
+                'tap_count',
+                'rolloff',
+                'desired_normalized_cfo',
+                'channel_spacing',
+                'block_symbols',
+                'loop_gain',
+                'tail_block_count',
+                'settle_threshold',
+                'adjacent_enabled',
+                'adjacent_relative_power_db',
+                'orientation_sign',
+                'isolated_central_slope_wrt_deltaf_over_Rs',
+                'final_residual_cfo',
+                'tail_mean_abs_residual_cfo',
+                'tail_peak_abs_residual_cfo',
+                'tail_within_threshold_fraction',
+                'tail_mean_abs_detector_output',
             ],
         )
         writer.writeheader()

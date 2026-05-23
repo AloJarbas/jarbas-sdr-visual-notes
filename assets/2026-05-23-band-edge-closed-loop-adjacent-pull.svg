@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2140" height="1600" viewBox="0 0 2140 1600">
+<style>
+text { font-family: "Inter", "Helvetica Neue", Arial, sans-serif; }
+.title { font: 700 34px "Inter", "Helvetica Neue", Arial, sans-serif; fill: #e2e8f0; }
+.subtitle { font: 500 18px "Inter", "Helvetica Neue", Arial, sans-serif; fill: #cbd5e1; }
+.label { font: 700 22px "Inter", "Helvetica Neue", Arial, sans-serif; fill: #dbeafe; }
+.small { font: 500 16px "Inter", "Helvetica Neue", Arial, sans-serif; fill: #cbd5e1; }
+.tiny { font: 500 13px "Inter", "Helvetica Neue", Arial, sans-serif; fill: #cbd5e1; }
+</style>
+<rect x="0.0" y="0.0" width="2140.0" height="1600.0" rx="18.0" fill="#08111b" opacity="1.0"/>
+<rect x="24.0" y="24.0" width="2092.0" height="1552.0" rx="24.0" fill="#0d1826" opacity="1.0" stroke="#1e293b" stroke-width="2.0"/>
+<text x="60.0" y="66.0" class="title" text-anchor="start">Band-edge closed-loop pull with one adjacent interferer</text>
+<text x="60.0" y="98.0" class="subtitle" text-anchor="start">The half-sine path stays honest on isolated slope, but this bounded loop test asks what happens after a nearby QPSK channel is actually mixed in.</text>
+<rect x="60.0" y="148.0" width="2020.0" height="332.0" rx="18.0" fill="#102031" opacity="1.0" stroke="#5d7fa3" stroke-width="2.0"/>
+<text x="84.0" y="186.0" class="label" text-anchor="start">One bounded loop test was enough to turn the static tradeoff into a real receiver claim</text>
+<text x="84.0" y="222.0" class="small" text-anchor="start"><tspan x="84.0" dy="0">Same waveform setup as the guardband note: SRRC QPSK, 4 samples/symbol, 63-tap band-edge filters, one adjacent interferer at 1.0 R_s spacing, and one simple blockwise frequency loop. The loop starts at the right</tspan><tspan x="84.0" dy="21.0">carrier. The only job here is to watch how far the adjacent channel pulls it away.</tspan></text>
+<rect x="88.0" y="314.0" width="640.0" height="126.0" rx="16.0" fill="#14263a" opacity="1.0" stroke="#93c5fd" stroke-width="1.8"/>
+<text x="106.0" y="342.0" class="label" text-anchor="start">Desired only: both loops stay near zero</text>
+<text x="106.0" y="368.0" class="tiny" text-anchor="start"><tspan x="106.0" dy="0">Proxy tail pull is 0.0003 R_s and half-sine is 0.0000 R_s. The wider</tspan><tspan x="106.0" dy="18.0">detector is not noisy by itself in this bounded case.</tspan></text>
+<rect x="750.0" y="314.0" width="640.0" height="126.0" rx="16.0" fill="#341c12" opacity="1.0" stroke="#facc15" stroke-width="1.8"/>
+<text x="768.0" y="342.0" class="label" text-anchor="start">0 dB adjacent: the half-sine slope win turns into larger pull</text>
+<text x="768.0" y="368.0" class="tiny" text-anchor="start"><tspan x="768.0" dy="0">Proxy still averages 0.039 R_s with 100% of the tail inside ±0.05 R_s.</tspan><tspan x="768.0" dy="18.0">Half-sine jumps to 0.099 R_s and drops to 0%.</tspan></text>
+<rect x="1412.0" y="314.0" width="640.0" height="126.0" rx="16.0" fill="#3a1018" opacity="1.0" stroke="#fda4af" stroke-width="1.8"/>
+<text x="1430.0" y="342.0" class="label" text-anchor="start">+6 dB adjacent: both are stressed, but not equally</text>
+<text x="1430.0" y="368.0" class="tiny" text-anchor="start"><tspan x="1430.0" dy="0">Proxy reaches 0.064 R_s. Half-sine reaches 0.178 R_s with detector output</tspan><tspan x="1430.0" dy="18.0">still averaging 0.308. The wide lane keeps listening harder into the</tspan><tspan x="1430.0" dy="18.0">neighbor.</tspan></text>
+<rect x="60.0" y="536.0" width="980.0" height="700.0" rx="18.0" fill="#102031" opacity="1.0" stroke="#5d7fa3" stroke-width="2.0"/>
+<text x="84.0" y="572.0" class="label" text-anchor="start">Tail carrier pull versus adjacent power</text>
+<text x="84.0" y="606.0" class="small" text-anchor="start"><tspan x="84.0" dy="0">The y-axis is the mean |residual CFO| over the last eight loop blocks. The dashed line marks the same</tspan><tspan x="84.0" dy="20.0">±0.05 R_s band used for the settle-quality panel.</tspan></text>
+<line x1="146.0" y1="1074.0" x2="980.0" y2="1074.0" stroke="#5d7fa3" stroke-width="2.2" opacity="1.0" stroke-linecap="round"/>
+<line x1="146.0" y1="660.0" x2="146.0" y2="1074.0" stroke="#5d7fa3" stroke-width="2.2" opacity="1.0" stroke-linecap="round"/>
+<line x1="146.0" y1="1068.0" x2="146.0" y2="1080.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="146.0" y="1102.0" class="tiny" text-anchor="middle">desired only</text>
+<line x1="354.5" y1="1068.0" x2="354.5" y2="1080.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="354.5" y="1102.0" class="tiny" text-anchor="middle">-12 dB</text>
+<line x1="354.5" y1="660.0" x2="354.5" y2="1074.0" stroke="#27415a" stroke-width="1.0" opacity="0.7" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="563.0" y1="1068.0" x2="563.0" y2="1080.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="563.0" y="1102.0" class="tiny" text-anchor="middle">-6 dB</text>
+<line x1="563.0" y1="660.0" x2="563.0" y2="1074.0" stroke="#27415a" stroke-width="1.0" opacity="0.7" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="771.5" y1="1068.0" x2="771.5" y2="1080.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="771.5" y="1102.0" class="tiny" text-anchor="middle">0 dB</text>
+<line x1="771.5" y1="660.0" x2="771.5" y2="1074.0" stroke="#27415a" stroke-width="1.0" opacity="0.7" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="980.0" y1="1068.0" x2="980.0" y2="1080.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="980.0" y="1102.0" class="tiny" text-anchor="middle">+6 dB</text>
+<line x1="140.0" y1="1074.0" x2="152.0" y2="1074.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="128.0" y="1078.0" class="tiny" text-anchor="end">0.00</text>
+<line x1="140.0" y1="979.9" x2="152.0" y2="979.9" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="128.0" y="983.9" class="tiny" text-anchor="end">0.05</text>
+<line x1="146.0" y1="979.9" x2="980.0" y2="979.9" stroke="#27415a" stroke-width="1.0" opacity="0.7" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="140.0" y1="885.8" x2="152.0" y2="885.8" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="128.0" y="889.8" class="tiny" text-anchor="end">0.10</text>
+<line x1="146.0" y1="885.8" x2="980.0" y2="885.8" stroke="#27415a" stroke-width="1.0" opacity="0.7" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="140.0" y1="791.7" x2="152.0" y2="791.7" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="128.0" y="795.7" class="tiny" text-anchor="end">0.15</text>
+<line x1="146.0" y1="791.7" x2="980.0" y2="791.7" stroke="#27415a" stroke-width="1.0" opacity="0.7" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="140.0" y1="697.6" x2="152.0" y2="697.6" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="128.0" y="701.6" class="tiny" text-anchor="end">0.20</text>
+<line x1="146.0" y1="979.9" x2="980.0" y2="979.9" stroke="#facc15" stroke-width="2.0" opacity="0.9" stroke-linecap="round" stroke-dasharray="10 8"/>
+<text x="970.0" y="971.9" class="tiny" text-anchor="end">±0.05 R_s band</text>
+<text x="150.0" y="646.0" class="tiny" text-anchor="start">mean |tail residual CFO|  (Δf / R_s)</text>
+<polyline points="146.0,1073.4 354.5,1063.5 563.0,1044.1 771.5,1001.1 980.0,952.9" fill="none" stroke="#93c5fd" stroke-width="3.4" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="146.0" cy="1073.4" r="5.5" fill="#93c5fd" opacity="1.0"/>
+<circle cx="354.5" cy="1063.5" r="5.5" fill="#93c5fd" opacity="1.0"/>
+<circle cx="563.0" cy="1044.1" r="5.5" fill="#93c5fd" opacity="1.0"/>
+<circle cx="771.5" cy="1001.1" r="5.5" fill="#93c5fd" opacity="1.0"/>
+<circle cx="980.0" cy="952.9" r="5.5" fill="#93c5fd" opacity="1.0"/>
+<polyline points="146.0,1074.0 354.5,1053.8 563.0,1005.8 771.5,886.8 980.0,739.0" fill="none" stroke="#fda4af" stroke-width="3.4" opacity="1.0" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="12 8"/>
+<rect x="141.0" y="1069.0" width="10.0" height="10.0" fill="#fda4af" opacity="1.0" rx="2.0"/>
+<rect x="349.5" y="1048.8" width="10.0" height="10.0" fill="#fda4af" opacity="1.0" rx="2.0"/>
+<rect x="558.0" y="1000.8" width="10.0" height="10.0" fill="#fda4af" opacity="1.0" rx="2.0"/>
+<rect x="766.5" y="881.8" width="10.0" height="10.0" fill="#fda4af" opacity="1.0" rx="2.0"/>
+<rect x="975.0" y="734.0" width="10.0" height="10.0" fill="#fda4af" opacity="1.0" rx="2.0"/>
+<rect x="84.0" y="1134.0" width="390.0" height="76.0" rx="12.0" fill="#13263b" opacity="1.0" stroke="#4f8cc9" stroke-width="1.4"/>
+<line x1="106.0" y1="1162.0" x2="166.0" y2="1162.0" stroke="#93c5fd" stroke-width="2.8" opacity="1.0" stroke-linecap="round"/>
+<circle cx="136.0" cy="1162.0" r="5.0" fill="#93c5fd" opacity="1.0"/>
+<text x="180.0" y="1166.0" class="tiny" text-anchor="start">Current proxy bandpass</text>
+<line x1="106.0" y1="1186.0" x2="166.0" y2="1186.0" stroke="#fda4af" stroke-width="2.8" opacity="1.0" stroke-linecap="round" stroke-dasharray="12 8"/>
+<rect x="131.5" y="1181.5" width="9.0" height="9.0" fill="#fda4af" opacity="1.0" rx="2.0"/>
+<text x="180.0" y="1190.0" class="tiny" text-anchor="start">GNU Radio / half-sine style</text>
+<rect x="490.0" y="1102.0" width="516.0" height="94.0" rx="12.0" fill="#13263b" opacity="1.0" stroke="#4f8cc9" stroke-width="1.4"/>
+<text x="508.0" y="1130.0" class="tiny" text-anchor="start"><tspan x="508.0" dy="0">At 0 dB adjacent power, the same loop gain pulls the proxy</tspan><tspan x="508.0" dy="18.0">lane to 0.039 R_s but the half-sine lane to 0.099 R_s. That</tspan><tspan x="508.0" dy="18.0">is not a cosmetic redraw of the static detector bias; it is a</tspan><tspan x="508.0" dy="18.0">loop-level shift.</tspan></text>
+<rect x="1100.0" y="536.0" width="980.0" height="700.0" rx="18.0" fill="#102031" opacity="1.0" stroke="#5d7fa3" stroke-width="2.0"/>
+<text x="1124.0" y="572.0" class="label" text-anchor="start">How much of the tail stays inside ±0.05 R_s?</text>
+<text x="1124.0" y="606.0" class="small" text-anchor="start"><tspan x="1124.0" dy="0">This stays deliberately simple. For each case, count the last eight loop blocks and ask what fraction</tspan><tspan x="1124.0" dy="20.0">remain inside the ±0.05 R_s track-ready band. It is not BER; it is a bounded settle-quality summary.</tspan></text>
+<line x1="1186.0" y1="1074.0" x2="2020.0" y2="1074.0" stroke="#5d7fa3" stroke-width="2.2" opacity="1.0" stroke-linecap="round"/>
+<line x1="1186.0" y1="660.0" x2="1186.0" y2="1074.0" stroke="#5d7fa3" stroke-width="2.2" opacity="1.0" stroke-linecap="round"/>
+<line x1="1186.0" y1="1068.0" x2="1186.0" y2="1080.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="1186.0" y="1102.0" class="tiny" text-anchor="middle">desired only</text>
+<line x1="1394.5" y1="1068.0" x2="1394.5" y2="1080.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="1394.5" y="1102.0" class="tiny" text-anchor="middle">-12 dB</text>
+<line x1="1394.5" y1="660.0" x2="1394.5" y2="1074.0" stroke="#27415a" stroke-width="1.0" opacity="0.7" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="1603.0" y1="1068.0" x2="1603.0" y2="1080.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="1603.0" y="1102.0" class="tiny" text-anchor="middle">-6 dB</text>
+<line x1="1603.0" y1="660.0" x2="1603.0" y2="1074.0" stroke="#27415a" stroke-width="1.0" opacity="0.7" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="1811.5" y1="1068.0" x2="1811.5" y2="1080.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="1811.5" y="1102.0" class="tiny" text-anchor="middle">0 dB</text>
+<line x1="1811.5" y1="660.0" x2="1811.5" y2="1074.0" stroke="#27415a" stroke-width="1.0" opacity="0.7" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="2020.0" y1="1068.0" x2="2020.0" y2="1080.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="2020.0" y="1102.0" class="tiny" text-anchor="middle">+6 dB</text>
+<line x1="1180.0" y1="1074.0" x2="1192.0" y2="1074.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="1168.0" y="1078.0" class="tiny" text-anchor="end">0.00</text>
+<line x1="1180.0" y1="970.5" x2="1192.0" y2="970.5" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="1168.0" y="974.5" class="tiny" text-anchor="end">0.25</text>
+<line x1="1186.0" y1="970.5" x2="2020.0" y2="970.5" stroke="#27415a" stroke-width="1.0" opacity="0.7" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="1180.0" y1="867.0" x2="1192.0" y2="867.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="1168.0" y="871.0" class="tiny" text-anchor="end">0.50</text>
+<line x1="1186.0" y1="867.0" x2="2020.0" y2="867.0" stroke="#27415a" stroke-width="1.0" opacity="0.7" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="1180.0" y1="763.5" x2="1192.0" y2="763.5" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="1168.0" y="767.5" class="tiny" text-anchor="end">0.75</text>
+<line x1="1186.0" y1="763.5" x2="2020.0" y2="763.5" stroke="#27415a" stroke-width="1.0" opacity="0.7" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="1180.0" y1="660.0" x2="1192.0" y2="660.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="1168.0" y="664.0" class="tiny" text-anchor="end">1.00</text>
+<text x="1190.0" y="646.0" class="tiny" text-anchor="start">tail fraction inside ±0.05 R_s</text>
+<polyline points="1186.0,660.0 1394.5,660.0 1603.0,660.0 1811.5,660.0 2020.0,1074.0" fill="none" stroke="#93c5fd" stroke-width="3.4" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1186.0" cy="660.0" r="5.5" fill="#93c5fd" opacity="1.0"/>
+<circle cx="1394.5" cy="660.0" r="5.5" fill="#93c5fd" opacity="1.0"/>
+<circle cx="1603.0" cy="660.0" r="5.5" fill="#93c5fd" opacity="1.0"/>
+<circle cx="1811.5" cy="660.0" r="5.5" fill="#93c5fd" opacity="1.0"/>
+<circle cx="2020.0" cy="1074.0" r="5.5" fill="#93c5fd" opacity="1.0"/>
+<polyline points="1186.0,660.0 1394.5,660.0 1603.0,660.0 1811.5,1074.0 2020.0,1074.0" fill="none" stroke="#fda4af" stroke-width="3.4" opacity="1.0" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="12 8"/>
+<rect x="1181.0" y="655.0" width="10.0" height="10.0" fill="#fda4af" opacity="1.0" rx="2.0"/>
+<rect x="1389.5" y="655.0" width="10.0" height="10.0" fill="#fda4af" opacity="1.0" rx="2.0"/>
+<rect x="1598.0" y="655.0" width="10.0" height="10.0" fill="#fda4af" opacity="1.0" rx="2.0"/>
+<rect x="1806.5" y="1069.0" width="10.0" height="10.0" fill="#fda4af" opacity="1.0" rx="2.0"/>
+<rect x="2015.0" y="1069.0" width="10.0" height="10.0" fill="#fda4af" opacity="1.0" rx="2.0"/>
+<rect x="1124.0" y="1134.0" width="390.0" height="76.0" rx="12.0" fill="#13263b" opacity="1.0" stroke="#4f8cc9" stroke-width="1.4"/>
+<line x1="1146.0" y1="1162.0" x2="1206.0" y2="1162.0" stroke="#93c5fd" stroke-width="2.8" opacity="1.0" stroke-linecap="round"/>
+<circle cx="1176.0" cy="1162.0" r="5.0" fill="#93c5fd" opacity="1.0"/>
+<text x="1220.0" y="1166.0" class="tiny" text-anchor="start">Current proxy bandpass</text>
+<line x1="1146.0" y1="1186.0" x2="1206.0" y2="1186.0" stroke="#fda4af" stroke-width="2.8" opacity="1.0" stroke-linecap="round" stroke-dasharray="12 8"/>
+<rect x="1171.5" y="1181.5" width="9.0" height="9.0" fill="#fda4af" opacity="1.0" rx="2.0"/>
+<text x="1220.0" y="1190.0" class="tiny" text-anchor="start">GNU Radio / half-sine style</text>
+<rect x="1530.0" y="1102.0" width="516.0" height="94.0" rx="12.0" fill="#13263b" opacity="1.0" stroke="#4f8cc9" stroke-width="1.4"/>
+<text x="1548.0" y="1130.0" class="tiny" text-anchor="start"><tspan x="1548.0" dy="0">At 0 dB adjacent power, proxy stays inside the band for 100%</tspan><tspan x="1548.0" dy="18.0">of the tail while half-sine drops to 0%. The isolated-signal</tspan><tspan x="1548.0" dy="18.0">slope fix is real, but it is not the more robust</tspan><tspan x="1548.0" dy="18.0">adjacent-channel loop under this bounded stress.</tspan></text>
+<rect x="60.0" y="1288.0" width="2020.0" height="252.0" rx="18.0" fill="#102031" opacity="1.0" stroke="#5d7fa3" stroke-width="2.0"/>
+<text x="84.0" y="1322.0" class="label" text-anchor="start">What changed in the repo</text>
+<text x="84.0" y="1356.0" class="small" text-anchor="start"><tspan x="84.0" dy="0">The earlier guardband note already showed why the half-sine detector hears more adjacent energy. This pass turns that into the smallest honest loop claim: with the same blockwise loop and the same 1.0 R_s neighbor, both</tspan><tspan x="84.0" dy="20.0">designs stay calm on the desired-only waveform, but once the adjacent channel reaches 0 dB the half-sine lane gets pulled much farther from the true carrier. In this bounded setup the proxy lane averages 0.039 R_s and keeps</tspan><tspan x="84.0" dy="20.0">100% of the tail inside the band, while the half-sine lane averages 0.099 R_s and keeps only 0%.</tspan></text>
+<rect x="88.0" y="1398.0" width="640.0" height="102.0" rx="16.0" fill="#14263a" opacity="1.0" stroke="#93c5fd" stroke-width="1.8"/>
+<text x="106.0" y="1420.0" class="label" text-anchor="start">Keep</text>
+<text x="106.0" y="1442.0" class="tiny" text-anchor="start"><tspan x="106.0" dy="0">• Desired only still looks fine for both designs (0.0003 and 0.0000 R_s tail</tspan><tspan x="106.0" dy="18.0">pull). The half-sine lane still wins the isolated-slope check.</tspan></text>
+<rect x="750.0" y="1398.0" width="640.0" height="102.0" rx="16.0" fill="#173126" opacity="1.0" stroke="#4ade80" stroke-width="1.8"/>
+<text x="768.0" y="1420.0" class="label" text-anchor="start">New claim</text>
+<text x="768.0" y="1442.0" class="tiny" text-anchor="start"><tspan x="768.0" dy="0">• Once the adjacent channel is actually mixed in, the honest comparison</tspan><tspan x="768.0" dy="18.0">becomes loop-level, and under this bounded stress case the wider half-sine</tspan><tspan x="768.0" dy="18.0">lane is not the more robust adjacent-channel loop.</tspan></text>
+<rect x="1412.0" y="1398.0" width="640.0" height="102.0" rx="16.0" fill="#341c12" opacity="1.0" stroke="#facc15" stroke-width="1.8"/>
+<text x="1430.0" y="1420.0" class="label" text-anchor="start">Clean next move</text>
+<text x="1430.0" y="1442.0" class="tiny" text-anchor="start"><tspan x="1430.0" dy="0">• If this branch gets one more pass, vary spacing or loop gain — not both —</tspan><tspan x="1430.0" dy="18.0">and find the first point where the ranking flips instead of broadening into</tspan><tspan x="1430.0" dy="18.0">a full modem benchmark.</tspan></text>
+</svg>
