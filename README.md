@@ -27,6 +27,8 @@ Everything here stays in the study and simulation lane. No live emission instruc
 - [Band-edge filter shape and near-lock slope](notes/band-edge-filter-shape-and-slope.md)
 - [Band-edge filter shape, guardband, and adjacent-channel cost](notes/band-edge-filter-shape-and-guardband.md)
 - [Band-edge closed-loop pull with one adjacent interferer](notes/band-edge-closed-loop-adjacent-pull.md)
+- [Band-edge spacing boundary: when the loop preference flips](notes/band-edge-spacing-boundary.md)
+- [Band-edge loop-gain retuning: slower helps, but the ranking stays the same](notes/band-edge-loop-gain-retuning.md)
 - [Receive-side synchronization map](notes/receive-side-synchronization-map.md)
 - [QPSK phase ambiguity resolution](notes/qpsk-phase-ambiguity-resolution.md)
 
@@ -96,6 +98,14 @@ Everything here stays in the study and simulation lane. No live emission instruc
 
 ![Band-edge closed-loop pull with one adjacent interferer](assets/2026-05-23-band-edge-closed-loop-adjacent-pull.png)
 
+### Band-edge spacing boundary: when the loop preference flips
+
+![Band-edge spacing boundary: when the loop preference flips](assets/2026-05-24-band-edge-spacing-boundary.png)
+
+### Band-edge loop-gain retuning: slower helps, but the ranking stays the same
+
+![Band-edge loop-gain retuning: slower helps, but the ranking stays the same](assets/2026-05-24-band-edge-loop-gain-retuning.png)
+
 ### Receive-side synchronization map
 
 ![Receive-side synchronization map](assets/2026-05-16-receive-side-synchronization-map.png)
@@ -137,6 +147,8 @@ python3 scripts/generate_band_edge_discriminant_slope_figure.py
 python3 scripts/generate_band_edge_filter_design_comparison_figure.py
 python3 scripts/generate_band_edge_guardband_cost_figure.py
 python3 scripts/generate_band_edge_closed_loop_adjacent_figure.py
+python3 scripts/generate_band_edge_spacing_boundary_figure.py
+python3 scripts/generate_band_edge_loop_gain_retuning_figure.py
 python3 scripts/generate_receive_side_sync_map_figure.py
 python3 scripts/generate_qpsk_phase_ambiguity_figure.py
 python3 scripts/check_svg_layout.py
