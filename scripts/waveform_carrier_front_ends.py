@@ -96,6 +96,32 @@ class BandEdgeClosedLoopRow:
     tail_mean_abs_detector_output: float
 
 
+@dataclass(frozen=True)
+class BandEdgeSettleShelfRow:
+    samples_per_symbol: int
+    symbol_count: int
+    desired_seed: int
+    adjacent_seed: int
+    trim: int
+    tap_count: int
+    rolloff: float
+    desired_normalized_cfo: float
+    adjacent_relative_power_db: float
+    channel_spacing: float
+    block_symbols: int
+    loop_gain: float
+    tail_block_count: int
+    settle_threshold: float
+    proxy_tail_mean_abs_residual_cfo: float
+    half_sine_tail_mean_abs_residual_cfo: float
+    proxy_tail_peak_abs_residual_cfo: float
+    half_sine_tail_peak_abs_residual_cfo: float
+    proxy_tail_within_threshold_fraction: float
+    half_sine_tail_within_threshold_fraction: float
+    residual_ratio_half_to_proxy: float
+    absolute_gap_half_minus_proxy: float
+
+
 def qpsk_symbols(count: int, seed: int = 0) -> list[complex]:
     rng = random.Random(seed)
     constellation = [cmath.exp(1j * angle) for angle in QPSK_ANGLES]
@@ -946,6 +972,94 @@ def study_band_edge_closed_loop_gain_sweep(
     return rows
 
 
+def study_band_edge_settle_shelf(
+    channel_spacings: Iterable[float],
+    loop_gains: Iterable[float],
+    *,
+    adjacent_relative_power_db: float = 0.0,
+    samples_per_symbol: int = 4,
+    symbol_count: int = 3072,
+    span_symbols: int = 8,
+    desired_seed: int = 19,
+    adjacent_seed: int = 173,
+    trim: int = 96,
+    tap_count: int = 63,
+    rolloff: float = 0.35,
+    desired_normalized_cfo: float = 0.0,
+    block_symbols: int = 96,
+    tail_block_count: int = 8,
+    settle_threshold: float = 0.05,
+) -> list[BandEdgeSettleShelfRow]:
+    rows: list[BandEdgeSettleShelfRow] = []
+    for channel_spacing in channel_spacings:
+        for loop_gain in loop_gains:
+            proxy = band_edge_closed_loop_row(
+                'proxy_bandpass',
+                adjacent_enabled=True,
+                adjacent_relative_power_db=adjacent_relative_power_db,
+                samples_per_symbol=samples_per_symbol,
+                symbol_count=symbol_count,
+                span_symbols=span_symbols,
+                desired_seed=desired_seed,
+                adjacent_seed=adjacent_seed,
+                trim=trim,
+                tap_count=tap_count,
+                rolloff=rolloff,
+                desired_normalized_cfo=desired_normalized_cfo,
+                channel_spacing=channel_spacing,
+                block_symbols=block_symbols,
+                loop_gain=loop_gain,
+                tail_block_count=tail_block_count,
+                settle_threshold=settle_threshold,
+            )
+            half_sine = band_edge_closed_loop_row(
+                'gnuradio_half_sine',
+                adjacent_enabled=True,
+                adjacent_relative_power_db=adjacent_relative_power_db,
+                samples_per_symbol=samples_per_symbol,
+                symbol_count=symbol_count,
+                span_symbols=span_symbols,
+                desired_seed=desired_seed,
+                adjacent_seed=adjacent_seed,
+                trim=trim,
+                tap_count=tap_count,
+                rolloff=rolloff,
+                desired_normalized_cfo=desired_normalized_cfo,
+                channel_spacing=channel_spacing,
+                block_symbols=block_symbols,
+                loop_gain=loop_gain,
+                tail_block_count=tail_block_count,
+                settle_threshold=settle_threshold,
+            )
+            rows.append(
+                BandEdgeSettleShelfRow(
+                    samples_per_symbol=samples_per_symbol,
+                    symbol_count=symbol_count,
+                    desired_seed=desired_seed,
+                    adjacent_seed=adjacent_seed,
+                    trim=trim,
+                    tap_count=tap_count,
+                    rolloff=rolloff,
+                    desired_normalized_cfo=desired_normalized_cfo,
+                    adjacent_relative_power_db=adjacent_relative_power_db,
+                    channel_spacing=channel_spacing,
+                    block_symbols=block_symbols,
+                    loop_gain=loop_gain,
+                    tail_block_count=tail_block_count,
+                    settle_threshold=settle_threshold,
+                    proxy_tail_mean_abs_residual_cfo=proxy.tail_mean_abs_residual_cfo,
+                    half_sine_tail_mean_abs_residual_cfo=half_sine.tail_mean_abs_residual_cfo,
+                    proxy_tail_peak_abs_residual_cfo=proxy.tail_peak_abs_residual_cfo,
+                    half_sine_tail_peak_abs_residual_cfo=half_sine.tail_peak_abs_residual_cfo,
+                    proxy_tail_within_threshold_fraction=proxy.tail_within_threshold_fraction,
+                    half_sine_tail_within_threshold_fraction=half_sine.tail_within_threshold_fraction,
+                    residual_ratio_half_to_proxy=half_sine.tail_mean_abs_residual_cfo / proxy.tail_mean_abs_residual_cfo,
+                    absolute_gap_half_minus_proxy=half_sine.tail_mean_abs_residual_cfo - proxy.tail_mean_abs_residual_cfo,
+                )
+            )
+    return rows
+
+
 def sweep_front_ends(
     rolloffs: Iterable[float],
     normalized_cfo_values: Iterable[float],
@@ -1108,6 +1222,42 @@ def write_band_edge_closed_loop_csv(rows: Iterable[BandEdgeClosedLoopRow], path:
                 'tail_peak_abs_residual_cfo',
                 'tail_within_threshold_fraction',
                 'tail_mean_abs_detector_output',
+            ],
+        )
+        writer.writeheader()
+        for row in rows:
+            writer.writerow(asdict(row))
+
+
+def write_band_edge_settle_shelf_csv(rows: Iterable[BandEdgeSettleShelfRow], path: str | Path) -> None:
+    output = Path(path)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    with output.open('w', newline='') as handle:
+        writer = csv.DictWriter(
+            handle,
+            fieldnames=[
+                'samples_per_symbol',
+                'symbol_count',
+                'desired_seed',
+                'adjacent_seed',
+                'trim',
+                'tap_count',
+                'rolloff',
+                'desired_normalized_cfo',
+                'adjacent_relative_power_db',
+                'channel_spacing',
+                'block_symbols',
+                'loop_gain',
+                'tail_block_count',
+                'settle_threshold',
+                'proxy_tail_mean_abs_residual_cfo',
+                'half_sine_tail_mean_abs_residual_cfo',
+                'proxy_tail_peak_abs_residual_cfo',
+                'half_sine_tail_peak_abs_residual_cfo',
+                'proxy_tail_within_threshold_fraction',
+                'half_sine_tail_within_threshold_fraction',
+                'residual_ratio_half_to_proxy',
+                'absolute_gap_half_minus_proxy',
             ],
         )
         writer.writeheader()
