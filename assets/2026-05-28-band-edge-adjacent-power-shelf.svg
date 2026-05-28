@@ -1,0 +1,339 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2140" height="1780" viewBox="0 0 2140 1780">
+<style>
+svg { background: #07111f; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+.title { fill: #e2e8f0; font-size: 34px; font-weight: 700; }
+.subtitle { fill: #94a3b8; font-size: 18px; }
+.label { fill: #e2e8f0; font-size: 22px; font-weight: 600; }
+.small { fill: #cbd5e1; font-size: 17px; }
+.tiny { fill: #cbd5e1; font-size: 15px; }
+.cell { font-size: 14px; font-weight: 600; }
+</style>
+<text x="56.0" y="60.0" class="title" text-anchor="start">Band-edge adjacent-power relief clears the settle shelf before the residual gap</text>
+<text x="56.0" y="92.0" class="subtitle" text-anchor="start">Hold loop gain fixed at 0.020. Lower adjacent power restores the threshold metric quickly, but the half-sine residual ranking survives much longer.</text>
+<rect x="56.0" y="126.0" width="2028.0" height="248.0" rx="18.0" fill="#102031" stroke="#4f8cc9" stroke-width="2.0"/>
+<text x="82.0" y="162.0" class="small" text-anchor="start"><tspan x="82.0" dy="0">Same SRRC QPSK setup, same 63-tap band-edge filters, same 96-symbol loop update, same 1.20–1.30 R_s nearby-spacing band. This pass freezes loop gain at 0.020 and moves only adjacent relative power. The question is</tspan><tspan x="82.0" dy="22.0">whether making the adjacent channel weaker turns the settle-shelf return into a real catch-up instead of just a cleaner threshold read.</tspan></text>
+<rect x="82.0" y="236.0" width="596.0" height="110.0" rx="16.0" fill="#341727" stroke="#f97316" stroke-width="1.8"/>
+<text x="100.0" y="264.0" class="label" text-anchor="start">A stronger adjacent pushes the first full settle point later</text>
+<text x="100.0" y="292.0" class="tiny" text-anchor="start"><tspan x="100.0" dy="0">At +3 dB, the half-sine lane is still not fully settled at 1.24 R_s:</tspan><tspan x="100.0" dy="18.0">its tail fraction is only 0.000, and the first full-settle point moves</tspan><tspan x="100.0" dy="18.0">out to 1.30 R_s instead of the 0 dB baseline at 1.24 R_s.</tspan></text>
+<rect x="744.0" y="236.0" width="596.0" height="110.0" rx="16.0" fill="#163125" stroke="#4ade80" stroke-width="1.8"/>
+<text x="762.0" y="264.0" class="label" text-anchor="start">A modest relief already clears the whole threshold shelf</text>
+<text x="762.0" y="292.0" class="tiny" text-anchor="start"><tspan x="762.0" dy="0">At -3 dB, every tested spacing from 1.20 through 1.30 R_s is fully</tspan><tspan x="762.0" dy="18.0">settled. The 1.20 R_s cell jumps from 0.000 at 0 dB to 1.000.</tspan></text>
+<rect x="1406.0" y="236.0" width="596.0" height="110.0" rx="16.0" fill="#14263a" stroke="#93c5fd" stroke-width="1.8"/>
+<text x="1424.0" y="264.0" class="label" text-anchor="start">But the residual ranking does not vanish with that relief</text>
+<text x="1424.0" y="292.0" class="tiny" text-anchor="start"><tspan x="1424.0" dy="0">At -3 dB, the half-sine / proxy mean-tail residual ratio is still 8.8x</tspan><tspan x="1424.0" dy="18.0">at 1.20 R_s, 13.4x at 1.24 R_s, and 34.1x at 1.30 R_s. Even at -9 dB,</tspan><tspan x="1424.0" dy="18.0">the 1.24 R_s ratio still sits at 8.4x.</tspan></text>
+<rect x="56.0" y="406.0" width="980.0" height="500.0" rx="18.0" fill="#102031" stroke="#4f8cc9" stroke-width="2.0"/>
+<text x="80.0" y="442.0" class="label" text-anchor="start">Half-sine settle fraction at fixed gain 0.020</text>
+<text x="80.0" y="474.0" class="small" text-anchor="start"><tspan x="80.0" dy="0">Each cell is the share of the last eight loop blocks inside ±0.05 R_s. Lower adjacent power</tspan><tspan x="80.0" dy="22.0">clears this threshold quickly.</tspan></text>
+<text x="259.0" y="532.0" class="tiny" text-anchor="middle">1.20</text>
+<text x="385.0" y="532.0" class="tiny" text-anchor="middle">1.22</text>
+<text x="511.0" y="532.0" class="tiny" text-anchor="middle">1.24</text>
+<text x="637.0" y="532.0" class="tiny" text-anchor="middle">1.26</text>
+<text x="763.0" y="532.0" class="tiny" text-anchor="middle">1.28</text>
+<text x="889.0" y="532.0" class="tiny" text-anchor="middle">1.30</text>
+<text x="574.0" y="500.0" class="tiny" text-anchor="middle">channel spacing (R_s)</text>
+<text x="178.0" y="590.0" class="tiny" text-anchor="end">+3 dB</text>
+<rect x="196.0" y="556.0" width="116.0" height="50.0" rx="10.0" fill="#7f1d1d"/>
+<text x="254.0" y="590.0" class="cell" text-anchor="middle" fill="#ecfeff">0.000</text>
+<rect x="322.0" y="556.0" width="116.0" height="50.0" rx="10.0" fill="#7f1d1d"/>
+<text x="380.0" y="590.0" class="cell" text-anchor="middle" fill="#ecfeff">0.000</text>
+<rect x="448.0" y="556.0" width="116.0" height="50.0" rx="10.0" fill="#7f1d1d"/>
+<text x="506.0" y="590.0" class="cell" text-anchor="middle" fill="#ecfeff">0.000</text>
+<rect x="574.0" y="556.0" width="116.0" height="50.0" rx="10.0" fill="#7f1d1d"/>
+<text x="632.0" y="590.0" class="cell" text-anchor="middle" fill="#ecfeff">0.000</text>
+<rect x="700.0" y="556.0" width="116.0" height="50.0" rx="10.0" fill="#c96e12"/>
+<text x="758.0" y="590.0" class="cell" text-anchor="middle" fill="#ecfeff">0.625</text>
+<rect x="826.0" y="556.0" width="116.0" height="50.0" rx="10.0" fill="#16a34a"/>
+<text x="884.0" y="590.0" class="cell" text-anchor="middle" fill="#f8fafc">1.000</text>
+<text x="178.0" y="648.0" class="tiny" text-anchor="end">0 dB</text>
+<rect x="196.0" y="614.0" width="116.0" height="50.0" rx="10.0" fill="#7f1d1d"/>
+<text x="254.0" y="648.0" class="cell" text-anchor="middle" fill="#ecfeff">0.000</text>
+<rect x="322.0" y="614.0" width="116.0" height="50.0" rx="10.0" fill="#ab4d16"/>
+<text x="380.0" y="648.0" class="cell" text-anchor="middle" fill="#ecfeff">0.375</text>
+<rect x="448.0" y="614.0" width="116.0" height="50.0" rx="10.0" fill="#16a34a"/>
+<text x="506.0" y="648.0" class="cell" text-anchor="middle" fill="#f8fafc">1.000</text>
+<rect x="574.0" y="614.0" width="116.0" height="50.0" rx="10.0" fill="#16a34a"/>
+<text x="632.0" y="648.0" class="cell" text-anchor="middle" fill="#f8fafc">1.000</text>
+<rect x="700.0" y="614.0" width="116.0" height="50.0" rx="10.0" fill="#16a34a"/>
+<text x="758.0" y="648.0" class="cell" text-anchor="middle" fill="#f8fafc">1.000</text>
+<rect x="826.0" y="614.0" width="116.0" height="50.0" rx="10.0" fill="#16a34a"/>
+<text x="884.0" y="648.0" class="cell" text-anchor="middle" fill="#f8fafc">1.000</text>
+<text x="178.0" y="706.0" class="tiny" text-anchor="end">-3 dB</text>
+<rect x="196.0" y="672.0" width="116.0" height="50.0" rx="10.0" fill="#16a34a"/>
+<text x="254.0" y="706.0" class="cell" text-anchor="middle" fill="#f8fafc">1.000</text>
+<rect x="322.0" y="672.0" width="116.0" height="50.0" rx="10.0" fill="#16a34a"/>
+<text x="380.0" y="706.0" class="cell" text-anchor="middle" fill="#f8fafc">1.000</text>
+<rect x="448.0" y="672.0" width="116.0" height="50.0" rx="10.0" fill="#16a34a"/>
+<text x="506.0" y="706.0" class="cell" text-anchor="middle" fill="#f8fafc">1.000</text>
+<rect x="574.0" y="672.0" width="116.0" height="50.0" rx="10.0" fill="#16a34a"/>
+<text x="632.0" y="706.0" class="cell" text-anchor="middle" fill="#f8fafc">1.000</text>
+<rect x="700.0" y="672.0" width="116.0" height="50.0" rx="10.0" fill="#16a34a"/>
+<text x="758.0" y="706.0" class="cell" text-anchor="middle" fill="#f8fafc">1.000</text>
+<rect x="826.0" y="672.0" width="116.0" height="50.0" rx="10.0" fill="#16a34a"/>
+<text x="884.0" y="706.0" class="cell" text-anchor="middle" fill="#f8fafc">1.000</text>
+<text x="178.0" y="764.0" class="tiny" text-anchor="end">-6 dB</text>
+<rect x="196.0" y="730.0" width="116.0" height="50.0" rx="10.0" fill="#16a34a"/>
+<text x="254.0" y="764.0" class="cell" text-anchor="middle" fill="#f8fafc">1.000</text>
+<rect x="322.0" y="730.0" width="116.0" height="50.0" rx="10.0" fill="#16a34a"/>
+<text x="380.0" y="764.0" class="cell" text-anchor="middle" fill="#f8fafc">1.000</text>
+<rect x="448.0" y="730.0" width="116.0" height="50.0" rx="10.0" fill="#16a34a"/>
+<text x="506.0" y="764.0" class="cell" text-anchor="middle" fill="#f8fafc">1.000</text>
+<rect x="574.0" y="730.0" width="116.0" height="50.0" rx="10.0" fill="#16a34a"/>
+<text x="632.0" y="764.0" class="cell" text-anchor="middle" fill="#f8fafc">1.000</text>
+<rect x="700.0" y="730.0" width="116.0" height="50.0" rx="10.0" fill="#16a34a"/>
+<text x="758.0" y="764.0" class="cell" text-anchor="middle" fill="#f8fafc">1.000</text>
+<rect x="826.0" y="730.0" width="116.0" height="50.0" rx="10.0" fill="#16a34a"/>
+<text x="884.0" y="764.0" class="cell" text-anchor="middle" fill="#f8fafc">1.000</text>
+<text x="178.0" y="822.0" class="tiny" text-anchor="end">-9 dB</text>
+<rect x="196.0" y="788.0" width="116.0" height="50.0" rx="10.0" fill="#16a34a"/>
+<text x="254.0" y="822.0" class="cell" text-anchor="middle" fill="#f8fafc">1.000</text>
+<rect x="322.0" y="788.0" width="116.0" height="50.0" rx="10.0" fill="#16a34a"/>
+<text x="380.0" y="822.0" class="cell" text-anchor="middle" fill="#f8fafc">1.000</text>
+<rect x="448.0" y="788.0" width="116.0" height="50.0" rx="10.0" fill="#16a34a"/>
+<text x="506.0" y="822.0" class="cell" text-anchor="middle" fill="#f8fafc">1.000</text>
+<rect x="574.0" y="788.0" width="116.0" height="50.0" rx="10.0" fill="#16a34a"/>
+<text x="632.0" y="822.0" class="cell" text-anchor="middle" fill="#f8fafc">1.000</text>
+<rect x="700.0" y="788.0" width="116.0" height="50.0" rx="10.0" fill="#16a34a"/>
+<text x="758.0" y="822.0" class="cell" text-anchor="middle" fill="#f8fafc">1.000</text>
+<rect x="826.0" y="788.0" width="116.0" height="50.0" rx="10.0" fill="#16a34a"/>
+<text x="884.0" y="822.0" class="cell" text-anchor="middle" fill="#f8fafc">1.000</text>
+<text x="160.0" y="500.0" class="tiny" text-anchor="end">adjacent power</text>
+<rect x="80.0" y="838.0" width="928.0" height="44.0" rx="10.0" fill="#13263b" stroke="#4f8cc9" stroke-width="1.2"/>
+<text x="100.0" y="866.0" class="tiny" text-anchor="start">Read:</text>
+<text x="148.0" y="866.0" class="tiny" text-anchor="start">the threshold shelf survives 0 dB, shifts later at +3 dB, and is already fully open across the band by 1.20 R_s at -3 dB.</text>
+<rect x="1104.0" y="406.0" width="980.0" height="500.0" rx="18.0" fill="#102031" stroke="#4f8cc9" stroke-width="2.0"/>
+<text x="1128.0" y="442.0" class="label" text-anchor="start">Residual ratio: half-sine / proxy</text>
+<text x="1128.0" y="474.0" class="small" text-anchor="start"><tspan x="1128.0" dy="0">This is the mean tail residual CFO ratio. Bigger means the half-sine lane still tracks less</tspan><tspan x="1128.0" dy="22.0">cleanly than the proxy lane even after the threshold metric looks healthy.</tspan></text>
+<text x="1307.0" y="532.0" class="tiny" text-anchor="middle">1.20</text>
+<text x="1433.0" y="532.0" class="tiny" text-anchor="middle">1.22</text>
+<text x="1559.0" y="532.0" class="tiny" text-anchor="middle">1.24</text>
+<text x="1685.0" y="532.0" class="tiny" text-anchor="middle">1.26</text>
+<text x="1811.0" y="532.0" class="tiny" text-anchor="middle">1.28</text>
+<text x="1937.0" y="532.0" class="tiny" text-anchor="middle">1.30</text>
+<text x="1622.0" y="500.0" class="tiny" text-anchor="middle">channel spacing (R_s)</text>
+<text x="1226.0" y="590.0" class="tiny" text-anchor="end">+3 dB</text>
+<rect x="1244.0" y="556.0" width="116.0" height="50.0" rx="10.0" fill="#2b2b41"/>
+<text x="1302.0" y="590.0" class="cell" text-anchor="middle" fill="#e2e8f0">10.5x</text>
+<rect x="1370.0" y="556.0" width="116.0" height="50.0" rx="10.0" fill="#362d46"/>
+<text x="1428.0" y="590.0" class="cell" text-anchor="middle" fill="#e2e8f0">13.7x</text>
+<rect x="1496.0" y="556.0" width="116.0" height="50.0" rx="10.0" fill="#452f4d"/>
+<text x="1554.0" y="590.0" class="cell" text-anchor="middle" fill="#e2e8f0">18.0x</text>
+<rect x="1622.0" y="556.0" width="116.0" height="50.0" rx="10.0" fill="#65345b"/>
+<text x="1680.0" y="590.0" class="cell" text-anchor="middle" fill="#e2e8f0">27.1x</text>
+<rect x="1748.0" y="556.0" width="116.0" height="50.0" rx="10.0" fill="#9d3c75"/>
+<text x="1806.0" y="590.0" class="cell" text-anchor="middle" fill="#f8fafc">43.2x</text>
+<rect x="1874.0" y="556.0" width="116.0" height="50.0" rx="10.0" fill="#ec4899"/>
+<text x="1932.0" y="590.0" class="cell" text-anchor="middle" fill="#f8fafc">66.1x</text>
+<text x="1226.0" y="648.0" class="tiny" text-anchor="end">0 dB</text>
+<rect x="1244.0" y="614.0" width="116.0" height="50.0" rx="10.0" fill="#282b40"/>
+<text x="1302.0" y="648.0" class="cell" text-anchor="middle" fill="#e2e8f0">9.7x</text>
+<rect x="1370.0" y="614.0" width="116.0" height="50.0" rx="10.0" fill="#322c44"/>
+<text x="1428.0" y="648.0" class="cell" text-anchor="middle" fill="#e2e8f0">12.5x</text>
+<rect x="1496.0" y="614.0" width="116.0" height="50.0" rx="10.0" fill="#3e2e49"/>
+<text x="1554.0" y="648.0" class="cell" text-anchor="middle" fill="#e2e8f0">15.8x</text>
+<rect x="1622.0" y="614.0" width="116.0" height="50.0" rx="10.0" fill="#583256"/>
+<text x="1680.0" y="648.0" class="cell" text-anchor="middle" fill="#e2e8f0">23.5x</text>
+<rect x="1748.0" y="614.0" width="116.0" height="50.0" rx="10.0" fill="#843869"/>
+<text x="1806.0" y="648.0" class="cell" text-anchor="middle" fill="#e2e8f0">36.1x</text>
+<rect x="1874.0" y="614.0" width="116.0" height="50.0" rx="10.0" fill="#b4407f"/>
+<text x="1932.0" y="648.0" class="cell" text-anchor="middle" fill="#f8fafc">49.9x</text>
+<text x="1226.0" y="706.0" class="tiny" text-anchor="end">-3 dB</text>
+<rect x="1244.0" y="672.0" width="116.0" height="50.0" rx="10.0" fill="#252a3e"/>
+<text x="1302.0" y="706.0" class="cell" text-anchor="middle" fill="#e2e8f0">8.8x</text>
+<rect x="1370.0" y="672.0" width="116.0" height="50.0" rx="10.0" fill="#2d2b42"/>
+<text x="1428.0" y="706.0" class="cell" text-anchor="middle" fill="#e2e8f0">11.1x</text>
+<rect x="1496.0" y="672.0" width="116.0" height="50.0" rx="10.0" fill="#352d46"/>
+<text x="1554.0" y="706.0" class="cell" text-anchor="middle" fill="#e2e8f0">13.4x</text>
+<rect x="1622.0" y="672.0" width="116.0" height="50.0" rx="10.0" fill="#4a304f"/>
+<text x="1680.0" y="706.0" class="cell" text-anchor="middle" fill="#e2e8f0">19.4x</text>
+<rect x="1748.0" y="672.0" width="116.0" height="50.0" rx="10.0" fill="#67345c"/>
+<text x="1806.0" y="706.0" class="cell" text-anchor="middle" fill="#e2e8f0">27.9x</text>
+<rect x="1874.0" y="672.0" width="116.0" height="50.0" rx="10.0" fill="#7d3766"/>
+<text x="1932.0" y="706.0" class="cell" text-anchor="middle" fill="#e2e8f0">34.1x</text>
+<text x="1226.0" y="764.0" class="tiny" text-anchor="end">-6 dB</text>
+<rect x="1244.0" y="730.0" width="116.0" height="50.0" rx="10.0" fill="#222a3d"/>
+<text x="1302.0" y="764.0" class="cell" text-anchor="middle" fill="#e2e8f0">7.8x</text>
+<rect x="1370.0" y="730.0" width="116.0" height="50.0" rx="10.0" fill="#282b40"/>
+<text x="1428.0" y="764.0" class="cell" text-anchor="middle" fill="#e2e8f0">9.7x</text>
+<rect x="1496.0" y="730.0" width="116.0" height="50.0" rx="10.0" fill="#2d2b42"/>
+<text x="1554.0" y="764.0" class="cell" text-anchor="middle" fill="#e2e8f0">11.0x</text>
+<rect x="1622.0" y="730.0" width="116.0" height="50.0" rx="10.0" fill="#3b2d48"/>
+<text x="1680.0" y="764.0" class="cell" text-anchor="middle" fill="#e2e8f0">15.1x</text>
+<rect x="1748.0" y="730.0" width="116.0" height="50.0" rx="10.0" fill="#4b304f"/>
+<text x="1806.0" y="764.0" class="cell" text-anchor="middle" fill="#e2e8f0">19.7x</text>
+<rect x="1874.0" y="730.0" width="116.0" height="50.0" rx="10.0" fill="#503152"/>
+<text x="1932.0" y="764.0" class="cell" text-anchor="middle" fill="#e2e8f0">21.2x</text>
+<text x="1226.0" y="822.0" class="tiny" text-anchor="end">-9 dB</text>
+<rect x="1244.0" y="788.0" width="116.0" height="50.0" rx="10.0" fill="#1e293b"/>
+<text x="1302.0" y="822.0" class="cell" text-anchor="middle" fill="#e2e8f0">6.7x</text>
+<rect x="1370.0" y="788.0" width="116.0" height="50.0" rx="10.0" fill="#222a3d"/>
+<text x="1428.0" y="822.0" class="cell" text-anchor="middle" fill="#e2e8f0">8.0x</text>
+<rect x="1496.0" y="788.0" width="116.0" height="50.0" rx="10.0" fill="#242a3e"/>
+<text x="1554.0" y="822.0" class="cell" text-anchor="middle" fill="#e2e8f0">8.4x</text>
+<rect x="1622.0" y="788.0" width="116.0" height="50.0" rx="10.0" fill="#2c2b41"/>
+<text x="1680.0" y="822.0" class="cell" text-anchor="middle" fill="#e2e8f0">10.7x</text>
+<rect x="1748.0" y="788.0" width="116.0" height="50.0" rx="10.0" fill="#322c44"/>
+<text x="1806.0" y="822.0" class="cell" text-anchor="middle" fill="#e2e8f0">12.6x</text>
+<rect x="1874.0" y="788.0" width="116.0" height="50.0" rx="10.0" fill="#312c44"/>
+<text x="1932.0" y="822.0" class="cell" text-anchor="middle" fill="#e2e8f0">12.2x</text>
+<text x="1208.0" y="500.0" class="tiny" text-anchor="end">adjacent power</text>
+<rect x="1128.0" y="838.0" width="928.0" height="44.0" rx="10.0" fill="#13263b" stroke="#4f8cc9" stroke-width="1.2"/>
+<text x="1148.0" y="866.0" class="tiny" text-anchor="start">Read:</text>
+<text x="1196.0" y="866.0" class="tiny" text-anchor="start">lower adjacent power cools the ratio, but it stays far above 1x across this grid.</text>
+<rect x="56.0" y="948.0" width="980.0" height="542.0" rx="18.0" fill="#102031" stroke="#4f8cc9" stroke-width="2.0"/>
+<text x="80.0" y="984.0" class="label" text-anchor="start">Residual ratio versus spacing</text>
+<text x="80.0" y="1016.0" class="small" text-anchor="start"><tspan x="80.0" dy="0">Weaker adjacent power shifts the whole ratio family downward, but the curves still stay far</tspan><tspan x="80.0" dy="22.0">above parity. The settle shelf clears long before the ranking disappears.</tspan></text>
+<line x1="152.0" y1="1398.0" x2="978.0" y2="1398.0" stroke="#5d7fa3" stroke-width="2.0" opacity="1.0" stroke-linecap="round"/>
+<line x1="152.0" y1="1084.0" x2="152.0" y2="1398.0" stroke="#5d7fa3" stroke-width="2.0" opacity="1.0" stroke-linecap="round"/>
+<line x1="152.0" y1="1392.0" x2="152.0" y2="1404.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="152.0" y="1424.0" class="tiny" text-anchor="middle">1.20</text>
+<line x1="317.2" y1="1392.0" x2="317.2" y2="1404.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="317.2" y="1424.0" class="tiny" text-anchor="middle">1.22</text>
+<line x1="317.2" y1="1084.0" x2="317.2" y2="1398.0" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="482.4" y1="1392.0" x2="482.4" y2="1404.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="482.4" y="1424.0" class="tiny" text-anchor="middle">1.24</text>
+<line x1="482.4" y1="1084.0" x2="482.4" y2="1398.0" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="647.6" y1="1392.0" x2="647.6" y2="1404.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="647.6" y="1424.0" class="tiny" text-anchor="middle">1.26</text>
+<line x1="647.6" y1="1084.0" x2="647.6" y2="1398.0" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="812.8" y1="1392.0" x2="812.8" y2="1404.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="812.8" y="1424.0" class="tiny" text-anchor="middle">1.28</text>
+<line x1="812.8" y1="1084.0" x2="812.8" y2="1398.0" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="978.0" y1="1392.0" x2="978.0" y2="1404.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="978.0" y="1424.0" class="tiny" text-anchor="middle">1.30</text>
+<line x1="146.0" y1="1398.0" x2="158.0" y2="1398.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="134.0" y="1403.0" class="tiny" text-anchor="end">0x</text>
+<line x1="146.0" y1="1353.1" x2="158.0" y2="1353.1" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="134.0" y="1358.1" class="tiny" text-anchor="end">10x</text>
+<line x1="152.0" y1="1353.1" x2="978.0" y2="1353.1" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="146.0" y1="1308.3" x2="158.0" y2="1308.3" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="134.0" y="1313.3" class="tiny" text-anchor="end">20x</text>
+<line x1="152.0" y1="1308.3" x2="978.0" y2="1308.3" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="146.0" y1="1263.4" x2="158.0" y2="1263.4" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="134.0" y="1268.4" class="tiny" text-anchor="end">30x</text>
+<line x1="152.0" y1="1263.4" x2="978.0" y2="1263.4" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="146.0" y1="1218.6" x2="158.0" y2="1218.6" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="134.0" y="1223.6" class="tiny" text-anchor="end">40x</text>
+<line x1="152.0" y1="1218.6" x2="978.0" y2="1218.6" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="146.0" y1="1173.7" x2="158.0" y2="1173.7" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="134.0" y="1178.7" class="tiny" text-anchor="end">50x</text>
+<line x1="152.0" y1="1173.7" x2="978.0" y2="1173.7" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="146.0" y1="1128.9" x2="158.0" y2="1128.9" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="134.0" y="1133.9" class="tiny" text-anchor="end">60x</text>
+<line x1="152.0" y1="1128.9" x2="978.0" y2="1128.9" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="146.0" y1="1084.0" x2="158.0" y2="1084.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="134.0" y="1089.0" class="tiny" text-anchor="end">70x</text>
+<text x="565.0" y="1456.0" class="tiny" text-anchor="middle">channel spacing (R_s)</text>
+<text x="152.0" y="1070.0" class="tiny" text-anchor="start">mean residual ratio</text>
+<polyline points="152.0,1350.9 317.2,1336.6 482.4,1317.4 647.6,1276.6 812.8,1204.0 978.0,1101.6" fill="none" stroke="#f97316" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="152.0" cy="1350.9" r="4.8" fill="#f97316"/>
+<circle cx="317.2" cy="1336.6" r="4.8" fill="#f97316"/>
+<circle cx="482.4" cy="1317.4" r="4.8" fill="#f97316"/>
+<circle cx="647.6" cy="1276.6" r="4.8" fill="#f97316"/>
+<circle cx="812.8" cy="1204.0" r="4.8" fill="#f97316"/>
+<circle cx="978.0" cy="1101.6" r="4.8" fill="#f97316"/>
+<polyline points="152.0,1354.5 317.2,1342.0 482.4,1327.1 647.6,1292.6 812.8,1236.3 978.0,1174.3" fill="none" stroke="#facc15" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="152.0" cy="1354.5" r="4.8" fill="#facc15"/>
+<circle cx="317.2" cy="1342.0" r="4.8" fill="#facc15"/>
+<circle cx="482.4" cy="1327.1" r="4.8" fill="#facc15"/>
+<circle cx="647.6" cy="1292.6" r="4.8" fill="#facc15"/>
+<circle cx="812.8" cy="1236.3" r="4.8" fill="#facc15"/>
+<circle cx="978.0" cy="1174.3" r="4.8" fill="#facc15"/>
+<polyline points="152.0,1358.5 317.2,1348.0 482.4,1337.7 647.6,1310.8 812.8,1273.0 978.0,1245.2" fill="none" stroke="#38bdf8" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="152.0" cy="1358.5" r="4.8" fill="#38bdf8"/>
+<circle cx="317.2" cy="1348.0" r="4.8" fill="#38bdf8"/>
+<circle cx="482.4" cy="1337.7" r="4.8" fill="#38bdf8"/>
+<circle cx="647.6" cy="1310.8" r="4.8" fill="#38bdf8"/>
+<circle cx="812.8" cy="1273.0" r="4.8" fill="#38bdf8"/>
+<circle cx="978.0" cy="1245.2" r="4.8" fill="#38bdf8"/>
+<polyline points="152.0,1367.8 317.2,1362.2 482.4,1360.3 647.6,1349.8 812.8,1341.5 978.0,1343.3" fill="none" stroke="#c084fc" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="152.0" cy="1367.8" r="4.8" fill="#c084fc"/>
+<circle cx="317.2" cy="1362.2" r="4.8" fill="#c084fc"/>
+<circle cx="482.4" cy="1360.3" r="4.8" fill="#c084fc"/>
+<circle cx="647.6" cy="1349.8" r="4.8" fill="#c084fc"/>
+<circle cx="812.8" cy="1341.5" r="4.8" fill="#c084fc"/>
+<circle cx="978.0" cy="1343.3" r="4.8" fill="#c084fc"/>
+<rect x="80.0" y="1416.0" width="928.0" height="44.0" rx="10.0" fill="#13263b" stroke="#4f8cc9" stroke-width="1.2"/>
+<text x="100.0" y="1444.0" class="tiny" text-anchor="start">Read:</text>
+<text x="148.0" y="1444.0" class="tiny" text-anchor="start">the whole family stays above 1x; weaker adjacent power helps, but it does not turn the nearby band into a residual crossover.</text>
+<rect x="1104.0" y="948.0" width="980.0" height="542.0" rx="18.0" fill="#102031" stroke="#4f8cc9" stroke-width="2.0"/>
+<text x="1128.0" y="984.0" class="label" text-anchor="start">Absolute residual gap versus spacing</text>
+<text x="1128.0" y="1016.0" class="small" text-anchor="start"><tspan x="1128.0" dy="0">This is the direct mean tail-residual difference (half-sine minus proxy). The gap really does</tspan><tspan x="1128.0" dy="22.0">shrink with weaker adjacent power. It just never flips sign in this bounded pass.</tspan></text>
+<line x1="1200.0" y1="1398.0" x2="2026.0" y2="1398.0" stroke="#5d7fa3" stroke-width="2.0" opacity="1.0" stroke-linecap="round"/>
+<line x1="1200.0" y1="1084.0" x2="1200.0" y2="1398.0" stroke="#5d7fa3" stroke-width="2.0" opacity="1.0" stroke-linecap="round"/>
+<line x1="1200.0" y1="1392.0" x2="1200.0" y2="1404.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="1200.0" y="1424.0" class="tiny" text-anchor="middle">1.20</text>
+<line x1="1365.2" y1="1392.0" x2="1365.2" y2="1404.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="1365.2" y="1424.0" class="tiny" text-anchor="middle">1.22</text>
+<line x1="1365.2" y1="1084.0" x2="1365.2" y2="1398.0" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="1530.4" y1="1392.0" x2="1530.4" y2="1404.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="1530.4" y="1424.0" class="tiny" text-anchor="middle">1.24</text>
+<line x1="1530.4" y1="1084.0" x2="1530.4" y2="1398.0" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="1695.6" y1="1392.0" x2="1695.6" y2="1404.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="1695.6" y="1424.0" class="tiny" text-anchor="middle">1.26</text>
+<line x1="1695.6" y1="1084.0" x2="1695.6" y2="1398.0" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="1860.8" y1="1392.0" x2="1860.8" y2="1404.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="1860.8" y="1424.0" class="tiny" text-anchor="middle">1.28</text>
+<line x1="1860.8" y1="1084.0" x2="1860.8" y2="1398.0" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="2026.0" y1="1392.0" x2="2026.0" y2="1404.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="2026.0" y="1424.0" class="tiny" text-anchor="middle">1.30</text>
+<line x1="1194.0" y1="1398.0" x2="1206.0" y2="1398.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="1182.0" y="1403.0" class="tiny" text-anchor="end">0.00</text>
+<line x1="1194.0" y1="1319.5" x2="1206.0" y2="1319.5" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="1182.0" y="1324.5" class="tiny" text-anchor="end">0.02</text>
+<line x1="1200.0" y1="1319.5" x2="2026.0" y2="1319.5" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="1194.0" y1="1241.0" x2="1206.0" y2="1241.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="1182.0" y="1246.0" class="tiny" text-anchor="end">0.04</text>
+<line x1="1200.0" y1="1241.0" x2="2026.0" y2="1241.0" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="1194.0" y1="1162.5" x2="1206.0" y2="1162.5" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="1182.0" y="1167.5" class="tiny" text-anchor="end">0.06</text>
+<line x1="1200.0" y1="1162.5" x2="2026.0" y2="1162.5" stroke="#27415a" stroke-width="1.0" opacity="0.8" stroke-linecap="round" stroke-dasharray="4 8"/>
+<line x1="1194.0" y1="1084.0" x2="1206.0" y2="1084.0" stroke="#5d7fa3" stroke-width="1.4" opacity="1.0" stroke-linecap="round"/>
+<text x="1182.0" y="1089.0" class="tiny" text-anchor="end">0.08</text>
+<text x="1613.0" y="1456.0" class="tiny" text-anchor="middle">channel spacing (R_s)</text>
+<text x="1200.0" y="1070.0" class="tiny" text-anchor="start">absolute mean-gap</text>
+<polyline points="1200.0,1096.7 1365.2,1122.1 1530.4,1150.8 1695.6,1180.1 1860.8,1210.1 2026.0,1240.7" fill="none" stroke="#f97316" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1200.0" cy="1096.7" r="4.8" fill="#f97316"/>
+<circle cx="1365.2" cy="1122.1" r="4.8" fill="#f97316"/>
+<circle cx="1530.4" cy="1150.8" r="4.8" fill="#f97316"/>
+<circle cx="1695.6" cy="1180.1" r="4.8" fill="#f97316"/>
+<circle cx="1860.8" cy="1210.1" r="4.8" fill="#f97316"/>
+<circle cx="2026.0" cy="1240.7" r="4.8" fill="#f97316"/>
+<polyline points="1200.0,1197.5 1365.2,1214.6 1530.4,1233.5 1695.6,1252.7 1860.8,1272.2 2026.0,1292.5" fill="none" stroke="#facc15" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1200.0" cy="1197.5" r="4.8" fill="#facc15"/>
+<circle cx="1365.2" cy="1214.6" r="4.8" fill="#facc15"/>
+<circle cx="1530.4" cy="1233.5" r="4.8" fill="#facc15"/>
+<circle cx="1695.6" cy="1252.7" r="4.8" fill="#facc15"/>
+<circle cx="1860.8" cy="1272.2" r="4.8" fill="#facc15"/>
+<circle cx="2026.0" cy="1292.5" r="4.8" fill="#facc15"/>
+<polyline points="1200.0,1279.3 1365.2,1289.6 1530.4,1300.5 1695.6,1311.7 1860.8,1323.0 2026.0,1335.0" fill="none" stroke="#38bdf8" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1200.0" cy="1279.3" r="4.8" fill="#38bdf8"/>
+<circle cx="1365.2" cy="1289.6" r="4.8" fill="#38bdf8"/>
+<circle cx="1530.4" cy="1300.5" r="4.8" fill="#38bdf8"/>
+<circle cx="1695.6" cy="1311.7" r="4.8" fill="#38bdf8"/>
+<circle cx="1860.8" cy="1323.0" r="4.8" fill="#38bdf8"/>
+<circle cx="2026.0" cy="1335.0" r="4.8" fill="#38bdf8"/>
+<polyline points="1200.0,1364.7 1365.2,1367.8 1530.4,1370.7 1695.6,1373.9 1860.8,1377.0 2026.0,1380.5" fill="none" stroke="#c084fc" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1200.0" cy="1364.7" r="4.8" fill="#c084fc"/>
+<circle cx="1365.2" cy="1367.8" r="4.8" fill="#c084fc"/>
+<circle cx="1530.4" cy="1370.7" r="4.8" fill="#c084fc"/>
+<circle cx="1695.6" cy="1373.9" r="4.8" fill="#c084fc"/>
+<circle cx="1860.8" cy="1377.0" r="4.8" fill="#c084fc"/>
+<circle cx="2026.0" cy="1380.5" r="4.8" fill="#c084fc"/>
+<rect x="1128.0" y="1416.0" width="928.0" height="44.0" rx="10.0" fill="#13263b" stroke="#4f8cc9" stroke-width="1.2"/>
+<text x="1148.0" y="1444.0" class="tiny" text-anchor="start">Read:</text>
+<text x="1196.0" y="1444.0" class="tiny" text-anchor="start">adjacent-power relief is real; the absolute gap cools a lot, but it never flips sign here.</text>
+<rect x="1404.0" y="1512.0" width="612.0" height="82.0" rx="12.0" fill="#13263b" stroke="#4f8cc9" stroke-width="1.4"/>
+<line x1="1432.0" y1="1546.0" x2="1484.0" y2="1546.0" stroke="#f97316" stroke-width="3.0" opacity="1.0" stroke-linecap="round"/>
+<circle cx="1458.0" cy="1546.0" r="4.8" fill="#f97316"/>
+<text x="1496.0" y="1551.0" class="tiny" text-anchor="start">+3 dB</text>
+<line x1="1578.0" y1="1546.0" x2="1630.0" y2="1546.0" stroke="#facc15" stroke-width="3.0" opacity="1.0" stroke-linecap="round"/>
+<circle cx="1604.0" cy="1546.0" r="4.8" fill="#facc15"/>
+<text x="1642.0" y="1551.0" class="tiny" text-anchor="start">0 dB</text>
+<line x1="1724.0" y1="1546.0" x2="1776.0" y2="1546.0" stroke="#38bdf8" stroke-width="3.0" opacity="1.0" stroke-linecap="round"/>
+<circle cx="1750.0" cy="1546.0" r="4.8" fill="#38bdf8"/>
+<text x="1788.0" y="1551.0" class="tiny" text-anchor="start">-3 dB</text>
+<line x1="1870.0" y1="1546.0" x2="1922.0" y2="1546.0" stroke="#c084fc" stroke-width="3.0" opacity="1.0" stroke-linecap="round"/>
+<circle cx="1896.0" cy="1546.0" r="4.8" fill="#c084fc"/>
+<text x="1934.0" y="1551.0" class="tiny" text-anchor="start">-9 dB</text>
+<text x="56.0" y="1718.0" class="tiny" text-anchor="start">Bounded pass: gain = 0.020, settle threshold = ±0.05 R_s, tail = last 8 loop blocks, adjacent power sweep = +3 to -9 dB.</text>
+</svg>

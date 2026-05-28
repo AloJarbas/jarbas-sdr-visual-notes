@@ -1060,6 +1060,48 @@ def study_band_edge_settle_shelf(
     return rows
 
 
+def study_band_edge_adjacent_power_shelf(
+    channel_spacings: Iterable[float],
+    adjacent_relative_powers_db: Iterable[float],
+    *,
+    loop_gain: float = 0.020,
+    samples_per_symbol: int = 4,
+    symbol_count: int = 3072,
+    span_symbols: int = 8,
+    desired_seed: int = 19,
+    adjacent_seed: int = 173,
+    trim: int = 96,
+    tap_count: int = 63,
+    rolloff: float = 0.35,
+    desired_normalized_cfo: float = 0.0,
+    block_symbols: int = 96,
+    tail_block_count: int = 8,
+    settle_threshold: float = 0.05,
+) -> list[BandEdgeSettleShelfRow]:
+    rows: list[BandEdgeSettleShelfRow] = []
+    for adjacent_relative_power_db in adjacent_relative_powers_db:
+        rows.extend(
+            study_band_edge_settle_shelf(
+                channel_spacings,
+                [loop_gain],
+                adjacent_relative_power_db=adjacent_relative_power_db,
+                samples_per_symbol=samples_per_symbol,
+                symbol_count=symbol_count,
+                span_symbols=span_symbols,
+                desired_seed=desired_seed,
+                adjacent_seed=adjacent_seed,
+                trim=trim,
+                tap_count=tap_count,
+                rolloff=rolloff,
+                desired_normalized_cfo=desired_normalized_cfo,
+                block_symbols=block_symbols,
+                tail_block_count=tail_block_count,
+                settle_threshold=settle_threshold,
+            )
+        )
+    return rows
+
+
 def sweep_front_ends(
     rolloffs: Iterable[float],
     normalized_cfo_values: Iterable[float],

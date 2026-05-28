@@ -30,6 +30,7 @@ Everything here stays in the study and simulation lane. No live emission instruc
 - [Band-edge spacing boundary: when the loop preference flips](notes/band-edge-spacing-boundary.md)
 - [Band-edge loop-gain retuning: slower helps, but the ranking stays the same](notes/band-edge-loop-gain-retuning.md)
 - [Band-edge settle shelf: track-ready returns before the residual gap closes](notes/band-edge-settle-shelf.md)
+- [Band-edge adjacent-power relief clears the settle shelf before the residual gap](notes/band-edge-adjacent-power-shelf.md)
 - [Receive-side synchronization map](notes/receive-side-synchronization-map.md)
 - [QPSK phase ambiguity resolution](notes/qpsk-phase-ambiguity-resolution.md)
 
@@ -111,6 +112,10 @@ Everything here stays in the study and simulation lane. No live emission instruc
 
 ![Band-edge settle shelf: track-ready returns before the residual gap closes](assets/2026-05-27-band-edge-settle-shelf.png)
 
+### Band-edge adjacent-power relief clears the settle shelf before the residual gap
+
+![Band-edge adjacent-power relief clears the settle shelf before the residual gap](assets/2026-05-28-band-edge-adjacent-power-shelf.png)
+
 ### Receive-side synchronization map
 
 ![Receive-side synchronization map](assets/2026-05-16-receive-side-synchronization-map.png)
@@ -155,6 +160,7 @@ python3 scripts/generate_band_edge_closed_loop_adjacent_figure.py
 python3 scripts/generate_band_edge_spacing_boundary_figure.py
 python3 scripts/generate_band_edge_loop_gain_retuning_figure.py
 python3 scripts/generate_band_edge_settle_shelf_figure.py
+python3 scripts/generate_band_edge_adjacent_power_shelf_figure.py
 python3 scripts/generate_receive_side_sync_map_figure.py
 python3 scripts/generate_qpsk_phase_ambiguity_figure.py
 python3 scripts/check_svg_layout.py
